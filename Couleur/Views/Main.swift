@@ -12,19 +12,19 @@ struct Main: View {
   var body: some View {
     Button(action: showPicker) {
       Text("Go")
-    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }.frame(width: 200, height: 200)
   }
-  
+
   func showPicker() {
-    let window = NSWindow(
+    let pickerWindow = NSWindow(
       contentRect: NSRect(x: 0, y: 0, width: 300, height: 300),
-      styleMask: [.titled],
+      styleMask: [],
       backing: .buffered, defer: false)
-    window.center()
-    window.contentView = NSHostingView(rootView:Picker(windowId: CGWindowID(window.windowNumber)))
-    window.contentView?.wantsLayer = true
-    
-    window.makeKeyAndOrderFront(nil)
+
+    pickerWindow.center()
+    pickerWindow.contentView = NSHostingView(rootView:Picker(window: pickerWindow))
+
+    pickerWindow.makeKeyAndOrderFront(nil)
   }
 }
 

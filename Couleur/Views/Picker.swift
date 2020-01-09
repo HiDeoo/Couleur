@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct Picker: View {
-  let windowId: UInt32
-  
+  let window: NSWindow
+   
   @State var previewImage: CGImage?
+  @State var mouseMonitor: Any?
   
   var body: some View {
     VStack {
@@ -22,9 +23,18 @@ struct Picker: View {
     .onAppear {
       self.updatePreview(point: NSEvent.mouseLocation)
       
-      NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved], handler: { event in
+      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseUp], handler: { event in
+        if event.type == .mouseMoved {
           self.onMouseMove(event: event)
-          return nil
+        } else if event.type == .leftMouseUp {
+          if self.mouseMonitor != nil {
+            NSEvent.removeMonitor(self.mouseMonitor!)
+          }
+          
+          self.window.close()
+        }
+        
+        return nil
       })
     }
   }
@@ -34,18 +44,24 @@ struct Picker: View {
   }
   
   func updatePreview(point: NSPoint) {
+    if !self.window.isKeyWindow {
+      self.window.makeKeyAndOrderFront(nil)
+    }
+    
     let previewSize: CGFloat = 300
     let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y)
     let rect = CGRect(x: cursor.x - previewSize / 2, y: cursor.y - previewSize / 2, width: previewSize, height: previewSize)
       
-    self.previewImage = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, self.windowId, .bestResolution)
+    self.previewImage = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, CGWindowID(window.windowNumber), .bestResolution)
+    
+    self.window.setFrameOrigin(point)
   }
 }
 
 struct Picker_Previews: PreviewProvider {
-  static var windowId: UInt32 = 0
+  static var window = NSWindow()
   
   static var previews: some View {
-    Picker(windowId: windowId)
+    Picker(window: window)
   }
 }
