@@ -17,7 +17,11 @@ struct Picker: View {
   var body: some View {
     VStack {
       if ((self.previewImage) != nil) {
-        Image(decorative: self.previewImage!, scale: 1.0).border(Color.pink)
+        Image(decorative: self.previewImage!, scale: 1.0)
+          .interpolation(.none)
+          .resizable()
+          .frame(width: 300, height: 300)
+          .border(Color.pink)
       }
     }
     .onAppear {
@@ -48,13 +52,29 @@ struct Picker: View {
       self.window.makeKeyAndOrderFront(nil)
     }
     
+    // TODO: Stop hardcoding this
     let previewSize: CGFloat = 300
-    let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y)
-    let rect = CGRect(x: cursor.x - previewSize / 2, y: cursor.y - previewSize / 2, width: previewSize, height: previewSize)
-      
-    self.previewImage = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, CGWindowID(window.windowNumber), .bestResolution)
+    // TODO: Stop hardcoding this
+    // TODO: Ensure it's consistent based on the display density
+    let zoom: CGFloat = 20
     
-    self.window.setFrameOrigin(point)
+    let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y)
+    let zoomedSize = previewSize / zoom
+    let zoomedOffset = (previewSize - zoomedSize) / 2
+    
+    let rect = CGRect(
+      x: cursor.x - previewSize / 2 + zoomedOffset,
+      y: cursor.y - previewSize / 2 + zoomedOffset,
+      width: zoomedSize,
+      height: zoomedSize)
+
+    self.previewImage = CGWindowListCreateImage(rect,
+                                                .optionOnScreenBelowWindow,
+                                                CGWindowID(window.windowNumber),
+                                                .bestResolution)
+    
+    // TODO: Stop hardcoding this
+    self.window.setFrameOrigin(NSMakePoint(point.x - 150, point.y - 150))
   }
 }
 
