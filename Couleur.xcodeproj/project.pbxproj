@@ -13,6 +13,8 @@
 		E8D9030D23C7211700476DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030C23C7211700476DC5 /* Preview Assets.xcassets */; };
 		E8D9031023C7211700476DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030E23C7211700476DC5 /* Main.storyboard */; };
 		E8D9031D23C72EE300476DC5 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9031C23C72EE300476DC5 /* Picker.swift */; };
+		E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9A23CDD14900D1D461 /* Constants.swift */; };
+		E8F1CF9D23CDD7E000D1D461 /* PickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		E8D9031123C7211700476DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8D9031223C7211700476DC5 /* Couleur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Couleur.entitlements; sourceTree = "<group>"; };
 		E8D9031C23C72EE300476DC5 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		E8F1CF9A23CDD14900D1D461 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			children = (
 				E8D9031823C72BA300476DC5 /* Views */,
 				E8D9030523C7211500476DC5 /* AppDelegate.swift */,
+				E8F1CF9A23CDD14900D1D461 /* Constants.swift */,
 				E8D9030923C7211700476DC5 /* Assets.xcassets */,
 				E8D9030E23C7211700476DC5 /* Main.storyboard */,
 				E8D9031123C7211700476DC5 /* Info.plist */,
@@ -81,6 +86,7 @@
 			children = (
 				E8D9030723C7211500476DC5 /* Main.swift */,
 				E8D9031C23C72EE300476DC5 /* Picker.swift */,
+				E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +165,8 @@
 				E8D9031D23C72EE300476DC5 /* Picker.swift in Sources */,
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
+				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
+				E8F1CF9D23CDD7E000D1D461 /* PickerGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

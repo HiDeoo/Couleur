@@ -14,16 +14,23 @@ struct Picker: View {
   @State var previewImage: CGImage?
   @State var mouseMonitor: Any?
   
+  // Remove the border width from both sides.
+  let clippedFrameSize = Constants.PickerSize - 2
+  
   var body: some View {
-    VStack {
+    ZStack {
       if ((self.previewImage) != nil) {
         Image(decorative: self.previewImage!, scale: 1.0)
           .interpolation(.none)
           .resizable()
-          .frame(width: 300, height: 300)
-          .border(Color.pink)
+          .clipShape(Circle())
       }
+      PickerGrid()
     }
+    .clipShape(Circle())
+    .frame(width: clippedFrameSize, height: clippedFrameSize)
+    .overlay(Circle().stroke(Color.black, lineWidth: 1))
+    .frame(width: Constants.PickerSize, height: Constants.PickerSize)
     .onAppear {
       self.updatePreview(point: NSEvent.mouseLocation)
       
@@ -52,29 +59,26 @@ struct Picker: View {
       self.window.makeKeyAndOrderFront(nil)
     }
     
-    // TODO: Stop hardcoding this
-    let previewSize: CGFloat = 300
-    // TODO: Stop hardcoding this
-    // TODO: Ensure it's consistent based on the display density
-    let zoom: CGFloat = 20
-    
     let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y)
-    let zoomedSize = previewSize / zoom
-    let zoomedOffset = (previewSize - zoomedSize) / 2
+    let pickerHalf = (Constants.PickerPointCount / 2).rounded()
     
     let rect = CGRect(
-      x: cursor.x - previewSize / 2 + zoomedOffset,
-      y: cursor.y - previewSize / 2 + zoomedOffset,
-      width: zoomedSize,
-      height: zoomedSize)
+      x: cursor.x - pickerHalf,
+      y: cursor.y - pickerHalf,
+      width: Constants.PickerPointCount,
+      height: Constants.PickerPointCount)
 
-    self.previewImage = CGWindowListCreateImage(rect,
-                                                .optionOnScreenBelowWindow,
-                                                CGWindowID(window.windowNumber),
-                                                .bestResolution)
+    let screenshot = CGWindowListCreateImage(rect,
+                                             .optionOnScreenBelowWindow,
+                                             CGWindowID(window.windowNumber),
+                                             .nominalResolution)
     
-    // TODO: Stop hardcoding this
-    self.window.setFrameOrigin(NSMakePoint(point.x - 150, point.y - 150))
+    if let previewImage = screenshot {
+      self.previewImage = previewImage
+      
+      let pickerSizeHalf = Constants.PickerSize / 2
+      self.window.setFrameOrigin(NSMakePoint(point.x - pickerSizeHalf, point.y - pickerSizeHalf))
+    }
   }
 }
 

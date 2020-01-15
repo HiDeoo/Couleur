@@ -17,11 +17,13 @@ struct Main: View {
 
   func showPicker() {
     let pickerWindow = NSWindow(
-      contentRect: NSRect(x: 0, y: 0, width: 300, height: 300),
+      contentRect: NSRect(x: 0, y: 0, width: Constants.PickerSize, height: Constants.PickerSize),
       styleMask: [],
       backing: .buffered, defer: false)
 
     pickerWindow.center()
+    pickerWindow.isOpaque = false
+    pickerWindow.backgroundColor = NSColor.clear
     pickerWindow.contentView = NSHostingView(rootView:Picker(window: pickerWindow))
 
     pickerWindow.makeKeyAndOrderFront(nil)
