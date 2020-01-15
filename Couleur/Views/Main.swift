@@ -9,10 +9,15 @@
 import SwiftUI
 
 struct Main: View {
+  @EnvironmentObject var appModel: AppModel
+  
   var body: some View {
-    Button(action: showPicker) {
-      Text("Go")
-    }.frame(width: 200, height: 200)
+    VStack {
+      Button(action: showPicker) {
+        Text("Go")
+      }.frame(width: 200, height: 200)
+      Text("Color: \(appModel.picker.color?.description ?? "nothing")")
+    }
   }
 
   func showPicker() {
@@ -24,7 +29,7 @@ struct Main: View {
     pickerWindow.center()
     pickerWindow.isOpaque = false
     pickerWindow.backgroundColor = NSColor.clear
-    pickerWindow.contentView = NSHostingView(rootView:Picker(window: pickerWindow))
+    pickerWindow.contentView = NSHostingView(rootView:Picker(window: pickerWindow).environmentObject(appModel.picker))
 
     pickerWindow.makeKeyAndOrderFront(nil)
   }

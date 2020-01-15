@@ -14,6 +14,8 @@ struct Picker: View {
   @State var previewImage: CGImage?
   @State var mouseMonitor: Any?
   
+  @EnvironmentObject var pickerModel: PickerModel
+  
   // Remove the border width from both sides.
   let clippedFrameSize = Constants.PickerSize - 2
   
@@ -76,8 +78,33 @@ struct Picker: View {
     if let previewImage = screenshot {
       self.previewImage = previewImage
       
+      updateColor()
+      
       let pickerSizeHalf = Constants.PickerSize / 2
       self.window.setFrameOrigin(NSMakePoint(point.x - pickerSizeHalf, point.y - pickerSizeHalf))
+    }
+  }
+  
+  func updateColor() {
+    if let image = self.previewImage {
+      let bitmap = NSBitmapImageRep(cgImage: image)
+      let center = Int(floor(Constants.PickerPointCount / 2))
+      let centerColor = bitmap.colorAt(x: center, y: center)
+      
+      if let color = centerColor {
+        // The color doesn't match the screen color space.
+        // https://stackoverflow.com/a/47005433/1945960
+        let components = UnsafeMutablePointer<CGFloat>.allocate(capacity: color.numberOfComponents)
+        
+        // Grab the color components.
+        color.getComponents(components)
+        
+        // Get a new color with the proper color space.
+        self.pickerModel.color = NSColor(
+          colorSpace: bitmap.colorSpace,
+          components: components,
+          count: color.numberOfComponents)
+      }
     }
   }
 }
