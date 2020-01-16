@@ -11,12 +11,27 @@ import SwiftUI
 struct Main: View {
   @EnvironmentObject var appModel: AppModel
 
+  @State var showPermissionAlert = false
+
   var body: some View {
     VStack {
-      Button(action: showPicker) {
+      Button(action: pickColor) {
         Text("Go")
       }.frame(width: 200, height: 200)
       Text("Color: \(appModel.picker.color?.description ?? "nothing")")
+    }
+    .alert(isPresented: $showPermissionAlert) {
+      Alert(title: Text("Screen Recording permission is required"), message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."), dismissButton: .default(Text("OK"), action: {
+        self.showPicker()
+      }))
+    }
+  }
+
+  func pickColor() {
+    if !Permissions.canRecordScreen() {
+      showPermissionAlert = true
+    } else {
+      showPicker()
     }
   }
 
