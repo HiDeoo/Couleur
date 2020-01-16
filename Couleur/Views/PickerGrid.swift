@@ -10,16 +10,16 @@ import SwiftUI
 
 struct PickerGrid: View {
   let lineCount = Int(Constants.PickerPointCount + 2)
-    
+
   var body: some View {
     Path { path in
-      for index in 0...lineCount {
+      for index in 0 ... lineCount {
         let offset = Constants.PickerPointSize * CGFloat(index)
         path.move(to: CGPoint(x: offset, y: 0))
         path.addLine(to: CGPoint(x: offset, y: Constants.PickerSize))
       }
-    
-      for index in 0...lineCount {
+
+      for index in 0 ... lineCount {
         let offset = Constants.PickerPointSize * CGFloat(index)
         path.move(to: CGPoint(x: 0, y: offset))
         path.addLine(to: CGPoint(x: Constants.PickerSize, y: offset))

@@ -6,17 +6,17 @@
 //  Copyright © 2020 HiDeoo. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class AppModel: ObservableObject {
   @Published var picker = PickerModel()
-  
-  var anyCancellable: AnyCancellable? = nil
-  
+
+  var anyCancellable: AnyCancellable?
+
   init() {
     // Nested models are not yet supported in SwiftUI so we need to manually handle nested changes.
-    anyCancellable = picker.objectWillChange.sink { (_) in
+    anyCancellable = picker.objectWillChange.sink { _ in
       self.objectWillChange.send()
     }
   }

@@ -11,21 +11,20 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
   var window: NSWindow!
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
+  func applicationDidFinishLaunching(_: Notification) {
     let main = Main()
 
     window = NSWindow(
       contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
       styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-      backing: .buffered, defer: false)
+      backing: .buffered, defer: false
+    )
     window.center()
     window.setFrameAutosaveName("Main")
     window.contentView = NSHostingView(rootView: main.environmentObject(AppModel()))
-    
+
     window.makeKeyAndOrderFront(nil)
   }
-
 }
