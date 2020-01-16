@@ -34,6 +34,8 @@ struct Picker: View {
     .overlay(Circle().stroke(Color.black, lineWidth: 1))
     .frame(width: Constants.PickerSize, height: Constants.PickerSize)
     .onAppear {
+      CGDisplayHideCursor(self.getWindowId())
+
       self.updatePreview(point: NSEvent.mouseLocation)
 
       self.mouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseUp], handler: { event in
@@ -45,6 +47,8 @@ struct Picker: View {
           }
 
           self.window.close()
+
+          CGDisplayShowCursor(self.getWindowId())
         }
 
         return nil
@@ -71,10 +75,7 @@ struct Picker: View {
       height: Constants.PickerPointCount
     )
 
-    let screenshot = CGWindowListCreateImage(rect,
-                                             .optionOnScreenBelowWindow,
-                                             CGWindowID(window.windowNumber),
-                                             .nominalResolution)
+    let screenshot = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, getWindowId(), .nominalResolution)
 
     if let previewImage = screenshot {
       self.previewImage = previewImage
@@ -108,6 +109,10 @@ struct Picker: View {
         )
       }
     }
+  }
+
+  func getWindowId() -> UInt32 {
+    CGWindowID(window.windowNumber)
   }
 }
 
