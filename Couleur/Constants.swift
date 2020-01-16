@@ -12,13 +12,13 @@ struct Constants {
   /**
    * The size (width & height) of a point in the picker.
    */
-  static let PickerPointSize: CGFloat = 20
+  static let PickerPointSize: CGFloat = 14
 
   /**
    * The number of points to show in the picker.
    * This should be an odd number.
    */
-  static let PickerPointCount: CGFloat = 9
+  static let PickerPointCount: CGFloat = 13
 
   /**
    * The size (width & height) of the picker.
