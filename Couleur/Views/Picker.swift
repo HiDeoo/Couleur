@@ -6,6 +6,7 @@
 //  Copyright © 2020 HiDeoo. All rights reserved.
 //
 
+import Carbon.HIToolbox
 import SwiftUI
 
 struct Picker: View {
@@ -38,17 +39,13 @@ struct Picker: View {
 
       self.updatePreview(point: NSEvent.mouseLocation)
 
-      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseUp], handler: { event in
+      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseUp, .keyDown], handler: { event in
         if event.type == .mouseMoved {
           self.onMouseMove(event: event)
         } else if event.type == .leftMouseUp {
-          if self.mouseMonitor != nil {
-            NSEvent.removeMonitor(self.mouseMonitor!)
-          }
-
-          self.window.close()
-
-          CGDisplayShowCursor(self.getWindowId())
+          self.close()
+        } else if event.type == .keyDown {
+          self.onKeyDown(event: event)
         }
 
         return nil
@@ -56,8 +53,24 @@ struct Picker: View {
     }
   }
 
+  func close() {
+    if mouseMonitor != nil {
+      NSEvent.removeMonitor(mouseMonitor!)
+    }
+
+    window.close()
+
+    CGDisplayShowCursor(getWindowId())
+  }
+
   func onMouseMove(event _: NSEvent) {
     updatePreview(point: NSEvent.mouseLocation)
+  }
+
+  func onKeyDown(event: NSEvent) {
+    if event.keyCode == kVK_Escape {
+      close()
+    }
   }
 
   func updatePreview(point: NSPoint) {
