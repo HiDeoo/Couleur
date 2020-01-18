@@ -15,7 +15,7 @@ struct Picker: View {
   @State var previewImage: CGImage?
   @State var mouseMonitor: Any?
 
-  @EnvironmentObject var pickerModel: PickerModel
+  @EnvironmentObject var appModel: AppModel
 
   // Remove the border width from both sides.
   let clippedFrameSize = Constants.PickerSize - 2
@@ -43,7 +43,7 @@ struct Picker: View {
         if event.type == .mouseMoved {
           self.onMouseMove(event: event)
         } else if event.type == .leftMouseUp {
-          self.close()
+          self.close(shouldPick: true)
         } else if event.type == .keyDown {
           self.onKeyDown(event: event)
         }
@@ -53,9 +53,13 @@ struct Picker: View {
     }
   }
 
-  func close() {
+  func close(shouldPick: Bool) {
     if mouseMonitor != nil {
       NSEvent.removeMonitor(mouseMonitor!)
+    }
+
+    if shouldPick {
+      appModel.selectedColor = appModel.picker.color
     }
 
     window.close()
@@ -69,7 +73,7 @@ struct Picker: View {
 
   func onKeyDown(event: NSEvent) {
     if event.keyCode == kVK_Escape {
-      close()
+      close(shouldPick: false)
     }
   }
 
@@ -115,7 +119,7 @@ struct Picker: View {
         color.getComponents(components)
 
         // Get a new color with the proper color space.
-        pickerModel.color = NSColor(
+        appModel.picker.color = NSColor(
           colorSpace: bitmap.colorSpace,
           components: components,
           count: color.numberOfComponents

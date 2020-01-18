@@ -14,17 +14,22 @@ struct Main: View {
   @State var showPermissionAlert = false
 
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       Button(action: pickColor) {
-        Text("Go")
-      }.frame(width: 200, height: 200)
+        Spacer()
+          .frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize)
+          .background(Color(appModel.selectedColor ?? Constants.ColorPreviewDefaultColor))
+      }
+      .buttonStyle(BorderlessButtonStyle())
       Text("Color: \(appModel.picker.color?.description ?? "nothing")")
-    }
-    .alert(isPresented: $showPermissionAlert) {
-      Alert(title: Text("Screen Recording permission is required"), message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."), dismissButton: .default(Text("OK"), action: {
-        self.showPicker()
+        .frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize)
+        .background(Color.green)
+    }.frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize * 2, alignment: .topLeading)
+      .alert(isPresented: $showPermissionAlert) {
+        Alert(title: Text("Screen Recording permission is required"), message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."), dismissButton: .default(Text("OK"), action: {
+          self.showPicker()
       }))
-    }
+      }
   }
 
   func pickColor() {
@@ -45,7 +50,7 @@ struct Main: View {
     pickerWindow.center()
     pickerWindow.isOpaque = false
     pickerWindow.backgroundColor = NSColor.clear
-    pickerWindow.contentView = NSHostingView(rootView: Picker(window: pickerWindow).environmentObject(appModel.picker))
+    pickerWindow.contentView = NSHostingView(rootView: Picker(window: pickerWindow).environmentObject(appModel))
 
     pickerWindow.makeKeyAndOrderFront(nil)
   }

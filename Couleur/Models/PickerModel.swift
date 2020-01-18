@@ -10,5 +10,8 @@ import Foundation
 import SwiftUI
 
 class PickerModel: ObservableObject {
+  /**
+   * The color at the center of the picker while picking.
+   */
   @Published var color: NSColor?
 }

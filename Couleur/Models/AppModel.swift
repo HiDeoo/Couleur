@@ -7,10 +7,15 @@
 //
 
 import Combine
-import Foundation
+import SwiftUI
 
 class AppModel: ObservableObject {
   @Published var picker = PickerModel()
+
+  /**
+   * The currently selected color in the main window.
+   */
+  @Published var selectedColor: NSColor?
 
   var anyCancellable: AnyCancellable?
 

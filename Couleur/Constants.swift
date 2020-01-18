@@ -6,9 +6,19 @@
 //  Copyright © 2020 HiDeoo. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct Constants {
+  /**
+   * The size (width & height) of the color preview component in point.
+   */
+  static let ColorPreviewSize: CGFloat = 150
+
+  /**
+   * The color preview default color.
+   */
+  static let ColorPreviewDefaultColor = NSColor.red
+
   /**
    * The size (width & height) of a point in the picker.
    */

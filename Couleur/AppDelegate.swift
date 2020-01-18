@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let main = Main()
 
     window = NSWindow(
-      contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-      styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+      contentRect: NSRect(x: 0, y: 0, width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize),
+      styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
     window.center()
