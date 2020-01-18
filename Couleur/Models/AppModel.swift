@@ -15,7 +15,7 @@ class AppModel: ObservableObject {
   /**
    * The currently selected color in the main window.
    */
-  @Published var selectedColor: NSColor?
+  @Published var selectedColor = Constants.ColorPreviewDefaultColor
 
   var anyCancellable: AnyCancellable?
 

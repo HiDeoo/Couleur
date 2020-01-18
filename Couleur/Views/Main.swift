@@ -18,13 +18,18 @@ struct Main: View {
       Button(action: pickColor) {
         Spacer()
           .frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize)
-          .background(Color(appModel.selectedColor ?? Constants.ColorPreviewDefaultColor))
+          .background(Color(appModel.selectedColor))
       }
       .buttonStyle(BorderlessButtonStyle())
-      Text("Color: \(appModel.picker.color?.description ?? "nothing")")
-        .frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize)
-        .background(Color.green)
-    }.frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize * 2, alignment: .topLeading)
+      Rectangle()
+        .padding(.bottom, 1)
+        .background(Color.black)
+      Text("Color: \(appModel.selectedColor.description)")
+        .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        .background(Color.white)
+        .foregroundColor(Color.black)
+    }.frame(alignment: .topLeading)
       .alert(isPresented: $showPermissionAlert) {
         Alert(title: Text("Screen Recording permission is required"), message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."), dismissButton: .default(Text("OK"), action: {
           self.showPicker()

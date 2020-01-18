@@ -58,8 +58,8 @@ struct Picker: View {
       NSEvent.removeMonitor(mouseMonitor!)
     }
 
-    if shouldPick {
-      appModel.selectedColor = appModel.picker.color
+    if let color = appModel.picker.color, shouldPick {
+      appModel.selectedColor = color
     }
 
     window.close()
