@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E855865323D48EDA0002637F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865223D48EDA0002637F /* Colors.swift */; };
 		E860815223D0CC9A003C36CA /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860815123D0CC9A003C36CA /* Permissions.swift */; };
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E855865223D48EDA0002637F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E860815123D0CC9A003C36CA /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				E860815123D0CC9A003C36CA /* Permissions.swift */,
+				E855865223D48EDA0002637F /* Colors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E860815223D0CC9A003C36CA /* Permissions.swift in Sources */,
+				E855865323D48EDA0002637F /* Colors.swift in Sources */,
 				E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* Picker.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,

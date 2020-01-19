@@ -24,7 +24,7 @@ struct Main: View {
       Rectangle()
         .padding(.bottom, 1)
         .background(Color.black)
-      Text("Color: \(appModel.selectedColor.description)")
+      Text("Color: \(appModel.selectedColor.toHexString())")
         .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .background(Color.white)
