@@ -134,9 +134,7 @@ struct Picker: View {
 }
 
 struct Picker_Previews: PreviewProvider {
-  static var window = NSWindow()
-
   static var previews: some View {
-    Picker(window: window)
+    Picker(window: NSWindow())
   }
 }

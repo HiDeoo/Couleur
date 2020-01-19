@@ -15,25 +15,13 @@ struct Main: View {
 
   var body: some View {
     VStack(spacing: 0) {
-      Button(action: pickColor) {
-        Spacer()
-          .frame(width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize)
-          .background(Color(appModel.selectedColor))
-      }
-      .buttonStyle(BorderlessButtonStyle())
-      Rectangle()
-        .padding(.bottom, 1)
-        .background(Color.black)
-      Text("Color: \(appModel.selectedColor.toHexString())")
-        .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
-        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-        .background(Color.white)
-        .foregroundColor(Color.black)
+      PickerButton(color: appModel.selectedColor, action: pickColor)
+      ColorExporter(color: appModel.selectedColor)
     }.frame(alignment: .topLeading)
       .alert(isPresented: $showPermissionAlert) {
-        Alert(title: Text("Screen Recording permission is required"), message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."), dismissButton: .default(Text("OK"), action: {
+        getPermissionsAlert(action: {
           self.showPicker()
-      }))
+        })
       }
   }
 

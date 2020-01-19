@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E855865323D48EDA0002637F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865223D48EDA0002637F /* Colors.swift */; };
+		E855865523D499830002637F /* ColorExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865423D499830002637F /* ColorExporter.swift */; };
+		E855865723D49AD50002637F /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865623D49AD50002637F /* PickerButton.swift */; };
+		E855865B23D4A3C60002637F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865A23D4A3C60002637F /* Alerts.swift */; };
 		E860815223D0CC9A003C36CA /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860815123D0CC9A003C36CA /* Permissions.swift */; };
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		E855865223D48EDA0002637F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E855865423D499830002637F /* ColorExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExporter.swift; sourceTree = "<group>"; };
+		E855865623D49AD50002637F /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
+		E855865A23D4A3C60002637F /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E860815123D0CC9A003C36CA /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -55,6 +61,7 @@
 			children = (
 				E860815123D0CC9A003C36CA /* Permissions.swift */,
 				E855865223D48EDA0002637F /* Colors.swift */,
+				E855865A23D4A3C60002637F /* Alerts.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -113,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				E8D9030723C7211500476DC5 /* Main.swift */,
+				E855865623D49AD50002637F /* PickerButton.swift */,
+				E855865423D499830002637F /* ColorExporter.swift */,
 				E8D9031C23C72EE300476DC5 /* Picker.swift */,
 				E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */,
 			);
@@ -220,7 +229,10 @@
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
 				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
+				E855865523D499830002637F /* ColorExporter.swift in Sources */,
 				E8F1CF9D23CDD7E000D1D461 /* PickerGrid.swift in Sources */,
+				E855865B23D4A3C60002637F /* Alerts.swift in Sources */,
+				E855865723D49AD50002637F /* PickerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
