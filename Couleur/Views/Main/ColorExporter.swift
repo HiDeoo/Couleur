@@ -27,6 +27,6 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: NSColor.blue)
+    ColorExporter(color: .blue)
   }
 }

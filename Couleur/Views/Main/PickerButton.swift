@@ -24,6 +24,6 @@ struct PickerButton: View {
 
 struct PickerButton_Previews: PreviewProvider {
   static var previews: some View {
-    PickerButton(color: NSColor.blue, action: {})
+    PickerButton(color: .blue, action: {})
   }
 }

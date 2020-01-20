@@ -17,12 +17,14 @@ struct Main: View {
     VStack(spacing: 0) {
       PickerButton(color: appModel.selectedColor, action: pickColor)
       ColorExporter(color: appModel.selectedColor)
-    }.frame(alignment: .topLeading)
-      .alert(isPresented: $showPermissionAlert) {
-        getPermissionsAlert(action: {
-          self.showPicker()
+      ColorEditor(color: appModel.selectedColor)
+    }
+    .frame(alignment: .topLeading)
+    .alert(isPresented: $showPermissionAlert) {
+      getPermissionsAlert(action: {
+        self.showPicker()
         })
-      }
+    }
   }
 
   func pickColor() {
@@ -42,7 +44,7 @@ struct Main: View {
 
     pickerWindow.center()
     pickerWindow.isOpaque = false
-    pickerWindow.backgroundColor = NSColor.clear
+    pickerWindow.backgroundColor = .clear
     pickerWindow.contentView = NSHostingView(rootView: Picker(window: pickerWindow).environmentObject(appModel))
 
     pickerWindow.makeKeyAndOrderFront(nil)
