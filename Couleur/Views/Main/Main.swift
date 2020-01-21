@@ -17,7 +17,7 @@ struct Main: View {
     VStack(spacing: 0) {
       PickerButton(color: appModel.selectedColor, action: pickColor)
       ColorExporter(color: appModel.selectedColor)
-      ColorEditor(color: appModel.selectedColor)
+      ColorEditor(color: $appModel.selectedColor)
     }
     .frame(alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
