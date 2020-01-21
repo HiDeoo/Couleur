@@ -22,6 +22,8 @@
 		E8D9030D23C7211700476DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030C23C7211700476DC5 /* Preview Assets.xcassets */; };
 		E8D9031023C7211700476DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030E23C7211700476DC5 /* Main.storyboard */; };
 		E8D9031D23C72EE300476DC5 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9031C23C72EE300476DC5 /* Picker.swift */; };
+		E8EFFC7223D75F9400FA871C /* HueGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EFFC7123D75F9400FA871C /* HueGradient.swift */; };
+		E8EFFC7423D7602D00FA871C /* SaturationBrightnessGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EFFC7323D7602D00FA871C /* SaturationBrightnessGradient.swift */; };
 		E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9A23CDD14900D1D461 /* Constants.swift */; };
 		E8F1CF9D23CDD7E000D1D461 /* PickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,8 @@
 		E8D9031123C7211700476DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8D9031223C7211700476DC5 /* Couleur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Couleur.entitlements; sourceTree = "<group>"; };
 		E8D9031C23C72EE300476DC5 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		E8EFFC7123D75F9400FA871C /* HueGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueGradient.swift; sourceTree = "<group>"; };
+		E8EFFC7323D7602D00FA871C /* SaturationBrightnessGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightnessGradient.swift; sourceTree = "<group>"; };
 		E8F1CF9A23CDD14900D1D461 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E8F1CF9C23CDD7E000D1D461 /* PickerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +88,8 @@
 			children = (
 				E855865C23D4A50C0002637F /* ColorEditor.swift */,
 				E8257F8323D604C90018180E /* Pointer.swift */,
+				E8EFFC7323D7602D00FA871C /* SaturationBrightnessGradient.swift */,
+				E8EFFC7123D75F9400FA871C /* HueGradient.swift */,
 			);
 			path = ColorEditor;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 				E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */,
 				E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* Picker.swift in Sources */,
+				E8EFFC7223D75F9400FA871C /* HueGradient.swift in Sources */,
+				E8EFFC7423D7602D00FA871C /* SaturationBrightnessGradient.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,

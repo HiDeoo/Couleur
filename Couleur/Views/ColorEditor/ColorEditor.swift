@@ -25,25 +25,30 @@ struct ColorEditor: View {
   var body: some View {
     VStack {
       SaturationBrightness
+        .frame(width: Constants.ColorPreviewSize * 2, height: Constants.ColorPreviewSize * 2)
+      Hue
+        .frame(width: Constants.ColorPreviewSize * 2, height: 40)
     }
-    .frame(width: Constants.ColorPreviewSize * 2, height: Constants.ColorPreviewSize * 2)
-    .background(Color.green)
   }
 
   var SaturationBrightness: some View {
     GeometryReader { geometry in
       ZStack {
-        LinearGradient(
-          gradient: Gradient(colors: [Color(hue: Double(self.hue), saturation: 1, brightness: 1, opacity: 1), .white]),
-          startPoint: .trailing,
-          endPoint: .leading
-        )
-        LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: .bottom, endPoint: .top)
-        Pointer(saturation: self.saturation, brightness: self.brightness, size: geometry.size)
+        SaturationBrightnessGradient(hue: Double(self.hue))
+        Pointer(relativePosition: CGPoint(x: self.saturation, y: self.brightness), containerSize: geometry.size)
       }
       .gesture(DragGesture().onChanged { event in
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
       })
+    }
+  }
+
+  var Hue: some View {
+    GeometryReader { geometry in
+      ZStack {
+        HueGradient()
+        Pointer(relativePosition: CGPoint(x: self.saturation, y: self.brightness), containerSize: geometry.size)
+      }
     }
   }
 

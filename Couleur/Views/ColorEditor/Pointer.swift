@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct Pointer: View {
-  let saturation: CGFloat
-  let brightness: CGFloat
-  let size: CGSize
+  let relativePosition: CGPoint
+  let containerSize: CGSize
 
   var body: some View {
     RoundedRectangle(cornerRadius: 10)
@@ -22,12 +21,12 @@ struct Pointer: View {
   }
 
   func getPosition() -> CGPoint {
-    CGPoint(x: size.width * saturation, y: size.height * (1.0 - brightness))
+    CGPoint(x: containerSize.width * relativePosition.x, y: containerSize.height * (1.0 - relativePosition.y))
   }
 }
 
 struct Pointer_Previews: PreviewProvider {
   static var previews: some View {
-    Pointer(saturation: 0.5, brightness: 0.5, size: CGSize(width: 150, height: 150))
+    Pointer(relativePosition: CGPoint(x: 0.5, y: 0.5), containerSize: CGSize(width: 150, height: 150))
   }
 }
