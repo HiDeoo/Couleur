@@ -51,6 +51,9 @@ struct ColorEditor: View {
         Pointer()
           .position(self.getHuePointerPosition(containerSize: geometry.size))
       }
+      .gesture(DragGesture().onChanged { event in
+        self.updateHue(position: event.location, size: geometry.size)
+      })
     }
   }
 
@@ -67,6 +70,15 @@ struct ColorEditor: View {
       hue: hue,
       saturation: max(0, min(1, position.x / size.width)),
       brightness: 1 - max(0, min(1, position.y / size.height)),
+      alpha: alpha
+    )
+  }
+
+  func updateHue(position: CGPoint, size: CGSize) {
+    color = NSColor(
+      hue: max(0, min(1, 1 - position.x / size.width)),
+      saturation: saturation,
+      brightness: brightness,
       alpha: alpha
     )
   }
