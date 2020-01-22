@@ -35,7 +35,8 @@ struct ColorEditor: View {
     GeometryReader { geometry in
       ZStack {
         SaturationBrightnessGradient(hue: Double(self.hue))
-        Pointer(relativePosition: CGPoint(x: self.saturation, y: self.brightness), containerSize: geometry.size)
+        Pointer()
+          .position(self.getSaturationBrightnessPointerPosition(containerSize: geometry.size))
       }
       .gesture(DragGesture().onChanged { event in
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
@@ -47,9 +48,18 @@ struct ColorEditor: View {
     GeometryReader { geometry in
       ZStack {
         HueGradient()
-        Pointer(relativePosition: CGPoint(x: self.saturation, y: self.brightness), containerSize: geometry.size)
+        Pointer()
+          .position(self.getHuePointerPosition(containerSize: geometry.size))
       }
     }
+  }
+
+  func getSaturationBrightnessPointerPosition(containerSize: CGSize) -> CGPoint {
+    CGPoint(x: containerSize.width * saturation, y: containerSize.height * (1.0 - brightness))
+  }
+
+  func getHuePointerPosition(containerSize: CGSize) -> CGPoint {
+    CGPoint(x: containerSize.width - (containerSize.width * hue), y: containerSize.height / 2)
   }
 
   func updateSaturationBrightness(position: CGPoint, size: CGSize) {
