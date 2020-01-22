@@ -23,7 +23,7 @@ struct Picker: View {
   var body: some View {
     ZStack {
       if self.previewImage != nil {
-        Image(decorative: self.previewImage!, scale: 1.0)
+        Image(decorative: self.previewImage!, scale: 1)
           .interpolation(.none)
           .resizable()
           .clipShape(Circle())

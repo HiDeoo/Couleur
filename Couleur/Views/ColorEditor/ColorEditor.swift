@@ -55,7 +55,7 @@ struct ColorEditor: View {
   }
 
   func getSaturationBrightnessPointerPosition(containerSize: CGSize) -> CGPoint {
-    CGPoint(x: containerSize.width * saturation, y: containerSize.height * (1.0 - brightness))
+    CGPoint(x: containerSize.width * saturation, y: containerSize.height * (1 - brightness))
   }
 
   func getHuePointerPosition(containerSize: CGSize) -> CGPoint {
@@ -65,8 +65,8 @@ struct ColorEditor: View {
   func updateSaturationBrightness(position: CGPoint, size: CGSize) {
     color = NSColor(
       hue: hue,
-      saturation: max(0.0, min(1.0, position.x / size.width)),
-      brightness: 1.0 - max(0.0, min(1.0, position.y / size.height)),
+      saturation: max(0, min(1, position.x / size.width)),
+      brightness: 1 - max(0, min(1, position.y / size.height)),
       alpha: alpha
     )
   }
