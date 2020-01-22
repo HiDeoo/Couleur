@@ -17,7 +17,7 @@ struct Constants {
   /**
    * The color preview default color.
    */
-  static let ColorPreviewDefaultColor = NSColor.red
+  static let ColorPreviewDefaultColor = CColor(.blue)
 
   /**
    * The size (width & height) of a point in the picker.

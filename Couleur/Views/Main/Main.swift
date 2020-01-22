@@ -15,7 +15,7 @@ struct Main: View {
 
   var body: some View {
     VStack(spacing: 0) {
-      PickerButton(color: appModel.selectedColor, action: pickColor)
+      PickerButton(color: appModel.selectedColor.raw, action: pickColor)
       ColorExporter(color: appModel.selectedColor)
       ColorEditor(color: $appModel.selectedColor)
     }

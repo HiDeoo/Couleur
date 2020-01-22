@@ -59,7 +59,7 @@ struct Picker: View {
     }
 
     if let color = appModel.picker.color, shouldPick {
-      appModel.selectedColor = color
+      appModel.selectedColor = CColor(color)
     }
 
     window.close()
