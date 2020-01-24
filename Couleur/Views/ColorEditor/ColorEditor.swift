@@ -27,7 +27,7 @@ struct ColorEditor: View {
         Pointer()
           .position(self.getSaturationBrightnessPointerPosition(containerSize: geometry.size))
       }
-      .gesture(DragGesture().onChanged { event in
+      .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
       })
     }
@@ -40,7 +40,7 @@ struct ColorEditor: View {
         Pointer()
           .position(self.getHuePointerPosition(containerSize: geometry.size))
       }
-      .gesture(DragGesture().onChanged { event in
+      .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateHue(position: event.location, size: geometry.size)
       })
     }

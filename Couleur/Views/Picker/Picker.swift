@@ -39,17 +39,20 @@ struct Picker: View {
 
       self.updatePreview(point: NSEvent.mouseLocation)
 
-      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseUp, .keyDown], handler: { event in
-        if event.type == .mouseMoved {
-          self.onMouseMove(event: event)
-        } else if event.type == .leftMouseUp {
-          self.close(shouldPick: true)
-        } else if event.type == .keyDown {
-          self.onKeyDown(event: event)
-        }
+      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(
+        matching: [.mouseMoved, .leftMouseUp, .keyDown],
+        handler: { event in
+          if event.type == .mouseMoved {
+            self.onMouseMove(event: event)
+          } else if event.type == .leftMouseUp {
+            self.close(shouldPick: true)
+          } else if event.type == .keyDown {
+            self.onKeyDown(event: event)
+          }
 
-        return nil
-      })
+          return nil
+        }
+      )
     }
   }
 
