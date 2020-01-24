@@ -51,7 +51,7 @@ struct ColorEditor: View {
   }
 
   func getHuePointerPosition(containerSize: CGSize) -> CGPoint {
-    CGPoint(x: containerSize.width - (containerSize.width * color.hue), y: containerSize.height / 2)
+    CGPoint(x: containerSize.width * color.hue, y: containerSize.height / 2)
   }
 
   func updateSaturationBrightness(position: CGPoint, size: CGSize) {
@@ -62,11 +62,13 @@ struct ColorEditor: View {
   }
 
   func updateHue(position: CGPoint, size: CGSize) {
-    let relativeHue = min(1, max(0, position.x / size.width))
+    let relativeHue = max(0, min(1, position.x / size.width))
+
+    print(relativeHue)
 
     // 0° is the same as 360° so to avoid the pointer jumping to the beginning of the gradient whean reaching the end,
     // we never really make it reach the end.
-    color.setHue(relativeHue == 1 ? pow(10, -6) : 1 - relativeHue)
+    color.setHue(relativeHue == 1 ? 1 - pow(10, -6) : relativeHue)
   }
 }
 
