@@ -50,6 +50,17 @@ struct CColor {
     )
   }
 
+  mutating func setAlpha(_ alpha: CGFloat) {
+    self.alpha = alpha
+
+    raw = NSColor(
+      hue: hue,
+      saturation: saturation,
+      brightness: brightness,
+      alpha: alpha
+    )
+  }
+
   func toHexString() -> String {
     var r: CGFloat = 0
     var g: CGFloat = 0

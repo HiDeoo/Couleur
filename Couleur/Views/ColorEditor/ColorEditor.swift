@@ -17,6 +17,8 @@ struct ColorEditor: View {
         .frame(width: Constants.ColorPreviewSize * 2, height: Constants.ColorPreviewSize * 2)
       Hue(color: $color)
         .frame(width: Constants.ColorPreviewSize * 2, height: 40)
+      Opacity(color: $color)
+        .frame(width: Constants.ColorPreviewSize * 2, height: 40)
     }
   }
 }

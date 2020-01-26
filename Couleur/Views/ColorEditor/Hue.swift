@@ -36,7 +36,7 @@ struct Hue: View {
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateHue(position: event.location, size: geometry.size)
-          })
+      })
     }
   }
 

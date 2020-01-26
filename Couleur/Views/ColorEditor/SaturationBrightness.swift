@@ -29,7 +29,7 @@ struct SaturationBrightness: View {
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
-          })
+      })
     }
   }
 
