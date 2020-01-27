@@ -1,5 +1,5 @@
 //
-//  PickerGrid.swift
+//  ColorPickerGrid.swift
 //  Couleur
 //
 //  Created by HiDeo on 14/01/2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PickerGrid: View {
+struct ColorPickerGrid: View {
   let lineCount = Int(Constants.PickerPointCount + 2)
 
   var body: some View {
@@ -41,8 +41,8 @@ struct PickerGrid: View {
   }
 }
 
-struct PickerGrid_Previews: PreviewProvider {
+struct ColorPickerGrid_Previews: PreviewProvider {
   static var previews: some View {
-    PickerGrid()
+    ColorPickerGrid()
   }
 }

@@ -17,6 +17,11 @@ class AppModel: ObservableObject {
    */
   @Published var selectedColor = Constants.ColorPreviewDefaultColor
 
+  /**
+   * The components editor current type.
+   */
+  @Published var componentsEditorType = Constants.ComponentsEditorDefaultType
+
   var anyCancellable: AnyCancellable?
 
   init() {

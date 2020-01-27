@@ -20,6 +20,11 @@ struct Constants {
   static let ColorPreviewDefaultColor = CColor(.blue)
 
   /**
+   * The components editor default type.
+   */
+  static let ComponentsEditorDefaultType = ComponentsType.RGBA
+
+  /**
    * The size (width & height) of a point in the picker.
    */
   static let PickerPointSize: CGFloat = 14

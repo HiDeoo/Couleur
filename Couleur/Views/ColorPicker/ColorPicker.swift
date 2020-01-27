@@ -1,5 +1,5 @@
 //
-//  Picker.swift
+//  ColorPicker.swift
 //  Couleur
 //
 //  Created by HiDeo on 09/01/2020.
@@ -9,7 +9,7 @@
 import Carbon.HIToolbox
 import SwiftUI
 
-struct Picker: View {
+struct ColorPicker: View {
   let window: NSWindow
 
   @State var previewImage: CGImage?
@@ -28,7 +28,7 @@ struct Picker: View {
           .resizable()
           .clipShape(Circle())
       }
-      PickerGrid()
+      ColorPickerGrid()
     }
     .clipShape(Circle())
     .frame(width: clippedFrameSize, height: clippedFrameSize)
@@ -136,8 +136,8 @@ struct Picker: View {
   }
 }
 
-struct Picker_Previews: PreviewProvider {
+struct ColorPicker_Previews: PreviewProvider {
   static var previews: some View {
-    Picker(window: NSWindow())
+    ColorPicker(window: NSWindow())
   }
 }

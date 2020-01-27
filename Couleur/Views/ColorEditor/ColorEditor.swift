@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ColorEditor: View {
   @Binding var color: CColor
+  @Binding var componentsEditorType: ComponentsType
 
   var body: some View {
     VStack {
@@ -27,6 +28,7 @@ struct ColorEditor: View {
         updateValue: self.updateAlpha
       )
       .frame(width: Constants.ColorPreviewSize * 2, height: 40)
+      Components(type: $componentsEditorType)
     }
   }
 
@@ -72,6 +74,6 @@ struct ColorEditor: View {
 
 struct ColorEditor_Previews: PreviewProvider {
   static var previews: some View {
-    ColorEditor(color: .constant(CColor(.blue)))
+    ColorEditor(color: .constant(CColor(.blue)), componentsEditorType: .constant(.RGBA))
   }
 }

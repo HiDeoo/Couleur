@@ -17,7 +17,7 @@ struct Main: View {
     VStack(spacing: 0) {
       PickerButton(color: appModel.selectedColor.raw, action: pickColor)
       ColorExporter(color: appModel.selectedColor)
-      ColorEditor(color: $appModel.selectedColor)
+      ColorEditor(color: $appModel.selectedColor, componentsEditorType: $appModel.componentsEditorType)
     }
     .frame(alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
@@ -45,7 +45,7 @@ struct Main: View {
     pickerWindow.center()
     pickerWindow.isOpaque = false
     pickerWindow.backgroundColor = .clear
-    pickerWindow.contentView = NSHostingView(rootView: Picker(window: pickerWindow).environmentObject(appModel))
+    pickerWindow.contentView = NSHostingView(rootView: ColorPicker(window: pickerWindow).environmentObject(appModel))
 
     pickerWindow.makeKeyAndOrderFront(nil)
   }
