@@ -14,6 +14,7 @@ enum ComponentsType: String, CaseIterable {
 }
 
 struct Components: View {
+  @Binding var color: CColor
   @Binding var type: ComponentsType
 
   var body: some View {
@@ -21,7 +22,7 @@ struct Components: View {
       SegmentedControl(options: ComponentsType.allCases, value: $type, valueRenderer: componentsTypeRenderer)
       Group {
         if type == .RGBA {
-          RGBA
+          RGBA(color: self.$color)
         } else if type == .HSBA {
           HSBA
         }
@@ -33,11 +34,21 @@ struct Components: View {
     type.rawValue
   }
 
-  var RGBA = HStack {
-    Text("R")
-    Text("G")
-    Text("B")
-    Text("A")
+  struct RGBA: View {
+    @Binding var color: CColor
+
+    var body: some View {
+      HStack {
+        ComponentField(label: "R", value: self.color.red, multiplier: 255, onChange: setRed)
+        Text("G")
+        Text("B")
+        Text("A")
+      }
+    }
+
+    func setRed(red: CGFloat) {
+      color.setRgb(red: red, green: color.green, blue: color.blue)
+    }
   }
 
   var HSBA = HStack {
@@ -50,6 +61,6 @@ struct Components: View {
 
 struct Components_Previews: PreviewProvider {
   static var previews: some View {
-    Components(type: .constant(.RGBA))
+    Components(color: .constant(CColor(.blue)), type: .constant(.RGBA))
   }
 }

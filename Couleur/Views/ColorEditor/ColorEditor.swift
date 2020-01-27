@@ -28,7 +28,7 @@ struct ColorEditor: View {
         updateValue: self.updateAlpha
       )
       .frame(width: Constants.ColorPreviewSize * 2, height: 40)
-      Components(type: $componentsEditorType)
+      Components(color: $color, type: $componentsEditorType)
     }
   }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct Main: View {
   @EnvironmentObject var appModel: AppModel
 
-  @State var showPermissionAlert = false
+  @State private var showPermissionAlert = false
 
   var body: some View {
     VStack(spacing: 0) {

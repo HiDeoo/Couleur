@@ -12,8 +12,8 @@ import SwiftUI
 struct ColorPicker: View {
   let window: NSWindow
 
-  @State var previewImage: CGImage?
-  @State var mouseMonitor: Any?
+  @State private var previewImage: CGImage?
+  @State private var mouseMonitor: Any?
 
   @EnvironmentObject var appModel: AppModel
 

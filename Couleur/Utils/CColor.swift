@@ -20,11 +20,23 @@ struct CColor {
   public private(set) var saturation: CGFloat = 0
   public private(set) var brightness: CGFloat = 0
   public private(set) var alpha: CGFloat = 0
+  public private(set) var red: CGFloat = 0
+  public private(set) var blue: CGFloat = 0
+  public private(set) var green: CGFloat = 0
 
   init(_ rawColor: NSColor) {
     raw = rawColor
 
+    updateHsb()
+    updateRgb()
+  }
+
+  mutating func updateHsb() {
     raw.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+  }
+
+  mutating func updateRgb() {
+    raw.getRed(&red, green: &green, blue: &blue, alpha: nil)
   }
 
   mutating func setHue(_ hue: CGFloat) {
@@ -36,6 +48,8 @@ struct CColor {
       brightness: brightness,
       alpha: alpha
     )
+
+    updateRgb()
   }
 
   mutating func setSaturationAndBrightness(_ saturation: CGFloat, _ brightness: CGFloat) {
@@ -48,6 +62,8 @@ struct CColor {
       brightness: brightness,
       alpha: alpha
     )
+
+    updateRgb()
   }
 
   mutating func setAlpha(_ alpha: CGFloat) {
@@ -59,17 +75,27 @@ struct CColor {
       brightness: brightness,
       alpha: alpha
     )
+
+    updateRgb()
+  }
+
+  mutating func setRgb(red: CGFloat, green: CGFloat, blue: CGFloat) {
+    self.red = red
+    self.green = green
+    self.blue = blue
+
+    raw = NSColor(
+      red: red,
+      green: green,
+      blue: blue,
+      alpha: alpha
+    )
+
+    updateHsb()
   }
 
   func toHexString() -> String {
-    var r: CGFloat = 0
-    var g: CGFloat = 0
-    var b: CGFloat = 0
-    var a: CGFloat = 0
-
-    raw.getRed(&r, green: &g, blue: &b, alpha: &a)
-
-    let rgb = Int(r * 255) << 16 | Int(g * 255) << 8 | Int(b * 255) << 0
+    let rgb = Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
 
     return String(format: "#%06x", rgb)
   }
