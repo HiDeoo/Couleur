@@ -15,11 +15,58 @@ struct ColorEditor: View {
     VStack {
       SaturationBrightness(color: $color)
         .frame(width: Constants.ColorPreviewSize * 2, height: Constants.ColorPreviewSize * 2)
-      Hue(color: $color)
-        .frame(width: Constants.ColorPreviewSize * 2, height: 40)
-      Opacity(color: $color)
-        .frame(width: Constants.ColorPreviewSize * 2, height: 40)
+      LinearSlider(
+        gradientColors: self.getHueGradientColors(),
+        getPointerPosition: self.getHuePointerPosition,
+        updateValue: self.updateHue
+      )
+      .frame(width: Constants.ColorPreviewSize * 2, height: 40)
+      LinearSlider(
+        gradientColors: self.getAlphaGradientColors(),
+        getPointerPosition: self.getAlphaPointerPosition,
+        updateValue: self.updateAlpha
+      )
+      .frame(width: Constants.ColorPreviewSize * 2, height: 40)
     }
+  }
+
+  func getHueGradientColors() -> [Color] {
+    Constants.HueGradientRgbs.map { (rgb) -> Color in
+      let (r, g, b) = rgb
+
+      return Color(red: r / 255, green: g / 255, blue: b / 255)
+    }
+  }
+
+  func getHuePointerPosition(containerSize: CGSize) -> CGPoint {
+    CGPoint(x: containerSize.width * color.hue, y: containerSize.height / 2)
+  }
+
+  func updateHue(position: CGPoint, size: CGSize) {
+    let relativeHue = max(0, min(1, position.x / size.width))
+
+    // 0° is the same as 360° so to avoid the pointer jumping to the beginning of the gradient whean reaching the end,
+    // we never really make it reach the end.
+    color.setHue(relativeHue == 1 ? 1 - pow(10, -6) : relativeHue)
+  }
+
+  func getAlphaGradientColors() -> [Color] {
+    let hue = Double(color.hue)
+    let saturation = Double(color.saturation)
+    let brightness = Double(color.brightness)
+
+    return [
+      Color(hue: hue, saturation: saturation, brightness: brightness, opacity: 0),
+      Color(hue: hue, saturation: saturation, brightness: brightness, opacity: 1),
+    ]
+  }
+
+  func getAlphaPointerPosition(_ containerSize: CGSize) -> CGPoint {
+    CGPoint(x: containerSize.width * color.alpha, y: containerSize.height / 2)
+  }
+
+  func updateAlpha(_ position: CGPoint, _ size: CGSize) {
+    color.setAlpha(max(0, min(1, position.x / size.width)))
   }
 }
 
