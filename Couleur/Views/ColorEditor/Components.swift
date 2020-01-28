@@ -17,9 +17,13 @@ struct Components: View {
   @Binding var color: CColor
   @Binding var type: ComponentsType
 
+  private let segmentedControlPadding: CGFloat = 5
+
   var body: some View {
     VStack {
       SegmentedControl(options: ComponentsType.allCases, value: $type, valueRenderer: componentsTypeRenderer)
+        .padding(.bottom, segmentedControlPadding)
+        .padding(.top, segmentedControlPadding)
       Group {
         if type == .RGBA {
           RGBA(color: self.$color)

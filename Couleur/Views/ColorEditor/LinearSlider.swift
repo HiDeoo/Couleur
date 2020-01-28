@@ -19,6 +19,7 @@ struct LinearSlider: View {
         LinearGradient(gradient: Gradient(colors: self.gradientColors), startPoint: .leading, endPoint: .trailing)
         Pointer().position(self.getPointerPosition(geometry.size))
       }
+      .border(Color.red)
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateValue(event.location, geometry.size)
       })

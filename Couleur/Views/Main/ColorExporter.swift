@@ -15,12 +15,15 @@ struct ColorExporter: View {
     VStack(spacing: 0) {
       Rectangle()
         .padding(.bottom, 1)
-        .background(Color.black)
+        .background(Color.red)
       Text("Color: \(color.toHexString())")
         .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .background(Color.white)
         .foregroundColor(Color.black)
+      Rectangle()
+        .padding(.bottom, 1)
+        .background(Color.red)
     }
   }
 }

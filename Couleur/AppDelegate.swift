@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let main = Main()
 
     window = NSWindow(
-      contentRect: NSRect(x: 0, y: 0, width: Constants.ColorPreviewSize, height: Constants.ColorPreviewSize),
+      contentRect: NSRect(x: 0, y: 0, width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight),
       styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
       backing: .buffered, defer: false
     )

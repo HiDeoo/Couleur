@@ -10,9 +10,24 @@ import SwiftUI
 
 struct Constants {
   /**
-   * The size (width & height) of the color preview component in point.
+   * The width of the main window in point.
    */
-  static let ColorPreviewSize: CGFloat = 150
+  static let MainWindowWidth: CGFloat = 250
+
+  /**
+   * The height of the color preview component in point.
+   */
+  static let ColorPreviewHeight: CGFloat = 120
+
+  /**
+   * The padding of the color editor in point.
+   */
+  static let ColorEditorPadding: CGFloat = 10
+
+  /**
+   * The height of linear sliders in the color editor in point.
+   */
+  static let ColorEditorLinearSliderHeight: CGFloat = 12
 
   /**
    * The color preview default color.
