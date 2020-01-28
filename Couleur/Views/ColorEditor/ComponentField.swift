@@ -11,6 +11,7 @@ import SwiftUI
 enum ComponentFieldType: CGFloat {
   case Byte = 255
   case Percent = 100
+  case Angle = 359
 }
 
 struct ComponentField: View {

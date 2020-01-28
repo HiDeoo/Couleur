@@ -24,7 +24,7 @@ struct Components: View {
         if type == .RGBA {
           RGBA(color: self.$color)
         } else if type == .HSBA {
-          HSBA
+          HSBA(color: self.$color)
         }
       }
     }
@@ -63,11 +63,33 @@ struct Components: View {
     }
   }
 
-  var HSBA = HStack {
-    Text("H")
-    Text("S")
-    Text("B")
-    Text("A")
+  struct HSBA: View {
+    @Binding var color: CColor
+
+    var body: some View {
+      HStack {
+        ComponentField(label: "H", value: self.color.hue, type: .Angle, onChange: setHue)
+        ComponentField(label: "S", value: self.color.saturation, type: .Percent, onChange: setSaturation)
+        ComponentField(label: "B", value: self.color.brightness, type: .Percent, onChange: setBrightness)
+        ComponentField(label: "A", value: self.color.alpha, type: .Percent, onChange: setAlpha)
+      }
+    }
+
+    func setHue(hue: CGFloat) {
+      color.setHue(hue)
+    }
+
+    func setSaturation(saturation: CGFloat) {
+      color.setSaturationAndBrightness(saturation, color.brightness)
+    }
+
+    func setBrightness(brightness: CGFloat) {
+      color.setSaturationAndBrightness(color.saturation, brightness)
+    }
+
+    func setAlpha(alpha: CGFloat) {
+      color.setAlpha(alpha)
+    }
   }
 }
 
