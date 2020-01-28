@@ -39,10 +39,10 @@ struct Components: View {
 
     var body: some View {
       HStack {
-        ComponentField(label: "R", value: self.color.red, multiplier: 255, onChange: setRed)
-        ComponentField(label: "G", value: self.color.green, multiplier: 255, onChange: setGreen)
-        ComponentField(label: "B", value: self.color.blue, multiplier: 255, onChange: setBlue)
-        ComponentField(label: "A", value: self.color.alpha, multiplier: 100, onChange: setAlpha)
+        ComponentField(label: "R", value: self.color.red, type: .Byte, onChange: setRed)
+        ComponentField(label: "G", value: self.color.green, type: .Byte, onChange: setGreen)
+        ComponentField(label: "B", value: self.color.blue, type: .Byte, onChange: setBlue)
+        ComponentField(label: "A", value: self.color.alpha, type: .Percent, onChange: setAlpha)
       }
     }
 
