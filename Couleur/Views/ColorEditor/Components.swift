@@ -40,14 +40,26 @@ struct Components: View {
     var body: some View {
       HStack {
         ComponentField(label: "R", value: self.color.red, multiplier: 255, onChange: setRed)
-        Text("G")
-        Text("B")
-        Text("A")
+        ComponentField(label: "G", value: self.color.green, multiplier: 255, onChange: setGreen)
+        ComponentField(label: "B", value: self.color.blue, multiplier: 255, onChange: setBlue)
+        ComponentField(label: "A", value: self.color.alpha, multiplier: 100, onChange: setAlpha)
       }
     }
 
     func setRed(red: CGFloat) {
       color.setRgb(red: red, green: color.green, blue: color.blue)
+    }
+
+    func setGreen(green: CGFloat) {
+      color.setRgb(red: color.red, green: green, blue: color.blue)
+    }
+
+    func setBlue(blue: CGFloat) {
+      color.setRgb(red: color.red, green: color.green, blue: blue)
+    }
+
+    func setAlpha(alpha: CGFloat) {
+      color.setAlpha(alpha)
     }
   }
 
