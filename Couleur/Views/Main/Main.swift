@@ -19,6 +19,7 @@ struct Main: View {
       ColorExporter(color: appModel.selectedColor)
       ColorEditor(color: $appModel.selectedColor, componentsEditorType: $appModel.componentsEditorType)
     }
+    .background(Color("windowBackground"))
     .frame(alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
       getPermissionsAlert(action: {
