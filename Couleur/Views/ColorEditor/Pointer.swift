@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Pointer: View {
+  private static var isVisible = true
+
   var body: some View {
     ZStack {
       ForEach(0 ..< 2, id: \.self) { index in
@@ -19,6 +21,20 @@ struct Pointer: View {
             height: Constants.PointerDiameter - CGFloat(index) * 2
           )
       }
+    }
+  }
+
+  static func onDragStart() {
+    if isVisible {
+      isVisible = false
+      NSCursor.hide()
+    }
+  }
+
+  static func onDragEnd() {
+    if !isVisible {
+      isVisible = true
+      NSCursor.unhide()
     }
   }
 }

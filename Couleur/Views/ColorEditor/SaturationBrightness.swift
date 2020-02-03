@@ -29,10 +29,11 @@ struct SaturationBrightness: View {
         .cornerRadius(Constants.ControlSmallCornerRadius)
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
-        Cursor.hide()
+        Pointer.onDragStart()
+
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
       }.onEnded { _ in
-        Cursor.show()
+        Pointer.onDragEnd()
       })
     }
   }
