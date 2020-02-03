@@ -27,7 +27,8 @@ struct SaturationBrightness: View {
         Pointer()
           .position(self.getPointerPosition(containerSize: geometry.size))
       }
-      .border(Color.red)
+      .cornerRadius(Constants.ControlCornerRadius)
+      .overlay(RoundedRectangle(cornerRadius: Constants.ControlCornerRadius).stroke(Color("windowBorder")))
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
       })

@@ -18,7 +18,7 @@ struct ColorExporter: View {
         .background(Color("separator"))
       Text(color.toHexString())
         .font(.system(.headline))
-        .padding(EdgeInsets(top: 10, leading: 10, bottom: 2, trailing: 10))
+        .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         .foregroundColor(Color("label"))
     }
