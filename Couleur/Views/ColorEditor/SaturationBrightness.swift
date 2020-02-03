@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SaturationBrightness: View {
-  @Binding var color: CColor
+  @Binding var color: HSBColor
 
   var body: some View {
     GeometryReader { geometry in
@@ -48,6 +48,6 @@ struct SaturationBrightness: View {
 
 struct SaturationBrightness_Previews: PreviewProvider {
   static var previews: some View {
-    SaturationBrightness(color: .constant(CColor(.blue)))
+    SaturationBrightness(color: .constant(HSBColor(.blue)))
   }
 }

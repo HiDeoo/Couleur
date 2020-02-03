@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ColorExporter: View {
-  let color: CColor
+  let color: HSBColor
 
   var body: some View {
     VStack(spacing: 0) {
@@ -27,6 +27,6 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: CColor(.blue))
+    ColorExporter(color: HSBColor(.blue))
   }
 }

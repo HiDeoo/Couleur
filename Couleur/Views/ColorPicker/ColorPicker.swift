@@ -62,7 +62,7 @@ struct ColorPicker: View {
     }
 
     if let color = appModel.picker.color, shouldPick {
-      appModel.selectedColor = CColor(color)
+      appModel.selectedColor = HSBColor(color)
     }
 
     window.close()

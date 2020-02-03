@@ -15,7 +15,7 @@
 		E8257F8423D604C90018180E /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8257F8323D604C90018180E /* Pointer.swift */; };
 		E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E831EB6123E312660034CB81 /* RoundedCorners.swift */; };
 		E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */; };
-		E84D202323E2FB4B000D9A63 /* CTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* CTextField.swift */; };
+		E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* TextField.swift */; };
 		E855865523D499830002637F /* ColorExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865423D499830002637F /* ColorExporter.swift */; };
 		E855865723D49AD50002637F /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865623D49AD50002637F /* PickerButton.swift */; };
 		E855865B23D4A3C60002637F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865A23D4A3C60002637F /* Alerts.swift */; };
@@ -23,7 +23,7 @@
 		E860815223D0CC9A003C36CA /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860815123D0CC9A003C36CA /* Permissions.swift */; };
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
-		E86F8AED23D8BF810028340C /* CColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* CColor.swift */; };
+		E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* HSBColor.swift */; };
 		E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030523C7211500476DC5 /* AppDelegate.swift */; };
 		E8D9030823C7211500476DC5 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030723C7211500476DC5 /* Main.swift */; };
 		E8D9030A23C7211700476DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030923C7211700476DC5 /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		E8257F8323D604C90018180E /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		E831EB6123E312660034CB81 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightness.swift; sourceTree = "<group>"; };
-		E84D202223E2FB4B000D9A63 /* CTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTextField.swift; sourceTree = "<group>"; };
+		E84D202223E2FB4B000D9A63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		E855865423D499830002637F /* ColorExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExporter.swift; sourceTree = "<group>"; };
 		E855865623D49AD50002637F /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		E855865A23D4A3C60002637F /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		E860815123D0CC9A003C36CA /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		E86F8AEC23D8BF810028340C /* CColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CColor.swift; sourceTree = "<group>"; };
+		E86F8AEC23D8BF810028340C /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
 		E8D9030223C7211500476DC5 /* Couleur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Couleur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D9030523C7211500476DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D9030723C7211500476DC5 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		E84D202123E2FB26000D9A63 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E84D202223E2FB4B000D9A63 /* CTextField.swift */,
+				E84D202223E2FB4B000D9A63 /* TextField.swift */,
 				E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */,
 				E831EB6123E312660034CB81 /* RoundedCorners.swift */,
 			);
@@ -123,7 +123,7 @@
 			children = (
 				E860815123D0CC9A003C36CA /* Permissions.swift */,
 				E855865A23D4A3C60002637F /* Alerts.swift */,
-				E86F8AEC23D8BF810028340C /* CColor.swift */,
+				E86F8AEC23D8BF810028340C /* HSBColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,
 				E817699023DF3D0B00DB7ED9 /* ComponentField.swift in Sources */,
-				E86F8AED23D8BF810028340C /* CColor.swift in Sources */,
+				E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
 				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
 				E817698A23DEE51300DB7ED9 /* LinearSlider.swift in Sources */,
@@ -300,7 +300,7 @@
 				E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */,
 				E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */,
 				E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */,
-				E84D202323E2FB4B000D9A63 /* CTextField.swift in Sources */,
+				E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */,
 				E855865B23D4A3C60002637F /* Alerts.swift in Sources */,
 				E855865723D49AD50002637F /* PickerButton.swift in Sources */,
 				E8257F8423D604C90018180E /* Pointer.swift in Sources */,

@@ -32,7 +32,7 @@ struct Constants {
   /**
    * The color preview default color.
    */
-  static let ColorPreviewDefaultColor = CColor(.blue)
+  static let ColorPreviewDefaultColor = HSBColor(.blue)
 
   /**
    * The components editor default type.

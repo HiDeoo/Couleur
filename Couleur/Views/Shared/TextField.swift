@@ -1,5 +1,5 @@
 //
-//  CTextField.swift
+//  TextField.swift
 //  Couleur
 //
 //  Created by HiDeo on 30/01/2020.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct CTextField: View {
+struct TextField: View {
   @Binding var value: String
 
   var body: some View {
-    CNSTextField(value: $value)
+    TextFieldRepresentable(value: $value)
       .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
       .textFieldStyle(PlainTextFieldStyle())
       .background(Color("windowAltBackground"))
@@ -21,10 +21,10 @@ struct CTextField: View {
   }
 }
 
-struct CNSTextField: NSViewRepresentable {
+struct TextFieldRepresentable: NSViewRepresentable {
   @Binding var value: String
 
-  func makeNSView(context: NSViewRepresentableContext<CNSTextField>) -> NSTextField {
+  func makeNSView(context: NSViewRepresentableContext<TextFieldRepresentable>) -> NSTextField {
     let textField = NSTextField(string: value)
     textField.delegate = context.coordinator
     textField.isBordered = false
@@ -34,7 +34,7 @@ struct CNSTextField: NSViewRepresentable {
     return textField
   }
 
-  func updateNSView(_ nsView: NSTextField, context _: NSViewRepresentableContext<CNSTextField>) {
+  func updateNSView(_ nsView: NSTextField, context _: NSViewRepresentableContext<TextFieldRepresentable>) {
     nsView.stringValue = value
   }
 
@@ -59,8 +59,8 @@ struct CNSTextField: NSViewRepresentable {
   }
 }
 
-struct CNSTextField_Previews: PreviewProvider {
+struct TextField_Previews: PreviewProvider {
   static var previews: some View {
-    CNSTextField(value: .constant("test"))
+    TextFieldRepresentable(value: .constant("test"))
   }
 }

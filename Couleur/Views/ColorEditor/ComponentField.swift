@@ -54,7 +54,7 @@ struct ComponentField: View {
       }
     )
 
-    return CTextField(value: valueBinding)
+    return TextField(value: valueBinding)
       .onAppear {
         valueBinding.wrappedValue = self.value.description
       }

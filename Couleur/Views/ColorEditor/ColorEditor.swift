@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ColorEditor: View {
-  @Binding var color: CColor
+  @Binding var color: HSBColor
   @Binding var componentsEditorType: ComponentsType
 
   private let editorWidth = Constants.MainWindowWidth - Constants.ColorEditorPadding * 2
@@ -76,6 +76,6 @@ struct ColorEditor: View {
 
 struct ColorEditor_Previews: PreviewProvider {
   static var previews: some View {
-    ColorEditor(color: .constant(CColor(.blue)), componentsEditorType: .constant(.RGBA))
+    ColorEditor(color: .constant(HSBColor(.blue)), componentsEditorType: .constant(.RGBA))
   }
 }

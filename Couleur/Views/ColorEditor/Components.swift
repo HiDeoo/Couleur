@@ -14,7 +14,7 @@ enum ComponentsType: String, CaseIterable {
 }
 
 struct Components: View {
-  @Binding var color: CColor
+  @Binding var color: HSBColor
   @Binding var type: ComponentsType
 
   private let segmentedControlPadding: CGFloat = 5
@@ -39,7 +39,7 @@ struct Components: View {
   }
 
   struct RGBA: View {
-    @Binding var color: CColor
+    @Binding var color: HSBColor
 
     var body: some View {
       HStack {
@@ -68,7 +68,7 @@ struct Components: View {
   }
 
   struct HSBA: View {
-    @Binding var color: CColor
+    @Binding var color: HSBColor
 
     var body: some View {
       HStack {
@@ -99,6 +99,6 @@ struct Components: View {
 
 struct Components_Previews: PreviewProvider {
   static var previews: some View {
-    Components(color: .constant(CColor(.blue)), type: .constant(.RGBA))
+    Components(color: .constant(HSBColor(.blue)), type: .constant(.RGBA))
   }
 }
