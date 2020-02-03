@@ -30,6 +30,7 @@
 		E8D9030D23C7211700476DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030C23C7211700476DC5 /* Preview Assets.xcassets */; };
 		E8D9031023C7211700476DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030E23C7211700476DC5 /* Main.storyboard */; };
 		E8D9031D23C72EE300476DC5 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9031C23C72EE300476DC5 /* ColorPicker.swift */; };
+		E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */; };
 		E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9A23CDD14900D1D461 /* Constants.swift */; };
 		E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		E8D9031123C7211700476DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8D9031223C7211700476DC5 /* Couleur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Couleur.entitlements; sourceTree = "<group>"; };
 		E8D9031C23C72EE300476DC5 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparencyLayer.swift; sourceTree = "<group>"; };
 		E8F1CF9A23CDD14900D1D461 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				E817698923DEE51300DB7ED9 /* LinearSlider.swift */,
 				E8257F8323D604C90018180E /* Pointer.swift */,
 				E817698F23DF3D0B00DB7ED9 /* ComponentField.swift */,
+				E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */,
 			);
 			path = ColorEditor;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				E860815223D0CC9A003C36CA /* Permissions.swift in Sources */,
 				E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */,
 				E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */,
+				E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* ColorPicker.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,

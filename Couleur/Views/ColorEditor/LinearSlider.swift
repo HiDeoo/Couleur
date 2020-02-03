@@ -12,10 +12,26 @@ struct LinearSlider: View {
   let gradientColors: [Color]
   let getPointerPosition: (_ containerSize: CGSize) -> CGPoint
   let updateValue: (_ position: CGPoint, _ size: CGSize) -> Void
+  let useTransparency: Bool
+
+  init(
+    gradientColors: [Color],
+    getPointerPosition: @escaping (_ containerSize: CGSize) -> CGPoint,
+    updateValue: @escaping (_ position: CGPoint, _ size: CGSize) -> Void,
+    useTransparency: Bool = false
+  ) {
+    self.gradientColors = gradientColors
+    self.getPointerPosition = getPointerPosition
+    self.updateValue = updateValue
+    self.useTransparency = useTransparency
+  }
 
   var body: some View {
     GeometryReader { geometry in
       ZStack {
+        if self.useTransparency {
+          TransparencyLayer()
+        }
         LinearGradient(gradient: Gradient(colors: self.gradientColors), startPoint: .leading, endPoint: .trailing)
         Pointer().position(self.getPointerPosition(geometry.size))
       }

@@ -61,6 +61,11 @@ struct Constants {
   static let ControlCornerRadius: CGFloat = 4
 
   /**
+   * The size (width & height) of a square in a transparency layer (in points).
+   */
+  static let TransparencyLayerSquareSize: CGFloat = 6
+
+  /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
    */
   static let HueGradientRgbs: [(Double, Double, Double)] = [

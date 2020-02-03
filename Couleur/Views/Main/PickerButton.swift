@@ -14,9 +14,13 @@ struct PickerButton: View {
 
   var body: some View {
     Button(action: action) {
-      Spacer()
-        .frame(width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight)
-        .background(Color(color))
+      ZStack {
+        TransparencyLayer()
+          .frame(width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight)
+        Spacer()
+          .frame(width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight)
+          .background(Color(color))
+      }
     }
     .buttonStyle(BorderlessButtonStyle())
   }

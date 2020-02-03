@@ -27,7 +27,8 @@ struct ColorEditor: View {
       LinearSlider(
         gradientColors: self.getAlphaGradientColors(),
         getPointerPosition: self.getAlphaPointerPosition,
-        updateValue: self.updateAlpha
+        updateValue: self.updateAlpha,
+        useTransparency: true
       )
       .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
       Components(color: $color, type: $componentsEditorType)
