@@ -13,17 +13,20 @@ struct ColorEditor: View {
   @Binding var componentsEditorType: ComponentsType
 
   private let editorWidth = Constants.MainWindowWidth - Constants.ColorEditorPadding * 2
+  private let sliderPadding: CGFloat = 4
 
   var body: some View {
     VStack {
       SaturationBrightness(color: $color)
         .frame(width: editorWidth, height: editorWidth)
+        .padding(.bottom, sliderPadding)
       LinearSlider(
         gradientColors: self.getHueGradientColors(),
         getPointerPosition: self.getHuePointerPosition,
         updateValue: self.updateHue
       )
       .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
+      .padding(.bottom, sliderPadding)
       LinearSlider(
         gradientColors: self.getAlphaGradientColors(),
         getPointerPosition: self.getAlphaPointerPosition,
@@ -31,6 +34,7 @@ struct ColorEditor: View {
         useTransparency: true
       )
       .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
+      .padding(.bottom, sliderPadding)
       Components(color: $color, type: $componentsEditorType)
     }.padding(Constants.ColorEditorPadding)
   }

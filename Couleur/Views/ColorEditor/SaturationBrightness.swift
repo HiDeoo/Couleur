@@ -23,11 +23,10 @@ struct SaturationBrightness: View {
             endPoint: .leading
           )
           LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: .bottom, endPoint: .top)
+          Pointer()
+            .position(self.getPointerPosition(containerSize: geometry.size))
         }
-        .cornerRadius(Constants.ControlCornerRadius)
-        .overlay(RoundedRectangle(cornerRadius: Constants.ControlCornerRadius).stroke(Color("windowBorder")))
-        Pointer()
-          .position(self.getPointerPosition(containerSize: geometry.size))
+        .cornerRadius(Constants.ControlSmallCornerRadius)
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         Cursor.hide()

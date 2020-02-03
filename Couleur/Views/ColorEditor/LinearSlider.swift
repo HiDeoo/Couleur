@@ -35,8 +35,7 @@ struct LinearSlider: View {
           }
           LinearGradient(gradient: Gradient(colors: self.gradientColors), startPoint: .leading, endPoint: .trailing)
         }
-        .cornerRadius(Constants.ControlCornerRadius)
-        .overlay(RoundedRectangle(cornerRadius: Constants.ControlCornerRadius).stroke(Color("windowBorder")))
+        .cornerRadius(Constants.ControlSmallCornerRadius)
         Pointer().position(self.getPointerPosition(geometry.size))
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in

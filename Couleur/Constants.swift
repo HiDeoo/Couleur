@@ -61,9 +61,19 @@ struct Constants {
   static let ControlCornerRadius: CGFloat = 4
 
   /**
+   * The small corder radius of rounded controls.
+   */
+  static let ControlSmallCornerRadius: CGFloat = ControlCornerRadius / 2
+
+  /**
    * The size (width & height) of a square in a transparency layer (in points).
    */
   static let TransparencyLayerSquareSize: CGFloat = 6
+
+  /**
+   * The diameter in points of a pointer.
+   */
+  static let PointerDiameter: CGFloat = 15
 
   /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.

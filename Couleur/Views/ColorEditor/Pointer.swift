@@ -10,10 +10,16 @@ import SwiftUI
 
 struct Pointer: View {
   var body: some View {
-    RoundedRectangle(cornerRadius: 10)
-      .stroke(lineWidth: 3)
-      .frame(width: 10, height: 10)
-      .foregroundColor(Color.green)
+    ZStack {
+      ForEach(0 ..< 2, id: \.self) { index in
+        Circle()
+          .stroke(index % 2 == 0 ? Color.white : Color.black, lineWidth: 1)
+          .frame(
+            width: Constants.PointerDiameter - CGFloat(index) * 2,
+            height: Constants.PointerDiameter - CGFloat(index) * 2
+          )
+      }
+    }
   }
 }
 
