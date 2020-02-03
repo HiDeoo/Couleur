@@ -13,6 +13,7 @@
 		E817699023DF3D0B00DB7ED9 /* ComponentField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E817698F23DF3D0B00DB7ED9 /* ComponentField.swift */; };
 		E817B7DD23E1D2A200A8C6A2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E817B7DC23E1D2A200A8C6A2 /* Colors.xcassets */; };
 		E8257F8423D604C90018180E /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8257F8323D604C90018180E /* Pointer.swift */; };
+		E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E831EB6123E312660034CB81 /* RoundedCorners.swift */; };
 		E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */; };
 		E84D202323E2FB4B000D9A63 /* CTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* CTextField.swift */; };
 		E855865523D499830002637F /* ColorExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865423D499830002637F /* ColorExporter.swift */; };
@@ -40,6 +41,7 @@
 		E817698F23DF3D0B00DB7ED9 /* ComponentField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentField.swift; sourceTree = "<group>"; };
 		E817B7DC23E1D2A200A8C6A2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E8257F8323D604C90018180E /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
+		E831EB6123E312660034CB81 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightness.swift; sourceTree = "<group>"; };
 		E84D202223E2FB4B000D9A63 /* CTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTextField.swift; sourceTree = "<group>"; };
 		E855865423D499830002637F /* ColorExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExporter.swift; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 				E817698B23DEED6700DB7ED9 /* Components.swift */,
 				E817698923DEE51300DB7ED9 /* LinearSlider.swift */,
 				E8257F8323D604C90018180E /* Pointer.swift */,
-				E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */,
 				E817698F23DF3D0B00DB7ED9 /* ComponentField.swift */,
 			);
 			path = ColorEditor;
@@ -111,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				E84D202223E2FB4B000D9A63 /* CTextField.swift */,
+				E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */,
+				E831EB6123E312660034CB81 /* RoundedCorners.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				E817698A23DEE51300DB7ED9 /* LinearSlider.swift in Sources */,
 				E817698E23DEF8F200DB7ED9 /* SegmentedControl.swift in Sources */,
 				E855865523D499830002637F /* ColorExporter.swift in Sources */,
+				E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */,
 				E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */,
 				E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */,
 				E84D202323E2FB4B000D9A63 /* CTextField.swift in Sources */,

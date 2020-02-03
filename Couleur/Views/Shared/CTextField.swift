@@ -17,7 +17,7 @@ struct CTextField: View {
       .textFieldStyle(PlainTextFieldStyle())
       .background(Color("windowAltBackground"))
       .border(Color.clear)
-      .cornerRadius(4)
+      .cornerRadius(Constants.ControlCornerRadius)
   }
 }
 

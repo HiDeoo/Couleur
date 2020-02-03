@@ -56,6 +56,11 @@ struct Constants {
   static let PickerSize: CGFloat = PickerPointSize * PickerPointCount
 
   /**
+   * The default corder radius of rounded controls.
+   */
+  static let ControlCornerRadius: CGFloat = 4
+
+  /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
    */
   static let HueGradientRgbs: [(Double, Double, Double)] = [
