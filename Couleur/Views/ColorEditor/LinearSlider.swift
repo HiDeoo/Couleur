@@ -40,7 +40,10 @@ struct LinearSlider: View {
         Pointer().position(self.getPointerPosition(geometry.size))
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
+        Cursor.hide()
         self.updateValue(event.location, geometry.size)
+      }.onEnded { _ in
+        Cursor.show()
       })
     }
   }

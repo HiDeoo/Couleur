@@ -30,7 +30,10 @@ struct SaturationBrightness: View {
           .position(self.getPointerPosition(containerSize: geometry.size))
       }
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
+        Cursor.hide()
         self.updateSaturationBrightness(position: event.location, size: geometry.size)
+      }.onEnded { _ in
+        Cursor.show()
       })
     }
   }
