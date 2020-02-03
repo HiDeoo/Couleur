@@ -29,14 +29,16 @@ struct LinearSlider: View {
   var body: some View {
     GeometryReader { geometry in
       ZStack {
-        if self.useTransparency {
-          TransparencyLayer()
+        Group {
+          if self.useTransparency {
+            TransparencyLayer()
+          }
+          LinearGradient(gradient: Gradient(colors: self.gradientColors), startPoint: .leading, endPoint: .trailing)
         }
-        LinearGradient(gradient: Gradient(colors: self.gradientColors), startPoint: .leading, endPoint: .trailing)
+        .cornerRadius(Constants.ControlCornerRadius)
+        .overlay(RoundedRectangle(cornerRadius: Constants.ControlCornerRadius).stroke(Color("windowBorder")))
         Pointer().position(self.getPointerPosition(geometry.size))
       }
-      .cornerRadius(Constants.ControlCornerRadius)
-      .overlay(RoundedRectangle(cornerRadius: Constants.ControlCornerRadius).stroke(Color("windowBorder")))
       .gesture(DragGesture(minimumDistance: 0).onChanged { event in
         self.updateValue(event.location, geometry.size)
       })
