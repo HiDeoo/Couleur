@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PickerButton: View {
   let color: NSColor
-  let action: () -> Void
+  let action: Action
 
   var body: some View {
     Button(action: action) {

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-func getPermissionsAlert(action: (() -> Void)?) -> Alert {
+func getPermissionsAlert(action: Action?) -> Alert {
   Alert(
     title: Text("Screen Recording permission is required"),
     message: Text("Couleur uses Screen Recording to pick a color.\n\nOpen the Security & Privacy panel in System Preferences and put a checkmark next to Couleur in the Screen Recording section."),

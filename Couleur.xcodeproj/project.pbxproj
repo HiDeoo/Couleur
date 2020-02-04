@@ -24,6 +24,7 @@
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
 		E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* HSBColor.swift */; };
+		E8B1F9C623E97CD8001936BD /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C523E97CD8001936BD /* Types.swift */; };
 		E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030523C7211500476DC5 /* AppDelegate.swift */; };
 		E8D9030823C7211500476DC5 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030723C7211500476DC5 /* Main.swift */; };
 		E8D9030A23C7211700476DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9030923C7211700476DC5 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E86F8AEC23D8BF810028340C /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
+		E8B1F9C523E97CD8001936BD /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		E8D9030223C7211500476DC5 /* Couleur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Couleur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D9030523C7211500476DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D9030723C7211500476DC5 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E860815123D0CC9A003C36CA /* Permissions.swift */,
 				E855865A23D4A3C60002637F /* Alerts.swift */,
 				E86F8AEC23D8BF810028340C /* HSBColor.swift */,
+				E8B1F9C523E97CD8001936BD /* Types.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */,
 				E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */,
 				E855865B23D4A3C60002637F /* Alerts.swift in Sources */,
+				E8B1F9C623E97CD8001936BD /* Types.swift in Sources */,
 				E855865723D49AD50002637F /* PickerButton.swift in Sources */,
 				E8257F8423D604C90018180E /* Pointer.swift in Sources */,
 				E817698C23DEED6700DB7ED9 /* Components.swift in Sources */,
