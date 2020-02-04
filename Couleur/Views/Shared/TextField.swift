@@ -25,7 +25,7 @@ struct TextFieldRepresentable: NSViewRepresentable {
   @Binding var value: String
 
   func makeNSView(context: NSViewRepresentableContext<TextFieldRepresentable>) -> NSTextField {
-    let textField = NSTextField(string: value)
+    let textField = AutoSelectTextField(string: value)
     textField.delegate = context.coordinator
     textField.isBordered = false
     textField.backgroundColor = .clear
@@ -62,5 +62,15 @@ struct TextFieldRepresentable: NSViewRepresentable {
 struct TextField_Previews: PreviewProvider {
   static var previews: some View {
     TextFieldRepresentable(value: .constant("test"))
+  }
+}
+
+class AutoSelectTextField: NSTextField {
+  override func mouseDown(with event: NSEvent) {
+    super.mouseDown(with: event)
+
+    if let textEditor = currentEditor() {
+      textEditor.selectAll(self)
+    }
   }
 }
