@@ -93,10 +93,4 @@ struct HSBColor {
 
     updateHsb()
   }
-
-  func toHexString() -> String {
-    let rgb = Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
-
-    return String(format: "#%06x", rgb)
-  }
 }
