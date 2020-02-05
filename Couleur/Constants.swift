@@ -20,9 +20,9 @@ struct Constants {
   static let ColorPreviewHeight: CGFloat = 120
 
   /**
-   * The padding of the color editor in point.
+   * The default padding of most views in point.
    */
-  static let ColorEditorPadding: CGFloat = 10
+  static let ViewPadding: CGFloat = 10
 
   /**
    * The height of linear sliders in the color editor in point.

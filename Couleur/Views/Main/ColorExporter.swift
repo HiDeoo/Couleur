@@ -28,12 +28,18 @@ struct ColorExporter: View {
         }) {
           Text("<")
         }.popover(isPresented: $showColorFormatPicker, arrowEdge: .leading) {
-          ColorFormatPicker()
+          ColorFormatPicker(closePicker: self.closeColorFormatPicker)
         }
       }
       .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
     }
+  }
+
+  func closeColorFormatPicker(_ format: ColorFormatter.Format) {
+    showColorFormatPicker = false
+
+    print(format)
   }
 }
 
