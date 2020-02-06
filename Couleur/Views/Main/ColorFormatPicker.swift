@@ -10,6 +10,7 @@ import Carbon.HIToolbox
 import SwiftUI
 
 struct ColorFormatPicker: View {
+  let currentFormat: ColorFormatter.Format
   let hidePicker: (_ format: ColorFormatter.Format?) -> Void
 
   var body: some View {
@@ -19,6 +20,7 @@ struct ColorFormatPicker: View {
           ColorFormatPickerElement(
             index: index,
             format: ColorFormatter.Format.allCases[index],
+            selected: ColorFormatter.Format.allCases[index] == self.currentFormat,
             hidePicker: self.hidePicker
           )
         }
@@ -42,6 +44,7 @@ struct ColorFormatPicker: View {
   struct ColorFormatPickerElement: View {
     let index: Int
     let format: ColorFormatter.Format
+    let selected: Bool
     let hidePicker: (_ format: ColorFormatter.Format) -> Void
 
     var body: some View {
@@ -55,7 +58,7 @@ struct ColorFormatPicker: View {
               .font(.system(size: 14))
               .bold()
               .lineLimit(1)
-            Text("􀆅")
+            Text(selected ? "􀆅" : "")
               .frame(width: 20)
           }
           .padding(EdgeInsets(
@@ -83,6 +86,6 @@ struct ColorFormatPicker_Previews: PreviewProvider {
   static func hidePicker(_: ColorFormatter.Format?) {}
 
   static var previews: some View {
-    ColorFormatPicker(hidePicker: hidePicker)
+    ColorFormatPicker(currentFormat: ColorFormatter.Format.Hex, hidePicker: hidePicker)
   }
 }

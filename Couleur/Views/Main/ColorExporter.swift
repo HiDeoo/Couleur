@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ColorExporter: View {
   let color: HSBColor
+  let format: ColorFormatter.Format
   @Binding var showColorFormatPicker: Bool
 
   var body: some View {
@@ -18,7 +19,7 @@ struct ColorExporter: View {
         .padding(.bottom, 1)
         .background(Color("separator"))
       HStack {
-        Text(ColorFormatter.format(color, .Hex))
+        Text(ColorFormatter.format(color, format))
           .font(.system(.headline))
           .foregroundColor(Color("label"))
         Spacer()
@@ -38,6 +39,6 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: HSBColor(.blue), showColorFormatPicker: .constant(true))
+    ColorExporter(color: HSBColor(.blue), format: ColorFormatter.Format.Hex, showColorFormatPicker: .constant(true))
   }
 }

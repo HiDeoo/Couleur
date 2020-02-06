@@ -13,9 +13,14 @@ class AppModel: ObservableObject {
   @Published var picker = PickerModel()
 
   /**
-   * The currently selected color in the main window.
+   * The currently selected color (color picker excluded).
    */
   @Published var selectedColor = Constants.ColorPreviewDefaultColor
+
+  /**
+   * The currently selected color format.
+   */
+  @Published var selectedFormat = ColorFormatter.Format.Hex
 
   /**
    * The components editor current type.

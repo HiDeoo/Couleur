@@ -34,7 +34,7 @@ class ColorFormatter {
     func getFormatter() -> (_ color: HSBColor) -> String {
       switch self {
       case .Hex: return ColorFormatter.toHex
-      default: return ColorFormatter.toHex
+      default: return ColorFormatter.toHex2
       }
     }
   }
@@ -49,5 +49,11 @@ class ColorFormatter {
     let rgb = Int(color.red * 255) << 16 | Int(color.green * 255) << 8 | Int(color.blue * 255) << 0
 
     return String(format: "#%06x", rgb)
+  }
+
+  private static func toHex2(_ color: HSBColor) -> String {
+    let rgb = Int(color.red * 255) << 16 | Int(color.green * 255) << 8 | Int(color.blue * 255) << 0
+
+    return String(format: "Hello, %06x", rgb)
   }
 }
