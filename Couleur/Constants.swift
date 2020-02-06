@@ -45,6 +45,11 @@ struct Constants {
   static let ComponentsEditorDefaultType = ComponentsType.RGBA
 
   /**
+   * The default color format.
+   */
+  static let ColorDefaultFormat = ColorFormatter.Format.Hex
+
+  /**
    * The dimension (width & height) of a point in the picker.
    */
   static let PickerPointDimension: CGFloat = 14

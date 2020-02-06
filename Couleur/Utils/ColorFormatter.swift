@@ -9,7 +9,7 @@
 import Foundation
 
 class ColorFormatter {
-  enum Format: String, CaseIterable {
+  enum Format: String, CaseIterable, Codable {
     case Hex = "Hexa"
     case Hex1 = "Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1"
     case Hex2 = "Hexa2"
@@ -30,6 +30,21 @@ class ColorFormatter {
     case Hex17 = "Hexa17"
     case Hex18 = "Hexa18"
     case Hex19 = "Hexa19"
+
+    enum Key: CodingKey {
+      case rawValue
+    }
+
+    init(from decoder: Decoder) throws {
+      let container = try decoder.container(keyedBy: Key.self)
+      let rawValue = try container.decode(String.self, forKey: .rawValue)
+      self = Format(rawValue: rawValue) ?? Constants.ColorDefaultFormat
+    }
+
+    func encode(to encoder: Encoder) throws {
+      var container = encoder.container(keyedBy: Key.self)
+      try container.encode(rawValue, forKey: .rawValue)
+    }
 
     func getFormatter() -> (_ color: HSBColor) -> String {
       switch self {

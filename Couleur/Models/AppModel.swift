@@ -20,18 +20,18 @@ class AppModel: ObservableObject {
   /**
    * The currently selected color format.
    */
-  @Published var selectedFormat = ColorFormatter.Format.Hex
+  @Published(forUserDefaultsKey: "selectedFormat") var selectedFormat = Constants.ColorDefaultFormat
 
   /**
    * The components editor current type.
    */
-  @Published var componentsEditorType = Constants.ComponentsEditorDefaultType
+  @Published(forUserDefaultsKey: "componentsEditorType") var componentsEditorType = Constants.ComponentsEditorDefaultType
 
-  var anyCancellable: AnyCancellable?
+  var cancellable: AnyCancellable?
 
   init() {
     // Nested models are not yet supported in SwiftUI so we need to manually handle nested changes.
-    anyCancellable = picker.objectWillChange.sink { _ in
+    cancellable = picker.objectWillChange.sink { _ in
       self.objectWillChange.send()
     }
   }

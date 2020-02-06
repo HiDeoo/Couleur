@@ -16,6 +16,7 @@
 		E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E831EB6123E312660034CB81 /* RoundedCorners.swift */; };
 		E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */; };
 		E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* TextField.swift */; };
+		E84F062A23EC7E8500D9393E /* PublishedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84F062923EC7E8500D9393E /* PublishedUserDefaults.swift */; };
 		E855865523D499830002637F /* ColorExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865423D499830002637F /* ColorExporter.swift */; };
 		E855865723D49AD50002637F /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865623D49AD50002637F /* PickerButton.swift */; };
 		E855865B23D4A3C60002637F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865A23D4A3C60002637F /* Alerts.swift */; };
@@ -49,6 +50,7 @@
 		E831EB6123E312660034CB81 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightness.swift; sourceTree = "<group>"; };
 		E84D202223E2FB4B000D9A63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		E84F062923EC7E8500D9393E /* PublishedUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedUserDefaults.swift; sourceTree = "<group>"; };
 		E855865423D499830002637F /* ColorExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExporter.swift; sourceTree = "<group>"; };
 		E855865623D49AD50002637F /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		E855865A23D4A3C60002637F /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				E86F8AEC23D8BF810028340C /* HSBColor.swift */,
 				E8B1F9C523E97CD8001936BD /* Types.swift */,
 				E8B1F9C923E9C684001936BD /* ColorFormatter.swift */,
+				E84F062923EC7E8500D9393E /* PublishedUserDefaults.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */,
 				E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* ColorPicker.swift in Sources */,
+				E84F062A23EC7E8500D9393E /* PublishedUserDefaults.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,
 				E8D9030823C7211500476DC5 /* Main.swift in Sources */,
 				E817699023DF3D0B00DB7ED9 /* ComponentField.swift in Sources */,
