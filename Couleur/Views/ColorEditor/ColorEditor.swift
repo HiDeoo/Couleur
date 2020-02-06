@@ -12,7 +12,7 @@ struct ColorEditor: View {
   @Binding var color: HSBColor
   @Binding var componentsEditorType: ComponentsType
 
-  private let editorWidth = Constants.MainWindowWidth - Constants.ViewPadding * 2
+  private let editorWidth = Constants.MainWindowSize.width - Constants.ViewPadding * 2
   private let sliderPadding: CGFloat = 4
 
   var body: some View {

@@ -16,9 +16,9 @@ struct PickerButton: View {
     Button(action: action) {
       ZStack {
         TransparencyLayer()
-          .frame(width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight)
+          .frame(width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight)
         Spacer()
-          .frame(width: Constants.MainWindowWidth, height: Constants.ColorPreviewHeight)
+          .frame(width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight)
           .background(Color(color))
       }
     }

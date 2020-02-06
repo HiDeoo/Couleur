@@ -10,8 +10,7 @@ import SwiftUI
 
 struct ColorExporter: View {
   let color: HSBColor
-
-  @State private var showColorFormatPicker = false
+  @Binding var showColorFormatPicker: Bool
 
   var body: some View {
     VStack(spacing: 0) {
@@ -24,27 +23,21 @@ struct ColorExporter: View {
           .foregroundColor(Color("label"))
         Spacer()
         Button(action: {
-          self.showColorFormatPicker = true
+          withAnimation {
+            self.showColorFormatPicker.toggle()
+          }
         }) {
           Text("<")
-        }.popover(isPresented: $showColorFormatPicker, arrowEdge: .leading) {
-          ColorFormatPicker(closePicker: self.closeColorFormatPicker)
         }
       }
       .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
     }
   }
-
-  func closeColorFormatPicker(_ format: ColorFormatter.Format) {
-    showColorFormatPicker = false
-
-    print(format)
-  }
 }
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: HSBColor(.blue))
+    ColorExporter(color: HSBColor(.blue), showColorFormatPicker: .constant(true))
   }
 }

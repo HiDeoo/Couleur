@@ -15,24 +15,24 @@ struct ColorPickerGrid: View {
     ZStack {
       Path { path in
         for index in 0 ... lineCount {
-          let offset = Constants.PickerPointSize * CGFloat(index) - 1
+          let offset = Constants.PickerPointDimension * CGFloat(index) - 1
           path.move(to: CGPoint(x: offset, y: 0))
-          path.addLine(to: CGPoint(x: offset, y: Constants.PickerSize))
+          path.addLine(to: CGPoint(x: offset, y: Constants.PickerDimension))
         }
 
         for index in 0 ... lineCount {
-          let offset = Constants.PickerPointSize * CGFloat(index) - 1
+          let offset = Constants.PickerPointDimension * CGFloat(index) - 1
           path.move(to: CGPoint(x: 0, y: offset))
-          path.addLine(to: CGPoint(x: Constants.PickerSize, y: offset))
+          path.addLine(to: CGPoint(x: Constants.PickerDimension, y: offset))
         }
       }
       .stroke(Color.black.opacity(0.5))
       Path { path in
-        let origin = floor(Constants.PickerPointCount / 2) * Constants.PickerPointSize - 2
+        let origin = floor(Constants.PickerPointCount / 2) * Constants.PickerPointDimension - 2
         path.move(to: CGPoint(x: origin, y: origin))
-        path.addLine(to: CGPoint(x: origin + Constants.PickerPointSize + 2, y: origin))
-        path.addLine(to: CGPoint(x: origin + Constants.PickerPointSize + 2, y: origin + Constants.PickerPointSize + 2))
-        path.addLine(to: CGPoint(x: origin, y: origin + Constants.PickerPointSize + 2))
+        path.addLine(to: CGPoint(x: origin + Constants.PickerPointDimension + 2, y: origin))
+        path.addLine(to: CGPoint(x: origin + Constants.PickerPointDimension + 2, y: origin + Constants.PickerPointDimension + 2))
+        path.addLine(to: CGPoint(x: origin, y: origin + Constants.PickerPointDimension + 2))
         path.addLine(to: CGPoint(x: origin, y: origin - 0.5))
       }
       .stroke(Color.white)

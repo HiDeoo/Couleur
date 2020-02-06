@@ -16,8 +16,8 @@ struct TransparencyLayer: View {
   }
 
   func createPattern(_ geometry: GeometryProxy) -> some View {
-    let vSquares = Int(ceil(geometry.size.height / Constants.TransparencyLayerSquareSize))
-    let hSquares = Int(ceil(geometry.size.width / Constants.TransparencyLayerSquareSize))
+    let vSquares = Int(ceil(geometry.size.height / Constants.TransparencyLayerSquareDimension))
+    let hSquares = Int(ceil(geometry.size.width / Constants.TransparencyLayerSquareDimension))
 
     return VStack(alignment: .leading, spacing: 0) {
       ForEach(0 ... vSquares, id: \.self) { vIndex in
@@ -25,7 +25,7 @@ struct TransparencyLayer: View {
           ForEach(0 ... hSquares, id: \.self) { hIndex in
             Rectangle()
               .fill((hIndex + vIndex) % 2 == 0 ? Color("TransparencyLayerLight") : Color("TransparencyLayerDark"))
-              .frame(width: Constants.TransparencyLayerSquareSize, height: Constants.TransparencyLayerSquareSize)
+              .frame(width: Constants.TransparencyLayerSquareDimension, height: Constants.TransparencyLayerSquareDimension)
           }
         }
       }

@@ -18,7 +18,7 @@ struct ColorPicker: View {
   @EnvironmentObject var appModel: AppModel
 
   // Remove the border width from both sides.
-  let clippedFrameSize = Constants.PickerSize - 2
+  let clippedFrameSize = Constants.PickerDimension - 2
 
   var body: some View {
     ZStack {
@@ -33,7 +33,7 @@ struct ColorPicker: View {
     .clipShape(Circle())
     .frame(width: clippedFrameSize, height: clippedFrameSize)
     .overlay(Circle().stroke(Color.black, lineWidth: 1))
-    .frame(width: Constants.PickerSize, height: Constants.PickerSize)
+    .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
     .onAppear {
       CGDisplayHideCursor(self.getWindowId())
 
@@ -102,7 +102,7 @@ struct ColorPicker: View {
 
       updateColor()
 
-      let pickerSizeHalf = Constants.PickerSize / 2
+      let pickerSizeHalf = Constants.PickerDimension / 2
       window.setFrameOrigin(NSMakePoint(point.x - pickerSizeHalf, point.y - pickerSizeHalf))
     }
   }

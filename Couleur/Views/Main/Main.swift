@@ -12,15 +12,31 @@ struct Main: View {
   @EnvironmentObject var appModel: AppModel
 
   @State private var showPermissionAlert = false
+  @State private var showColorFormatPicker = false
+
+  private let mainViewPosition = CGPoint(x: Constants.MainWindowSize.width / 2, y: Constants.MainWindowSize.height / 2)
 
   var body: some View {
-    VStack(spacing: 0) {
-      PickerButton(color: appModel.selectedColor.raw, action: pickColor)
-      ColorExporter(color: appModel.selectedColor)
-      ColorEditor(color: $appModel.selectedColor, componentsEditorType: $appModel.componentsEditorType)
+    ZStack {
+      StackedView {
+        ColorFormatPicker(hidePicker: hideColorFormatPicker)
+      }
+      VStack(spacing: 0) {
+        PickerButton(color: appModel.selectedColor.raw, action: pickColor)
+        ColorExporter(color: appModel.selectedColor, showColorFormatPicker: self.$showColorFormatPicker)
+        ColorEditor(color: $appModel.selectedColor, componentsEditorType: $appModel.componentsEditorType)
+      }
+      .transition(.move(edge: .leading))
+      .background(Color("windowBackground"))
+      .position(
+        x: showColorFormatPicker ?
+          mainViewPosition.x - Constants.MainWindowSize.width + Constants.StackedViewOffset :
+          mainViewPosition.x,
+        y: mainViewPosition.y
+      )
     }
-    .background(Color("windowBackground"))
-    .frame(alignment: .topLeading)
+    .background(Color("windowAltBackground"))
+    .frame(height: Constants.MainWindowSize.height, alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
       getPermissionsAlert(action: {
         self.showPicker()
@@ -38,7 +54,7 @@ struct Main: View {
 
   func showPicker() {
     let pickerWindow = NSWindow(
-      contentRect: NSRect(x: 0, y: 0, width: Constants.PickerSize, height: Constants.PickerSize),
+      contentRect: NSRect(x: 0, y: 0, width: Constants.PickerDimension, height: Constants.PickerDimension),
       styleMask: [],
       backing: .buffered, defer: false
     )
@@ -49,6 +65,14 @@ struct Main: View {
     pickerWindow.contentView = NSHostingView(rootView: ColorPicker(window: pickerWindow).environmentObject(appModel))
 
     pickerWindow.makeKeyAndOrderFront(nil)
+  }
+
+  func hideColorFormatPicker(_ format: ColorFormatter.Format) {
+    withAnimation {
+      showColorFormatPicker = false
+    }
+
+    print(format)
   }
 }
 

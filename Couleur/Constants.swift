@@ -10,9 +10,14 @@ import SwiftUI
 
 struct Constants {
   /**
-   * The width of the main window in point.
+   * The size of the main window in point.
    */
-  static let MainWindowWidth: CGFloat = 250
+  static let MainWindowSize = CGSize(width: 250, height: 529)
+
+  /**
+   * The offset of a stacked view in point.
+   */
+  static let StackedViewOffset: CGFloat = 50
 
   /**
    * The height of the color preview component in point.
@@ -40,9 +45,9 @@ struct Constants {
   static let ComponentsEditorDefaultType = ComponentsType.RGBA
 
   /**
-   * The size (width & height) of a point in the picker.
+   * The dimension (width & height) of a point in the picker.
    */
-  static let PickerPointSize: CGFloat = 14
+  static let PickerPointDimension: CGFloat = 14
 
   /**
    * The number of points to show in the picker.
@@ -51,9 +56,9 @@ struct Constants {
   static let PickerPointCount: CGFloat = 13
 
   /**
-   * The size (width & height) of the picker.
+   * The dimension (width & height) of the picker.
    */
-  static let PickerSize: CGFloat = PickerPointSize * PickerPointCount
+  static let PickerDimension: CGFloat = PickerPointDimension * PickerPointCount
 
   /**
    * The default corder radius of rounded controls.
@@ -66,9 +71,9 @@ struct Constants {
   static let ControlSmallCornerRadius: CGFloat = ControlCornerRadius / 2
 
   /**
-   * The size (width & height) of a square in a transparency layer (in points).
+   * The dimension (width & height) of a square in a transparency layer (in points).
    */
-  static let TransparencyLayerSquareSize: CGFloat = 6
+  static let TransparencyLayerSquareDimension: CGFloat = 6
 
   /**
    * The diameter in points of a pointer.
