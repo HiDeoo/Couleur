@@ -13,7 +13,7 @@ struct ColorPicker: View {
   let window: NSWindow
 
   @State private var previewImage: CGImage?
-  @State private var mouseMonitor: Any?
+  @State private var eventMonitor: Any?
 
   @EnvironmentObject var appModel: AppModel
 
@@ -39,7 +39,7 @@ struct ColorPicker: View {
 
       self.updatePreview(point: NSEvent.mouseLocation)
 
-      self.mouseMonitor = NSEvent.addLocalMonitorForEvents(
+      self.eventMonitor = NSEvent.addLocalMonitorForEvents(
         matching: [.mouseMoved, .leftMouseUp, .keyDown],
         handler: { event in
           if event.type == .mouseMoved {
@@ -57,8 +57,8 @@ struct ColorPicker: View {
   }
 
   func close(shouldPick: Bool) {
-    if mouseMonitor != nil {
-      NSEvent.removeMonitor(mouseMonitor!)
+    if eventMonitor != nil {
+      NSEvent.removeMonitor(eventMonitor!)
     }
 
     if let color = appModel.picker.color, shouldPick {

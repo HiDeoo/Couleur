@@ -6,10 +6,11 @@
 //  Copyright © 2020 HiDeoo. All rights reserved.
 //
 
+import Carbon.HIToolbox
 import SwiftUI
 
 struct ColorFormatPicker: View {
-  let hidePicker: (_ format: ColorFormatter.Format) -> Void
+  let hidePicker: (_ format: ColorFormatter.Format?) -> Void
 
   var body: some View {
     ScrollView(.vertical) {
@@ -22,6 +23,19 @@ struct ColorFormatPicker: View {
           )
         }
       }
+    }.onAppear {
+      NSEvent.addLocalMonitorForEvents(
+        matching: [.keyDown],
+        handler: { event in
+          if event.type == .keyDown, event.keyCode == kVK_Escape {
+            self.hidePicker(nil)
+
+            return nil
+          }
+
+          return event
+        }
+      )
     }
   }
 
@@ -66,7 +80,7 @@ struct ColorFormatPicker: View {
 }
 
 struct ColorFormatPicker_Previews: PreviewProvider {
-  static func hidePicker(_: ColorFormatter.Format) {}
+  static func hidePicker(_: ColorFormatter.Format?) {}
 
   static var previews: some View {
     ColorFormatPicker(hidePicker: hidePicker)
