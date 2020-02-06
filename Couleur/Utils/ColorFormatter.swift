@@ -11,7 +11,7 @@ import Foundation
 class ColorFormatter {
   enum Format: String, CaseIterable {
     case Hex = "Hexa"
-    case Hex1 = "Hexa1"
+    case Hex1 = "Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1"
     case Hex2 = "Hexa2"
     case Hex3 = "Hexa3"
     case Hex4 = "Hexa4"

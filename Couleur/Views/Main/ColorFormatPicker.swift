@@ -40,6 +40,7 @@ struct ColorFormatPicker: View {
             Text(format.rawValue)
               .font(.system(size: 14))
               .bold()
+              .lineLimit(1)
             Text("􀆅")
               .frame(width: 20)
           }
