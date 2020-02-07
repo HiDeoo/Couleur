@@ -13,17 +13,17 @@ class AppModel: ObservableObject {
   @Published var picker = PickerModel()
 
   /**
-   * The currently selected color (color picker excluded).
+   * The current color (color picker excluded).
    */
-  @Published(forUserDefaultsKey: "selectedColor") var selectedColor = Constants.ColorPreviewDefaultColor
+  @Published(forUserDefaultsKey: "color") var color = Constants.ColorPreviewDefaultColor
 
   /**
-   * The currently selected color format.
+   * The current color format.
    */
-  @Published(forUserDefaultsKey: "selectedFormat") var selectedFormat = Constants.ColorDefaultFormat
+  @Published(forUserDefaultsKey: "format") var format = Constants.ColorDefaultFormat
 
   /**
-   * The components editor current type.
+   * The current components editor current type.
    */
   @Published(forUserDefaultsKey: "componentsEditorType") var componentsEditorType = Constants.ComponentsEditorDefaultType
 

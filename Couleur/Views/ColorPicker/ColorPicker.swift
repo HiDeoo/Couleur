@@ -36,7 +36,7 @@ struct ColorPicker: View {
       .overlay(Circle().stroke(Color.black, lineWidth: 1))
       .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
       appModel.picker.color.map {
-        Text(ColorFormatter.format($0, appModel.selectedFormat))
+        Text(ColorFormatter.format($0, appModel.format))
           .background(Color.black)
       }
     }
@@ -68,7 +68,7 @@ struct ColorPicker: View {
     }
 
     if let color = appModel.picker.color, shouldPick {
-      appModel.selectedColor = color
+      appModel.color = color
     }
 
     window.close()

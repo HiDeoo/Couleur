@@ -19,16 +19,16 @@ struct Main: View {
   var body: some View {
     ZStack {
       StackedView {
-        ColorFormatPicker(currentFormat: appModel.selectedFormat, hidePicker: hideColorFormatPicker)
+        ColorFormatPicker(currentFormat: appModel.format, hidePicker: hideColorFormatPicker)
       }
       VStack(spacing: 0) {
-        PickerButton(color: appModel.selectedColor.raw, action: pickColor)
+        PickerButton(color: appModel.color.raw, action: pickColor)
         ColorExporter(
-          color: appModel.selectedColor,
-          format: appModel.selectedFormat,
+          color: appModel.color,
+          format: appModel.format,
           showColorFormatPicker: self.$showColorFormatPicker
         )
-        ColorEditor(color: $appModel.selectedColor, componentsEditorType: $appModel.componentsEditorType)
+        ColorEditor(color: $appModel.color, componentsEditorType: $appModel.componentsEditorType)
       }
       .transition(.move(edge: .leading))
       .background(Color("windowBackground"))
@@ -77,7 +77,7 @@ struct Main: View {
     }
 
     if let newFormat = format {
-      appModel.selectedFormat = newFormat
+      appModel.format = newFormat
     }
   }
 }
