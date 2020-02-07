@@ -19,14 +19,14 @@ struct Main: View {
   var body: some View {
     ZStack {
       StackedView {
-        ColorFormatPicker(currentFormat: appModel.format, hidePicker: hideColorFormatPicker)
+        ColorFormatPicker(format: appModel.format, visible: $showColorFormatPicker, hide: hideColorFormatPicker)
       }
       VStack(spacing: 0) {
         PickerButton(color: appModel.color.raw, action: pickColor)
         ColorExporter(
           color: appModel.color,
           format: appModel.format,
-          showColorFormatPicker: self.$showColorFormatPicker
+          showColorFormatPicker: $showColorFormatPicker
         )
         ColorEditor(color: $appModel.color, componentsEditorType: $appModel.componentsEditorType)
       }

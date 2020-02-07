@@ -10,8 +10,9 @@ import Carbon.HIToolbox
 import SwiftUI
 
 struct ColorFormatPicker: View {
-  let currentFormat: ColorFormat
-  let hidePicker: (_ format: ColorFormat?) -> Void
+  let format: ColorFormat
+  @Binding var visible: Bool
+  let hide: (_ format: ColorFormat?) -> Void
 
   var body: some View {
     ScrollView(.vertical) {
@@ -20,8 +21,8 @@ struct ColorFormatPicker: View {
           ColorFormatPickerElement(
             index: index,
             format: ColorFormat.allCases[index],
-            selected: ColorFormat.allCases[index] == self.currentFormat,
-            hidePicker: self.hidePicker
+            selected: ColorFormat.allCases[index] == self.format,
+            hidePicker: self.hide
           )
         }
       }
@@ -29,8 +30,8 @@ struct ColorFormatPicker: View {
       NSEvent.addLocalMonitorForEvents(
         matching: [.keyDown],
         handler: { event in
-          if event.type == .keyDown, event.keyCode == kVK_Escape {
-            self.hidePicker(nil)
+          if self.visible, event.type == .keyDown, event.keyCode == kVK_Escape {
+            self.hide(nil)
 
             return nil
           }
@@ -83,9 +84,9 @@ struct ColorFormatPicker: View {
 }
 
 struct ColorFormatPicker_Previews: PreviewProvider {
-  static func hidePicker(_: ColorFormat?) {}
+  static func hide(_: ColorFormat?) {}
 
   static var previews: some View {
-    ColorFormatPicker(currentFormat: .Hex, hidePicker: hidePicker)
+    ColorFormatPicker(format: .Hex, visible: .constant(false), hide: hide)
   }
 }
