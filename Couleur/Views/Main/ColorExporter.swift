@@ -29,7 +29,14 @@ struct ColorExporter: View {
           }
         }) {
           Text("<")
+            .bold()
+            .font(.system(size: 20))
+            .rotationEffect(.degrees(self.showColorFormatPicker ? -180 : 0))
+            .position(x: 24, y: self.showColorFormatPicker ? 13 : 10)
+            .frame(width: 30, height: 22, alignment: .trailing)
+            .background(Color("windowBackground"))
         }
+        .buttonStyle(PlainButtonStyle())
       }
       .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
