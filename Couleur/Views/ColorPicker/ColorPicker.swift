@@ -37,6 +37,7 @@ struct ColorPicker: View {
       .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
       appModel.picker.color.map {
         ColorPickerPreview(color: $0, format: appModel.format)
+          .frame(height: Constants.PickerPreviewHeight)
       }
     }
     .onAppear {
@@ -90,7 +91,7 @@ struct ColorPicker: View {
       window.makeKeyAndOrderFront(nil)
     }
 
-    let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y)
+    let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y - Constants.PickerPreviewHeight)
     let pickerHalf = (Constants.PickerPointCount / 2).rounded()
 
     let rect = CGRect(

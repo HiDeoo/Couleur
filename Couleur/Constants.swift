@@ -66,6 +66,11 @@ struct Constants {
   static let PickerDimension: CGFloat = PickerPointDimension * PickerPointCount
 
   /**
+   * The height of the color preview in the color picker.
+   */
+  static let PickerPreviewHeight: CGFloat = 28
+
+  /**
    * The default corder radius of rounded controls.
    */
   static let ControlCornerRadius: CGFloat = 4
