@@ -39,6 +39,7 @@ struct ColorPickerPreview: View {
         RoundedRectangle(cornerRadius: Constants.ControlCornerRadius)
           .strokeBorder(Color.black, lineWidth: 1)
       )
+      .frame(height: Constants.PickerPreviewHeight)
   }
 }
 

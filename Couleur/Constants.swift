@@ -71,6 +71,11 @@ struct Constants {
   static let PickerPreviewHeight: CGFloat = 28
 
   /**
+   * The offset from the bottom of the screen until the picker preview is flipped.
+   */
+  static let PickerPreviewFlipOffset: CGFloat = 150
+
+  /**
    * The default corder radius of rounded controls.
    */
   static let ControlCornerRadius: CGFloat = 4

@@ -12,16 +12,22 @@ import SwiftUI
 struct ColorPicker: View {
   let window: NSWindow
 
+  @EnvironmentObject var appModel: AppModel
+
   @State private var previewImage: CGImage?
   @State private var eventMonitor: Any?
-
-  @EnvironmentObject var appModel: AppModel
+  @State private var previewFlipped = true
 
   // Remove the border width from both sides.
   let clippedFrameSize = Constants.PickerDimension - 2
 
   var body: some View {
     VStack {
+      if previewFlipped {
+        appModel.picker.color.map {
+          ColorPickerPreview(color: $0, format: appModel.format)
+        }
+      }
       ZStack {
         if self.previewImage != nil {
           Image(decorative: self.previewImage!, scale: 1)
@@ -35,9 +41,10 @@ struct ColorPicker: View {
       .frame(width: clippedFrameSize, height: clippedFrameSize)
       .overlay(Circle().stroke(Color.black, lineWidth: 1))
       .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
-      appModel.picker.color.map {
-        ColorPickerPreview(color: $0, format: appModel.format)
-          .frame(height: Constants.PickerPreviewHeight)
+      if !previewFlipped {
+        appModel.picker.color.map {
+          ColorPickerPreview(color: $0, format: appModel.format)
+        }
       }
     }
     .onAppear {
@@ -91,8 +98,13 @@ struct ColorPicker: View {
       window.makeKeyAndOrderFront(nil)
     }
 
-    let cursor = CGPoint(x: point.x, y: NSScreen.screens[0].frame.size.height - point.y - Constants.PickerPreviewHeight)
+    // TODO: Pick proper screen
+    let screenHeight = NSScreen.screens[0].frame.size.height
+    let previewHeightOffset = Constants.PickerPreviewHeight * (previewFlipped ? 0 : 1)
+    let cursor = CGPoint(x: point.x, y: screenHeight - point.y - previewHeightOffset)
     let pickerHalf = (Constants.PickerPointCount / 2).rounded()
+
+    previewFlipped = screenHeight - cursor.y < Constants.PickerPreviewFlipOffset
 
     let rect = CGRect(
       x: cursor.x - pickerHalf,
