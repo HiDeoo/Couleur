@@ -10,17 +10,17 @@ import Carbon.HIToolbox
 import SwiftUI
 
 struct ColorFormatPicker: View {
-  let currentFormat: ColorFormatter.Format
-  let hidePicker: (_ format: ColorFormatter.Format?) -> Void
+  let currentFormat: ColorFormat
+  let hidePicker: (_ format: ColorFormat?) -> Void
 
   var body: some View {
     ScrollView(.vertical) {
       VStack(spacing: 0) {
-        ForEach(0 ..< ColorFormatter.Format.allCases.count, id: \.self) { index in
+        ForEach(0 ..< ColorFormat.allCases.count, id: \.self) { index in
           ColorFormatPickerElement(
             index: index,
-            format: ColorFormatter.Format.allCases[index],
-            selected: ColorFormatter.Format.allCases[index] == self.currentFormat,
+            format: ColorFormat.allCases[index],
+            selected: ColorFormat.allCases[index] == self.currentFormat,
             hidePicker: self.hidePicker
           )
         }
@@ -43,9 +43,9 @@ struct ColorFormatPicker: View {
 
   struct ColorFormatPickerElement: View {
     let index: Int
-    let format: ColorFormatter.Format
+    let format: ColorFormat
     let selected: Bool
-    let hidePicker: (_ format: ColorFormatter.Format) -> Void
+    let hidePicker: (_ format: ColorFormat) -> Void
 
     var body: some View {
       Button(action: {
@@ -54,7 +54,7 @@ struct ColorFormatPicker: View {
         VStack(spacing: 0) {
           HStack {
             Spacer()
-            Text(format.rawValue)
+            Text(ColorFormatter.getDescription(format: format))
               .font(.system(size: 14))
               .bold()
               .lineLimit(1)
@@ -67,7 +67,7 @@ struct ColorFormatPicker: View {
             bottom: Constants.ViewPadding,
             trailing: Constants.ViewPadding + 6
           ))
-          if index < ColorFormatter.Format.allCases.count - 1 {
+          if index < ColorFormat.allCases.count - 1 {
             Rectangle()
               .padding(.top, 1)
               .frame(height: 1)
@@ -83,9 +83,9 @@ struct ColorFormatPicker: View {
 }
 
 struct ColorFormatPicker_Previews: PreviewProvider {
-  static func hidePicker(_: ColorFormatter.Format?) {}
+  static func hidePicker(_: ColorFormat?) {}
 
   static var previews: some View {
-    ColorFormatPicker(currentFormat: ColorFormatter.Format.Hex, hidePicker: hidePicker)
+    ColorFormatPicker(currentFormat: ColorFormat.Hex, hidePicker: hidePicker)
   }
 }

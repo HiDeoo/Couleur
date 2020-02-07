@@ -71,7 +71,7 @@ struct Main: View {
     pickerWindow.makeKeyAndOrderFront(nil)
   }
 
-  func hideColorFormatPicker(_ format: ColorFormatter.Format?) {
+  func hideColorFormatPicker(_ format: ColorFormat?) {
     withAnimation {
       showColorFormatPicker = false
     }

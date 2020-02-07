@@ -21,19 +21,25 @@ struct ColorPicker: View {
   let clippedFrameSize = Constants.PickerDimension - 2
 
   var body: some View {
-    ZStack {
-      if self.previewImage != nil {
-        Image(decorative: self.previewImage!, scale: 1)
-          .interpolation(.none)
-          .resizable()
-          .clipShape(Circle())
+    VStack {
+      ZStack {
+        if self.previewImage != nil {
+          Image(decorative: self.previewImage!, scale: 1)
+            .interpolation(.none)
+            .resizable()
+            .clipShape(Circle())
+        }
+        ColorPickerGrid()
       }
-      ColorPickerGrid()
+      .clipShape(Circle())
+      .frame(width: clippedFrameSize, height: clippedFrameSize)
+      .overlay(Circle().stroke(Color.black, lineWidth: 1))
+      .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
+      appModel.picker.color.map {
+        Text(ColorFormatter.format($0, appModel.selectedFormat))
+          .background(Color.black)
+      }
     }
-    .clipShape(Circle())
-    .frame(width: clippedFrameSize, height: clippedFrameSize)
-    .overlay(Circle().stroke(Color.black, lineWidth: 1))
-    .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
     .onAppear {
       CGDisplayHideCursor(self.getWindowId())
 
@@ -62,7 +68,7 @@ struct ColorPicker: View {
     }
 
     if let color = appModel.picker.color, shouldPick {
-      appModel.selectedColor = HSBColor(color)
+      appModel.selectedColor = color
     }
 
     window.close()
@@ -122,10 +128,12 @@ struct ColorPicker: View {
         color.getComponents(components)
 
         // Get a new color with the proper color space.
-        appModel.picker.color = NSColor(
-          colorSpace: bitmap.colorSpace,
-          components: components,
-          count: color.numberOfComponents
+        appModel.picker.color = HSBColor(
+          NSColor(
+            colorSpace: bitmap.colorSpace,
+            components: components,
+            count: color.numberOfComponents
+          )
         )
       }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ColorExporter: View {
   let color: HSBColor
-  let format: ColorFormatter.Format
+  let format: ColorFormat
   @Binding var showColorFormatPicker: Bool
 
   var body: some View {
@@ -46,6 +46,6 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: HSBColor(.blue), format: ColorFormatter.Format.Hex, showColorFormatPicker: .constant(true))
+    ColorExporter(color: HSBColor(.blue), format: ColorFormat.Hex, showColorFormatPicker: .constant(true))
   }
 }

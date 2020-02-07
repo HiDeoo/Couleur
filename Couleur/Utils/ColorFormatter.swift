@@ -6,57 +6,27 @@
 //  Copyright © 2020 HiDeoo. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+
+enum ColorFormat: Int, CaseIterable {
+  case Hex
+  case Hex1
+}
 
 class ColorFormatter {
-  enum Format: String, CaseIterable, Codable {
-    case Hex = "Hexa"
-    case Hex1 = "Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1Hexa1"
-    case Hex2 = "Hexa2"
-    case Hex3 = "Hexa3"
-    case Hex4 = "Hexa4"
-    case Hex5 = "Hexa5"
-    case Hex6 = "Hexa6"
-    case Hex7 = "Hexa7"
-    case Hex8 = "Hexa8"
-    case Hex9 = "Hexa9"
-    case Hex10 = "Hexa10"
-    case Hex11 = "Hexa11"
-    case Hex12 = "Hexa12"
-    case Hex13 = "Hexa13"
-    case Hex14 = "Hexa14"
-    case Hex15 = "Hexa15"
-    case Hex16 = "Hexa16"
-    case Hex17 = "Hexa17"
-    case Hex18 = "Hexa18"
-    case Hex19 = "Hexa19"
+  private static let definitions: [ColorFormat: ColorFormatDefinition] = [
+    ColorFormat.Hex: ColorFormatDefinition(description: "Hexa", formatter: toHex),
+    ColorFormat.Hex1: ColorFormatDefinition(description: "Hexa 1", formatter: toHex2),
+  ]
 
-    enum CodingKeys: CodingKey {
-      case rawValue
-    }
+  static func getDescription(format: ColorFormat) -> String {
+    guard let description = definitions[format]?.description else { return "" }
 
-    init(from decoder: Decoder) throws {
-      let container = try decoder.container(keyedBy: CodingKeys.self)
-      let rawValue = try container.decode(String.self, forKey: .rawValue)
-
-      self = Format(rawValue: rawValue) ?? Constants.ColorDefaultFormat
-    }
-
-    func encode(to encoder: Encoder) throws {
-      var container = encoder.container(keyedBy: CodingKeys.self)
-      try container.encode(rawValue, forKey: .rawValue)
-    }
-
-    func getFormatter() -> (_ color: HSBColor) -> String {
-      switch self {
-      case .Hex: return ColorFormatter.toHex
-      default: return ColorFormatter.toHex2
-      }
-    }
+    return description
   }
 
-  static func format(_ color: HSBColor, _ format: Format) -> String {
-    let formatter = Format.getFormatter(format)()
+  static func format(_ color: HSBColor, _ format: ColorFormat) -> String {
+    guard let formatter = definitions[format]?.formatter else { return "" }
 
     return formatter(color)
   }
@@ -67,9 +37,30 @@ class ColorFormatter {
     return String(format: "#%06x", rgb)
   }
 
-  private static func toHex2(_ color: HSBColor) -> String {
-    let rgb = Int(color.red * 255) << 16 | Int(color.green * 255) << 8 | Int(color.blue * 255) << 0
+  private static func toHex2(_: HSBColor) -> String {
+    "plop this is a test"
+  }
+}
 
-    return String(format: "Hello, %06x", rgb)
+private struct ColorFormatDefinition {
+  let description: String
+  let formatter: (_ color: HSBColor) -> String
+}
+
+extension ColorFormat: Codable {
+  enum CodingKeys: CodingKey {
+    case rawValue
+  }
+
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    let rawValue = try container.decode(Int.self, forKey: .rawValue)
+
+    self = ColorFormat(rawValue: rawValue) ?? Constants.ColorDefaultFormat
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(rawValue, forKey: .rawValue)
   }
 }

@@ -13,5 +13,5 @@ class PickerModel: ObservableObject {
   /**
    * The color at the center of the picker while picking.
    */
-  @Published var color: NSColor?
+  @Published var color: HSBColor?
 }
