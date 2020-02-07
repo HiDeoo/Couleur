@@ -15,8 +15,8 @@ enum ColorFormat: Int, CaseIterable {
 
 class ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
-    ColorFormat.Hex: ColorFormatDefinition(description: "Hexa", formatter: toHex),
-    ColorFormat.Hex1: ColorFormatDefinition(description: "Hexa 1", formatter: toHex2),
+    .Hex: ColorFormatDefinition(description: "Hexa", formatter: toHex),
+    .Hex1: ColorFormatDefinition(description: "Hexa 1", formatter: toHex2),
   ]
 
   static func getDescription(format: ColorFormat) -> String {

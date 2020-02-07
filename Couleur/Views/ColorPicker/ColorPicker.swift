@@ -36,8 +36,7 @@ struct ColorPicker: View {
       .overlay(Circle().stroke(Color.black, lineWidth: 1))
       .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
       appModel.picker.color.map {
-        Text(ColorFormatter.format($0, appModel.format))
-          .background(Color.black)
+        ColorPickerPreview(color: $0, format: appModel.format)
       }
     }
     .onAppear {

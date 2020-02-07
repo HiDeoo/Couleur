@@ -22,6 +22,7 @@
 		E855865B23D4A3C60002637F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865A23D4A3C60002637F /* Alerts.swift */; };
 		E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865C23D4A50C0002637F /* ColorEditor.swift */; };
 		E860815223D0CC9A003C36CA /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860815123D0CC9A003C36CA /* Permissions.swift */; };
+		E869D12723EDB09E00E5891B /* ColorPickerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E869D12623EDB09E00E5891B /* ColorPickerPreview.swift */; };
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
 		E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* HSBColor.swift */; };
@@ -56,6 +57,7 @@
 		E855865A23D4A3C60002637F /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E855865C23D4A50C0002637F /* ColorEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEditor.swift; sourceTree = "<group>"; };
 		E860815123D0CC9A003C36CA /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		E869D12623EDB09E00E5891B /* ColorPickerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPreview.swift; sourceTree = "<group>"; };
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E86F8AEC23D8BF810028340C /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				E8D9031C23C72EE300476DC5 /* ColorPicker.swift */,
 				E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */,
+				E869D12623EDB09E00E5891B /* ColorPickerPreview.swift */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */,
 				E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */,
 				E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */,
+				E869D12723EDB09E00E5891B /* ColorPickerPreview.swift in Sources */,
 				E855865B23D4A3C60002637F /* Alerts.swift in Sources */,
 				E8B1F9C623E97CD8001936BD /* Types.swift in Sources */,
 				E855865723D49AD50002637F /* PickerButton.swift in Sources */,

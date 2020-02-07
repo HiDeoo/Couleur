@@ -9,7 +9,7 @@
 import SwiftUI
 
 class Permissions {
-  /// https://gist.github.com/soffes/da6ea98be4f56bc7b8e75079a5224b37
+  // https://gist.github.com/soffes/da6ea98be4f56bc7b8e75079a5224b37
   static func canRecordScreen() -> Bool {
     if #available(macOS 10.15, *) {
       let runningApplication = NSRunningApplication.current

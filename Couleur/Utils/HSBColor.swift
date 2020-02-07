@@ -134,4 +134,20 @@ struct HSBColor: Codable {
 
     updateHsb()
   }
+
+  func getTextContrastColor() -> NSColor {
+    // https://www.w3.org/TR/WCAG20/#relativeluminancedef
+    let components = [red, green, blue].map { component -> CGFloat in
+      if component <= 0.03928 {
+        return component / 12.92
+      }
+
+      return pow((component + 0.055) / 1.055, 2.4)
+    }
+
+    let luminance = 0.2126 * components[0] + 0.7152 * components[1] + 0.0722 * components[2]
+
+    // https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+    return luminance > sqrt(1.05 * 0.05) - 0.05 ? NSColor.black : NSColor.white
+  }
 }
