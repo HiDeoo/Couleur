@@ -12,18 +12,19 @@ enum ComponentsType: String, Codable, CaseIterable {
   case RGBA
   case HSBA
 
-  enum Key: CodingKey {
+  enum CodingKeys: CodingKey {
     case rawValue
   }
 
   init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: Key.self)
+    let container = try decoder.container(keyedBy: CodingKeys.self)
     let rawValue = try container.decode(String.self, forKey: .rawValue)
+
     self = ComponentsType(rawValue: rawValue) ?? Constants.ComponentsEditorDefaultType
   }
 
   func encode(to encoder: Encoder) throws {
-    var container = encoder.container(keyedBy: Key.self)
+    var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(rawValue, forKey: .rawValue)
   }
 }

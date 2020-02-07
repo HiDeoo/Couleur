@@ -15,7 +15,7 @@ class AppModel: ObservableObject {
   /**
    * The currently selected color (color picker excluded).
    */
-  @Published var selectedColor = Constants.ColorPreviewDefaultColor
+  @Published(forUserDefaultsKey: "selectedColor") var selectedColor = Constants.ColorPreviewDefaultColor
 
   /**
    * The currently selected color format.
