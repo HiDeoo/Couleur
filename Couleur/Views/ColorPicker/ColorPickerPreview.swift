@@ -11,10 +11,12 @@ import SwiftUI
 struct ColorPickerPreview: View {
   let color: HSBColor
   let format: ColorFormat
+  let flipped: Bool
 
-  init(color: HSBColor, format: ColorFormat) {
+  init(color: HSBColor, format: ColorFormat, flipped: Bool) {
     self.color = color
     self.format = format
+    self.flipped = flipped
 
     textContrastColor = color.getTextContrastColor()
   }
@@ -25,7 +27,7 @@ struct ColorPickerPreview: View {
     Text(ColorFormatter.format(color, format))
       .font(.system(.caption))
       .foregroundColor(Color(textContrastColor))
-      .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+      .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
       .background(
         RoundedCorners(
           color: Color(color.raw),
@@ -39,12 +41,16 @@ struct ColorPickerPreview: View {
         RoundedRectangle(cornerRadius: Constants.ControlCornerRadius)
           .strokeBorder(Color.black, lineWidth: 1)
       )
-      .frame(height: Constants.PickerPreviewHeight)
+      .position(
+        x: Constants.PickerDimension / 2,
+        y: (flipped ? 0 : Constants.PickerDimension + Constants.PickerPreviewHeight) +
+          Constants.PickerPreviewHeight / (2 + 0.5 * (flipped ? 1 : -1))
+      )
   }
 }
 
 struct ColorPickerPreview_Previews: PreviewProvider {
   static var previews: some View {
-    ColorPickerPreview(color: HSBColor(.blue), format: .Hex)
+    ColorPickerPreview(color: HSBColor(.blue), format: .Hex, flipped: false)
   }
 }

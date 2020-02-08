@@ -16,18 +16,13 @@ struct ColorPicker: View {
 
   @State private var previewImage: CGImage?
   @State private var eventMonitor: Any?
-  @State private var previewFlipped = true
+  @State private var previewFlipped = false
 
   // Remove the border width from both sides.
   let clippedFrameSize = Constants.PickerDimension - 2
 
   var body: some View {
-    VStack {
-      if previewFlipped {
-        appModel.picker.color.map {
-          ColorPickerPreview(color: $0, format: appModel.format)
-        }
-      }
+    ZStack {
       ZStack {
         if self.previewImage != nil {
           Image(decorative: self.previewImage!, scale: 1)
@@ -40,11 +35,9 @@ struct ColorPicker: View {
       .clipShape(Circle())
       .frame(width: clippedFrameSize, height: clippedFrameSize)
       .overlay(Circle().stroke(Color.black, lineWidth: 1))
-      .frame(width: Constants.PickerDimension, height: Constants.PickerDimension)
-      if !previewFlipped {
-        appModel.picker.color.map {
-          ColorPickerPreview(color: $0, format: appModel.format)
-        }
+      .frame(width: Constants.PickerDimension, height: Constants.PickerDimension + Constants.PickerPreviewHeight * 2)
+      if appModel.picker.color != nil {
+        ColorPickerPreview(color: appModel.picker.color!, format: appModel.format, flipped: previewFlipped)
       }
     }
     .onAppear {

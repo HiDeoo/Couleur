@@ -68,12 +68,12 @@ struct Constants {
   /**
    * The height of the color preview in the color picker.
    */
-  static let PickerPreviewHeight: CGFloat = 28
+  static let PickerPreviewHeight: CGFloat = 35
 
   /**
    * The offset from the bottom of the screen until the picker preview is flipped.
    */
-  static let PickerPreviewFlipOffset: CGFloat = 150
+  static let PickerPreviewFlipOffset: CGFloat = 200
 
   /**
    * The default corder radius of rounded controls.
