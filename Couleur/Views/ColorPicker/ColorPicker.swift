@@ -93,8 +93,7 @@ struct ColorPicker: View {
 
     // TODO: Pick proper screen
     let screenHeight = NSScreen.screens[0].frame.size.height
-    let previewHeightOffset = Constants.PickerPreviewHeight * (previewFlipped ? 0 : 1)
-    let cursor = CGPoint(x: point.x, y: screenHeight - point.y - previewHeightOffset)
+    let cursor = CGPoint(x: point.x, y: max(1, screenHeight - point.y))
     let pickerHalf = (Constants.PickerPointCount / 2).rounded()
 
     previewFlipped = screenHeight - cursor.y < Constants.PickerPreviewFlipOffset
@@ -114,7 +113,16 @@ struct ColorPicker: View {
       updateColor()
 
       let pickerSizeHalf = Constants.PickerDimension / 2
-      window.setFrameOrigin(NSMakePoint(point.x - pickerSizeHalf, point.y - pickerSizeHalf))
+
+      window.setFrameOrigin(
+        NSMakePoint(
+          point.x - pickerSizeHalf,
+          min(
+            point.y - pickerSizeHalf - Constants.PickerPreviewHeight,
+            screenHeight - pickerSizeHalf - Constants.PickerPreviewHeight
+          )
+        )
+      )
     }
   }
 

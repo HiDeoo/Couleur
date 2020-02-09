@@ -66,6 +66,7 @@ struct Main: View {
     pickerWindow.center()
     pickerWindow.isOpaque = false
     pickerWindow.backgroundColor = .clear
+    pickerWindow.level = NSWindow.Level(rawValue: NSWindow.Level.RawValue(CGWindowLevelForKey(.mainMenuWindow) + 2))
     pickerWindow.contentView = NSHostingView(rootView: ColorPicker(window: pickerWindow).environmentObject(appModel))
 
     pickerWindow.makeKeyAndOrderFront(nil)
