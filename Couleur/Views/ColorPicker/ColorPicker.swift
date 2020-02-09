@@ -91,9 +91,12 @@ struct ColorPicker: View {
       window.makeKeyAndOrderFront(nil)
     }
 
-    // TODO: Pick proper screen
-    let screenHeight = NSScreen.screens[0].frame.size.height
-    let cursor = CGPoint(x: point.x, y: max(1, screenHeight - point.y))
+    let pointScreen = NSScreen.screens.first { screen in
+      NSMouseInRect(point, screen.frame, false)
+    } ?? NSScreen.screens[0]
+
+    let screenHeight = pointScreen.frame.size.height
+    let cursor = CGPoint(x: point.x, y: max(1, screenHeight - point.y + pointScreen.frame.origin.y))
     let pickerHalf = (Constants.PickerPointCount / 2).rounded()
 
     previewFlipped = screenHeight - cursor.y < Constants.PickerPreviewFlipOffset
