@@ -13,6 +13,11 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
   var window: NSWindow!
 
+  func applicationWillFinishLaunching(_: Notification) {
+    UserDefaults.standard.set(true, forKey: "NSDisabledDictationMenuItem")
+    UserDefaults.standard.set(true, forKey: "NSDisabledCharacterPaletteMenuItem")
+  }
+
   func applicationDidFinishLaunching(_: Notification) {
     let main = Main()
 
