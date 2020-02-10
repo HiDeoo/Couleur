@@ -32,4 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     window.makeKeyAndOrderFront(nil)
   }
+
+  func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+    true
+  }
 }
