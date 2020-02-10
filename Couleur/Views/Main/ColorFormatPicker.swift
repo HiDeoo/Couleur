@@ -83,6 +83,6 @@ struct ColorFormatPicker_Previews: PreviewProvider {
   static func hide(_: ColorFormat?) {}
 
   static var previews: some View {
-    ColorFormatPicker(format: .Hex, visible: .constant(false), hide: hide)
+    ColorFormatPicker(format: .CssHex, visible: .constant(false), hide: hide)
   }
 }

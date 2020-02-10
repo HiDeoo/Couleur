@@ -9,14 +9,27 @@
 import SwiftUI
 
 enum ColorFormat: Int, CaseIterable {
-  case Hex
-  case Hex1
+  case AndroidArgb
+  case AndroidRgb
+  case AndroidXmlArgb
+  case AndroidXmlRgb
+  case CssHex
+}
+
+private enum ColorComponent {
+  case Red
+  case Green
+  case Blue
+  case Alpha
 }
 
 class ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
-    .Hex: ColorFormatDefinition(description: "Hexa", formatter: toHex),
-    .Hex1: ColorFormatDefinition(description: "Hexa 1", formatter: toHex2),
+    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
+    .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
+    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
+    .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
+    .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCSSHex),
   ]
 
   static func getDescription(format: ColorFormat) -> String {
@@ -31,14 +44,73 @@ class ColorFormatter {
     return formatter(color)
   }
 
-  private static func toHex(_ color: HSBColor) -> String {
-    let rgb = Int(color.red * 255) << 16 | Int(color.green * 255) << 8 | Int(color.blue * 255) << 0
+  private static func get8BitsComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
+    let value: CGFloat
 
-    return String(format: "#%06x", rgb)
+    switch component {
+    case .Red: value = color.red
+    case .Green: value = color.green
+    case .Blue: value = color.blue
+    case .Alpha: value = color.alpha
+    }
+
+    return UInt(value * 255)
   }
 
-  private static func toHex2(_: HSBColor) -> String {
-    "plop this is a test"
+  private static func getHexComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
+    let operand: UInt
+
+    switch component {
+    case .Red: operand = 16
+    case .Green: operand = 8
+    case .Blue: operand = 0
+    case .Alpha: operand = 24
+    }
+
+    return get8BitsComponent(color, component) << operand
+  }
+
+  private static func toAndroidArgb(_ color: HSBColor) -> String {
+    String(
+      format: "Color.argb(%d, %d, %d, %d)",
+      get8BitsComponent(color, .Alpha),
+      get8BitsComponent(color, .Red),
+      get8BitsComponent(color, .Green),
+      get8BitsComponent(color, .Blue)
+    )
+  }
+
+  private static func toAndroidRgb(_ color: HSBColor) -> String {
+    String(
+      format: "Color.rgb(%d, %d, %d)",
+      get8BitsComponent(color, .Red),
+      get8BitsComponent(color, .Green),
+      get8BitsComponent(color, .Blue)
+    )
+  }
+
+  private static func toAndroidXmlArgb(_ color: HSBColor) -> String {
+    String(
+      format: "<color name=\"color_name\">%08x</color>",
+      getHexComponent(color, .Alpha) |
+        getHexComponent(color, .Red) |
+        getHexComponent(color, .Green) |
+        getHexComponent(color, .Blue)
+    )
+  }
+
+  private static func toAndroidXmlRgb(_ color: HSBColor) -> String {
+    String(
+      format: "<color name=\"color_name\">%06x</color>",
+      getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
+    )
+  }
+
+  private static func toCSSHex(_ color: HSBColor) -> String {
+    String(
+      format: "#%06x",
+      getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
+    )
   }
 }
 

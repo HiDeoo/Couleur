@@ -51,6 +51,6 @@ struct ColorPickerPreview: View {
 
 struct ColorPickerPreview_Previews: PreviewProvider {
   static var previews: some View {
-    ColorPickerPreview(color: HSBColor(.blue), format: .Hex, flipped: false)
+    ColorPickerPreview(color: HSBColor(.blue), format: .CssHex, flipped: false)
   }
 }

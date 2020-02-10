@@ -47,7 +47,7 @@ struct Constants {
   /**
    * The default color format.
    */
-  static let ColorDefaultFormat = ColorFormat.Hex
+  static let ColorDefaultFormat = ColorFormat.CssHex
 
   /**
    * The dimension (width & height) of a point in the picker.
