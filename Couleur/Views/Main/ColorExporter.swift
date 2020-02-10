@@ -18,27 +18,27 @@ struct ColorExporter: View {
       Rectangle()
         .padding(.bottom, 1)
         .background(Color("separator"))
-      HStack {
-        Text(ColorFormatter.format(color, format))
-          .font(.system(.headline))
-          .foregroundColor(Color("label"))
-        Spacer()
-        Button(action: {
-          withAnimation {
-            self.showColorFormatPicker.toggle()
-          }
-        }) {
+      Button(action: {
+        withAnimation {
+          self.showColorFormatPicker.toggle()
+        }
+      }) {
+        HStack {
+          Text(ColorFormatter.format(color, format))
+            .font(.system(.headline))
+            .foregroundColor(Color("label"))
+          Spacer()
           Text("<")
             .bold()
             .font(.system(size: 20))
             .rotationEffect(.degrees(self.showColorFormatPicker ? -180 : 0))
             .position(x: 24, y: self.showColorFormatPicker ? 13 : 10)
             .frame(width: 30, height: 22, alignment: .trailing)
-            .background(Color("windowBackground"))
         }
-        .buttonStyle(PlainButtonStyle())
+        .padding(Constants.ViewPadding)
+        .background(Color("windowBackground"))
       }
-      .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+      .buttonStyle(PlainButtonStyle())
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
     }
   }

@@ -36,7 +36,9 @@ struct ColorEditor: View {
       .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
       .padding(.bottom, sliderPadding)
       Components(color: $color, type: $componentsEditorType)
-    }.padding(Constants.ViewPadding)
+    }
+    .padding([.leading, .trailing, .bottom], Constants.ViewPadding)
+    .padding(.top, 0)
   }
 
   func getHueGradientColors() -> [Color] {

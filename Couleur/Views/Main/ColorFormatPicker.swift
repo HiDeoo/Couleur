@@ -62,12 +62,8 @@ struct ColorFormatPicker: View {
             Text(selected ? "􀆅" : "")
               .frame(width: 20)
           }
-          .padding(EdgeInsets(
-            top: Constants.ViewPadding,
-            leading: Constants.ViewPadding,
-            bottom: Constants.ViewPadding,
-            trailing: Constants.ViewPadding + 6
-          ))
+          .padding([.leading, .top, .bottom], Constants.ViewPadding)
+          .padding([.trailing], Constants.ViewPadding + 6)
           if index < ColorFormat.allCases.count - 1 {
             Rectangle()
               .padding(.top, 1)
