@@ -38,8 +38,7 @@ struct Components: View {
   var body: some View {
     VStack {
       SegmentedControl(options: ComponentsType.allCases, value: $type, valueRenderer: componentsTypeRenderer)
-        .padding(.bottom, segmentedControlPadding)
-        .padding(.top, segmentedControlPadding)
+        .padding([.bottom, .top], segmentedControlPadding)
       Group {
         if type == .RGBA {
           RGBA(color: self.$color)

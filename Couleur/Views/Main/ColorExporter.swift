@@ -28,12 +28,9 @@ struct ColorExporter: View {
             .font(.system(.headline))
             .foregroundColor(Color("label"))
           Spacer()
-          Text("<")
-            .bold()
-            .font(.system(size: 20))
+          formatPickerIcon
             .rotationEffect(.degrees(self.showColorFormatPicker ? -180 : 0))
-            .position(x: 24, y: self.showColorFormatPicker ? 13 : 10)
-            .frame(width: 30, height: 22, alignment: .trailing)
+            .padding(.trailing, 2)
         }
         .padding(Constants.ViewPadding)
         .background(Color("windowBackground"))
@@ -41,6 +38,18 @@ struct ColorExporter: View {
       .buttonStyle(PlainButtonStyle())
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
     }
+  }
+
+  var formatPickerIcon: some View {
+    let size = CGSize(width: 10, height: 10)
+
+    return Path { path in
+      path.move(to: CGPoint(x: size.width, y: 0))
+      path.addLine(to: CGPoint(x: 0, y: size.height / 2))
+      path.addLine(to: CGPoint(x: size.width, y: size.height))
+    }
+    .stroke(Color.white.opacity(0.9), style: StrokeStyle(lineWidth: 3.0, lineCap: .round, lineJoin: .round))
+    .frame(width: size.width, height: size.height, alignment: .trailing)
   }
 }
 

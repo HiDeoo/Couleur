@@ -63,7 +63,7 @@ struct ColorFormatPicker: View {
               .frame(width: 20)
           }
           .padding([.leading, .top, .bottom], Constants.ViewPadding)
-          .padding([.trailing], Constants.ViewPadding + 6)
+          .padding(.trailing, Constants.ViewPadding + 6)
           if index < ColorFormat.allCases.count - 1 {
             Rectangle()
               .padding(.top, 1)
