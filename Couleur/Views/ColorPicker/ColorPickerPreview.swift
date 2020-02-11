@@ -25,6 +25,7 @@ struct ColorPickerPreview: View {
 
   var body: some View {
     Text(ColorFormatter.format(color, format))
+      .lineLimit(1)
       .font(.system(.caption))
       .foregroundColor(Color(textContrastColor))
       .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
