@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PickerButton: View {
-  let color: NSColor
+  let color: HSBColor
   let action: Action
 
   var body: some View {
@@ -17,9 +17,9 @@ struct PickerButton: View {
       ZStack {
         TransparencyLayer()
           .frame(width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight)
-        Spacer()
+        Rectangle()
+          .fill(Color(color))
           .frame(width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight)
-          .background(Color(color))
       }
     }
     .buttonStyle(BorderlessButtonStyle())
@@ -28,6 +28,6 @@ struct PickerButton: View {
 
 struct PickerButton_Previews: PreviewProvider {
   static var previews: some View {
-    PickerButton(color: .blue, action: {})
+    PickerButton(color: HSBColor(.blue), action: {})
   }
 }

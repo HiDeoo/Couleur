@@ -34,8 +34,8 @@ struct TextFieldRepresentable: NSViewRepresentable {
     return textField
   }
 
-  func updateNSView(_ nsView: NSTextField, context _: NSViewRepresentableContext<TextFieldRepresentable>) {
-    nsView.stringValue = value
+  func updateNSView(_ textField: NSTextField, context _: NSViewRepresentableContext<TextFieldRepresentable>) {
+    textField.stringValue = value
   }
 
   func makeCoordinator() -> Coordinator {

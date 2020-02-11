@@ -17,7 +17,7 @@ struct SaturationBrightness: View {
         ZStack {
           LinearGradient(
             gradient: Gradient(
-              colors: [Color(hue: Double(self.color.hue), saturation: 1, brightness: 1, opacity: 1), .white]
+              colors: [Color(HSBColor(hue: self.color.hue, saturation: 1, brightness: 1, alpha: 1)), .white]
             ),
             startPoint: .trailing,
             endPoint: .leading

@@ -30,7 +30,7 @@ struct ColorPickerPreview: View {
       .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
       .background(
         RoundedCorners(
-          color: Color(color.raw),
+          color: Color(color),
           topLeft: Constants.ControlCornerRadius,
           topRight: Constants.ControlCornerRadius,
           bottomLeft: Constants.ControlCornerRadius,

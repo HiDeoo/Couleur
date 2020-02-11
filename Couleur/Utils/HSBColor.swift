@@ -44,14 +44,20 @@ struct HSBColor: Codable {
     self.brightness = brightness
     self.alpha = alpha
 
-    raw = NSColor(
-      hue: hue,
-      saturation: saturation,
-      brightness: brightness,
-      alpha: alpha
-    )
+    raw = NSColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
 
     updateRgb()
+  }
+
+  init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    self.red = red
+    self.green = green
+    self.blue = blue
+    self.alpha = alpha
+
+    raw = NSColor(red: red, green: green, blue: blue, alpha: alpha)
+
+    updateHsb()
   }
 
   init(from decoder: Decoder) throws {
@@ -149,5 +155,19 @@ struct HSBColor: Codable {
 
     // https://www.w3.org/TR/WCAG20/#contrast-ratiodef
     return luminance > sqrt(1.05 * 0.05) - 0.05 ? NSColor.black : NSColor.white
+  }
+}
+
+extension Color {
+  init(_ color: HSBColor) {
+    self.init(
+      NSColor(
+        colorSpace: (NSScreen.main ?? NSScreen.screens[0]).colorSpace ?? NSColorSpace.deviceRGB,
+        hue: color.hue,
+        saturation: color.saturation,
+        brightness: color.brightness,
+        alpha: color.alpha
+      )
+    )
   }
 }

@@ -98,7 +98,7 @@ struct Constants {
   /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
    */
-  static let HueGradientRgbs: [(Double, Double, Double)] = [
+  static let HueGradientRgbs: [(CGFloat, CGFloat, CGFloat)] = [
     (255, 0, 0),
     (255, 128, 0),
     (255, 255, 0),

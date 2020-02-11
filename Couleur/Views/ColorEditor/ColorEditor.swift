@@ -45,7 +45,7 @@ struct ColorEditor: View {
     Constants.HueGradientRgbs.map { (rgb) -> Color in
       let (r, g, b) = rgb
 
-      return Color(red: r / 255, green: g / 255, blue: b / 255)
+      return Color(HSBColor(red: r / 255, green: g / 255, blue: b / 255, alpha: 1))
     }
   }
 
@@ -62,13 +62,9 @@ struct ColorEditor: View {
   }
 
   func getAlphaGradientColors() -> [Color] {
-    let hue = Double(color.hue)
-    let saturation = Double(color.saturation)
-    let brightness = Double(color.brightness)
-
-    return [
-      Color(hue: hue, saturation: saturation, brightness: brightness, opacity: 0),
-      Color(hue: hue, saturation: saturation, brightness: brightness, opacity: 1),
+    [
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: color.brightness, alpha: 0)),
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: color.brightness, alpha: 1)),
     ]
   }
 

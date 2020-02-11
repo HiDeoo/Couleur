@@ -91,41 +91,39 @@ struct ColorPicker: View {
       window.makeKeyAndOrderFront(nil)
     }
 
-    let pointScreen = NSScreen.screens.first { screen in
-      NSMouseInRect(point, screen.frame, false)
-    } ?? NSScreen.screens[0]
+    if let screen = NSScreen.main {
+      let screenHeight = screen.frame.size.height
+      let cursor = CGPoint(x: point.x, y: max(1, screenHeight - point.y + screen.frame.origin.y))
+      let pickerHalf = (Constants.PickerPointCount / 2).rounded()
 
-    let screenHeight = pointScreen.frame.size.height
-    let cursor = CGPoint(x: point.x, y: max(1, screenHeight - point.y + pointScreen.frame.origin.y))
-    let pickerHalf = (Constants.PickerPointCount / 2).rounded()
+      previewFlipped = screenHeight - cursor.y < Constants.PickerPreviewFlipOffset
 
-    previewFlipped = screenHeight - cursor.y < Constants.PickerPreviewFlipOffset
+      let rect = CGRect(
+        x: cursor.x - pickerHalf,
+        y: cursor.y - pickerHalf,
+        width: Constants.PickerPointCount,
+        height: Constants.PickerPointCount
+      )
 
-    let rect = CGRect(
-      x: cursor.x - pickerHalf,
-      y: cursor.y - pickerHalf,
-      width: Constants.PickerPointCount,
-      height: Constants.PickerPointCount
-    )
+      let screenshot = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, getWindowId(), .nominalResolution)
 
-    let screenshot = CGWindowListCreateImage(rect, .optionOnScreenBelowWindow, getWindowId(), .nominalResolution)
+      if let previewImage = screenshot {
+        self.previewImage = previewImage
 
-    if let previewImage = screenshot {
-      self.previewImage = previewImage
+        updateColor()
 
-      updateColor()
+        let pickerSizeHalf = Constants.PickerDimension / 2
 
-      let pickerSizeHalf = Constants.PickerDimension / 2
-
-      window.setFrameOrigin(
-        NSMakePoint(
-          point.x - pickerSizeHalf,
-          min(
-            point.y - pickerSizeHalf - Constants.PickerPreviewHeight,
-            screenHeight - pickerSizeHalf - Constants.PickerPreviewHeight
+        window.setFrameOrigin(
+          NSMakePoint(
+            point.x - pickerSizeHalf,
+            min(
+              point.y - pickerSizeHalf - Constants.PickerPreviewHeight,
+              screenHeight - pickerSizeHalf - Constants.PickerPreviewHeight
+            )
           )
         )
-      )
+      }
     }
   }
 
@@ -136,21 +134,7 @@ struct ColorPicker: View {
       let centerColor = bitmap.colorAt(x: center, y: center)
 
       if let color = centerColor {
-        // The color doesn't match the screen color space.
-        // https://stackoverflow.com/a/47005433/1945960
-        let components = UnsafeMutablePointer<CGFloat>.allocate(capacity: color.numberOfComponents)
-
-        // Grab the color components.
-        color.getComponents(components)
-
-        // Get a new color with the proper color space.
-        appModel.picker.color = HSBColor(
-          NSColor(
-            colorSpace: bitmap.colorSpace,
-            components: components,
-            count: color.numberOfComponents
-          )
-        )
+        appModel.picker.color = HSBColor(color)
       }
     }
   }
