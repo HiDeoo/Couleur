@@ -18,10 +18,12 @@ enum ColorFormat: Int, CaseIterable {
   case CssHsla
   case CssRgb
   case CssRgba
-  case SwiftNsHsb
-  case SwiftNsRgb
-  case SwiftUIHsb
-  case SwiftUIRgb
+  case SwiftAppKitHsb
+  case SwiftAppKitRgb
+  case SwiftUiKitHsb
+  case SwiftUiKitRgb
+  case SwiftUiHsb
+  case SwiftUiRgb
 }
 
 private enum ColorComponent {
@@ -29,6 +31,12 @@ private enum ColorComponent {
   case Green
   case Blue
   case Alpha
+}
+
+private enum SwiftColorPrefix: String {
+  case AppKit = "NSColor"
+  case UiKit = "UIColor"
+  case SwiftUi = "Color"
 }
 
 class ColorFormatter {
@@ -42,10 +50,12 @@ class ColorFormatter {
     .CssHsla: ColorFormatDefinition(description: "CSS HSLA", formatter: toCssHsla),
     .CssRgb: ColorFormatDefinition(description: "CSS RGB", formatter: toCssRgb),
     .CssRgba: ColorFormatDefinition(description: "CSS RGBA", formatter: toCssRgba),
-    .SwiftNsHsb: ColorFormatDefinition(description: "Swift NSColor HSB", formatter: toSwiftNsHsb),
-    .SwiftNsRgb: ColorFormatDefinition(description: "Swift NSColor RGB", formatter: toSwiftNsRgb),
-    .SwiftUIHsb: ColorFormatDefinition(description: "Swift UIColor HSB", formatter: toSwiftUIHsb),
-    .SwiftUIRgb: ColorFormatDefinition(description: "Swift UIColor RGB", formatter: toSwiftUIRgb),
+    .SwiftAppKitHsb: ColorFormatDefinition(description: "Swift NSColor HSB", formatter: toSwiftAppKitHsb),
+    .SwiftAppKitRgb: ColorFormatDefinition(description: "Swift NSColor RGB", formatter: toSwiftAppKitRgb),
+    .SwiftUiKitHsb: ColorFormatDefinition(description: "Swift UIColor HSB", formatter: toSwiftUiKitHsb),
+    .SwiftUiKitRgb: ColorFormatDefinition(description: "Swift UIColor RGB", formatter: toSwiftUiKitRgb),
+    .SwiftUiHsb: ColorFormatDefinition(description: "SwiftUI HSB", formatter: toSwiftUiHsb),
+    .SwiftUiRgb: ColorFormatDefinition(description: "SwiftUI RGB", formatter: toSwiftUiRgb),
   ]
 
   static func getDescription(format: ColorFormat) -> String {
@@ -102,19 +112,19 @@ class ColorFormatter {
     return get8BitsComponent(color, component) << operand
   }
 
-  private static func toSwiftColor(_ components: [(String, CGFloat)], prefix: String) -> String {
+  private static func toSwiftColor(_ components: [(String, CGFloat)], prefix: SwiftColorPrefix) -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.minimumFractionDigits = 0
     formatter.maximumFractionDigits = 4
 
-    var result = "\(prefix)("
+    var result = "\(prefix.rawValue)("
 
     for (index, (key, value)) in components.enumerated() {
       result += "\(key): \(formatter.string(from: value as NSNumber) ?? "0")"
 
       if index < components.count {
-        result += ","
+        result += ", "
       }
     }
 
@@ -195,31 +205,45 @@ class ColorFormatter {
     )
   }
 
-  private static func toSwiftNsHsb(_ color: HSBColor) -> String {
+  private static func toSwiftAppKitHsb(_ color: HSBColor) -> String {
     toSwiftColor(
       [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
-      prefix: "NSColor"
+      prefix: SwiftColorPrefix.AppKit
     )
   }
 
-  private static func toSwiftNsRgb(_ color: HSBColor) -> String {
+  private static func toSwiftAppKitRgb(_ color: HSBColor) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
-      prefix: "NSColor"
+      prefix: SwiftColorPrefix.AppKit
     )
   }
 
-  private static func toSwiftUIHsb(_ color: HSBColor) -> String {
+  private static func toSwiftUiKitHsb(_ color: HSBColor) -> String {
     toSwiftColor(
       [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
-      prefix: "UIColor"
+      prefix: SwiftColorPrefix.UiKit
     )
   }
 
-  private static func toSwiftUIRgb(_ color: HSBColor) -> String {
+  private static func toSwiftUiKitRgb(_ color: HSBColor) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
-      prefix: "UIColor"
+      prefix: SwiftColorPrefix.UiKit
+    )
+  }
+
+  private static func toSwiftUiHsb(_ color: HSBColor) -> String {
+    toSwiftColor(
+      [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
+      prefix: SwiftColorPrefix.SwiftUi
+    )
+  }
+
+  private static func toSwiftUiRgb(_ color: HSBColor) -> String {
+    toSwiftColor(
+      [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
+      prefix: SwiftColorPrefix.SwiftUi
     )
   }
 }
