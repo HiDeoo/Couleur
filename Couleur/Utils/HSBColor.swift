@@ -86,6 +86,30 @@ struct HSBColor: Codable {
     raw.getRed(&red, green: &green, blue: &blue, alpha: nil)
   }
 
+  private var hslSaturation: CGFloat {
+    let maxComponent = max(red, green, blue)
+    let minComponent = min(red, green, blue)
+
+    let deltaComponent = maxComponent - minComponent
+
+    let saturation = hslLightness > 0.5 ?
+      deltaComponent / (2 - deltaComponent) :
+      deltaComponent / (maxComponent + minComponent)
+
+    guard !saturation.isNaN, self.saturation > pow(10, -6) || brightness > 10 - pow(10, -6) else {
+      return 0
+    }
+
+    return saturation
+  }
+
+  private var hslLightness: CGFloat {
+    let maxComponent = max(red, green, blue)
+    let minComponent = min(red, green, blue)
+
+    return (maxComponent + minComponent) / 2
+  }
+
   mutating func setHue(_ hue: CGFloat) {
     self.hue = hue
 
@@ -155,6 +179,16 @@ struct HSBColor: Codable {
 
     // https://www.w3.org/TR/WCAG20/#contrast-ratiodef
     return luminance > sqrt(1.05 * 0.05) - 0.05 ? NSColor.black : NSColor.white
+  }
+
+  func getHue(_ hue: UnsafeMutablePointer<CGFloat>,
+              saturation: UnsafeMutablePointer<CGFloat>,
+              lightness: UnsafeMutablePointer<CGFloat>,
+              alpha: UnsafeMutablePointer<CGFloat>?) {
+    hue.pointee = self.hue
+    saturation.pointee = hslSaturation
+    lightness.pointee = hslLightness
+    alpha?.pointee = self.alpha
   }
 }
 

@@ -14,6 +14,10 @@ enum ColorFormat: Int, CaseIterable {
   case AndroidXmlArgb
   case AndroidXmlRgb
   case CssHex
+  case CssHsl
+  case CssHsla
+  case CssRgb
+  case CssRgba
 }
 
 private enum ColorComponent {
@@ -29,7 +33,11 @@ class ColorFormatter {
     .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
     .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
     .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
-    .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCSSHex),
+    .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCssHex),
+    .CssHsl: ColorFormatDefinition(description: "CSS HSL", formatter: toCssHsl),
+    .CssHsla: ColorFormatDefinition(description: "CSS HSLA", formatter: toCssHsla),
+    .CssRgb: ColorFormatDefinition(description: "CSS RGB", formatter: toCssRgb),
+    .CssRgba: ColorFormatDefinition(description: "CSS RGBA", formatter: toCssRgba),
   ]
 
   static func getDescription(format: ColorFormat) -> String {
@@ -55,6 +63,22 @@ class ColorFormatter {
     }
 
     return UInt(value * 255)
+  }
+
+  private static func getHSLA(_ color: HSBColor) -> (hue: UInt, saturation: UInt, lightness: UInt, alpha: UInt) {
+    var hue: CGFloat = 0
+    var saturation: CGFloat = 0
+    var lightness: CGFloat = 0
+    var alpha: CGFloat = 0
+
+    color.getHue(&hue, saturation: &saturation, lightness: &lightness, alpha: &alpha)
+
+    return (
+      hue: UInt(hue * 360),
+      saturation: UInt(saturation * 100),
+      lightness: UInt(lightness * 100),
+      alpha: UInt(alpha * 100)
+    )
   }
 
   private static func getHexComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
@@ -106,10 +130,41 @@ class ColorFormatter {
     )
   }
 
-  private static func toCSSHex(_ color: HSBColor) -> String {
+  private static func toCssHex(_ color: HSBColor) -> String {
     String(
       format: "#%06x",
       getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
+    )
+  }
+
+  private static func toCssHsl(_ color: HSBColor) -> String {
+    let hsla = getHSLA(color)
+
+    return String(format: "hsl(%d, %d%%, %d%%);", hsla.hue, hsla.saturation, hsla.lightness)
+  }
+
+  private static func toCssHsla(_ color: HSBColor) -> String {
+    let hsla = getHSLA(color)
+
+    return String(format: "hsla(%d, %d%%, %d%%, %d%%);", hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
+  }
+
+  private static func toCssRgb(_ color: HSBColor) -> String {
+    String(
+      format: "rgb(%d, %d, %d)",
+      get8BitsComponent(color, .Red),
+      get8BitsComponent(color, .Green),
+      get8BitsComponent(color, .Blue)
+    )
+  }
+
+  private static func toCssRgba(_ color: HSBColor) -> String {
+    String(
+      format: "rgba(%d, %d, %d, %d%%)",
+      get8BitsComponent(color, .Red),
+      get8BitsComponent(color, .Green),
+      get8BitsComponent(color, .Blue),
+      UInt(color.alpha * 100)
     )
   }
 }
