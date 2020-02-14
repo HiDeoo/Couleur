@@ -24,6 +24,7 @@ enum ColorFormat: Int, CaseIterable {
   case SwiftUiKitRgb
   case SwiftUiHsb
   case SwiftUiRgb
+  case CgColorRgb
 }
 
 private enum ColorComponent {
@@ -37,6 +38,7 @@ private enum SwiftColorPrefix: String {
   case AppKit = "NSColor"
   case UiKit = "UIColor"
   case SwiftUi = "Color"
+  case CoreGraphics = "CGColor"
 }
 
 class ColorFormatter {
@@ -56,6 +58,7 @@ class ColorFormatter {
     .SwiftUiKitRgb: ColorFormatDefinition(description: "Swift UIColor RGB", formatter: toSwiftUiKitRgb),
     .SwiftUiHsb: ColorFormatDefinition(description: "SwiftUI HSB", formatter: toSwiftUiHsb),
     .SwiftUiRgb: ColorFormatDefinition(description: "SwiftUI RGB", formatter: toSwiftUiRgb),
+    .CgColorRgb: ColorFormatDefinition(description: "CGColor RGB", formatter: toCgColorRgb),
   ]
 
   static func getDescription(format: ColorFormat) -> String {
@@ -244,6 +247,13 @@ class ColorFormatter {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.SwiftUi
+    )
+  }
+
+  private static func toCgColorRgb(_ color: HSBColor) -> String {
+    toSwiftColor(
+      [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
+      prefix: SwiftColorPrefix.CoreGraphics
     )
   }
 }
