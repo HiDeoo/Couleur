@@ -1,0 +1,12 @@
+name: integration
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Test code
+      run: xcodebuild test -project Couleur.xcodeproj -scheme Couleur -destination 'platform=OS X,arch=x86_64'
