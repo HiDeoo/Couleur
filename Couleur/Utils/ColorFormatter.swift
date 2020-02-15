@@ -28,21 +28,7 @@ enum ColorFormat: Int, CaseIterable {
   case CgColorCmyk
 }
 
-private enum ColorComponent {
-  case Red
-  case Green
-  case Blue
-  case Alpha
-}
-
-private enum SwiftColorPrefix: String {
-  case AppKit = "NSColor"
-  case UiKit = "UIColor"
-  case SwiftUi = "Color"
-  case CoreGraphics = "CGColor"
-}
-
-class ColorFormatter {
+extension ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
     .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
     .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
@@ -62,96 +48,6 @@ class ColorFormatter {
     .CgColorRgb: ColorFormatDefinition(description: "CGColor RGB", formatter: toCgColorRgb),
     .CgColorCmyk: ColorFormatDefinition(description: "CGColor CMYK", formatter: toCgColorCmyk),
   ]
-
-  static func getDescription(format: ColorFormat) -> String {
-    guard let description = definitions[format]?.description else { return "" }
-
-    return description
-  }
-
-  static func format(_ color: HSBColor, _ format: ColorFormat) -> String {
-    guard let formatter = definitions[format]?.formatter else { return "" }
-
-    return formatter(color)
-  }
-
-  private static func get8BitsComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
-    let value: CGFloat
-
-    switch component {
-    case .Red: value = color.red
-    case .Green: value = color.green
-    case .Blue: value = color.blue
-    case .Alpha: value = color.alpha
-    }
-
-    return UInt(value * 255)
-  }
-
-  private static func getHSLA(_ color: HSBColor) -> (hue: UInt, saturation: UInt, lightness: UInt, alpha: UInt) {
-    var hue: CGFloat = 0
-    var saturation: CGFloat = 0
-    var lightness: CGFloat = 0
-    var alpha: CGFloat = 0
-
-    color.getHue(&hue, saturation: &saturation, lightness: &lightness, alpha: &alpha)
-
-    return (
-      hue: UInt(hue * 360),
-      saturation: UInt(saturation * 100),
-      lightness: UInt(lightness * 100),
-      alpha: UInt(alpha * 100)
-    )
-  }
-
-  private static func getCMYK(_ color: HSBColor) ->
-    (cyan: CGFloat, magenta: CGFloat, yellow: CGFloat, black: CGFloat, alpha: CGFloat) {
-    let black = 1 - max(max(color.red, color.green), color.blue)
-
-    if black == 1 {
-      return (cyan: 0, magenta: 0, yellow: 0, black: 1, alpha: color.alpha)
-    }
-
-    let cyan = (1 - color.red - black) / (1 - black)
-    let magenta = (1 - color.green - black) / (1 - black)
-    let yellow = (1 - color.blue - black) / (1 - black)
-
-    return (cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: color.alpha)
-  }
-
-  private static func getHexComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
-    let operand: UInt
-
-    switch component {
-    case .Red: operand = 16
-    case .Green: operand = 8
-    case .Blue: operand = 0
-    case .Alpha: operand = 24
-    }
-
-    return get8BitsComponent(color, component) << operand
-  }
-
-  private static func toSwiftColor(_ components: [(String, CGFloat)], prefix: SwiftColorPrefix) -> String {
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.minimumFractionDigits = 0
-    formatter.maximumFractionDigits = 4
-    formatter.usesGroupingSeparator = false
-    formatter.decimalSeparator = "."
-
-    var result = "\(prefix.rawValue)("
-
-    for (index, (key, value)) in components.enumerated() {
-      result += "\(key): \(formatter.string(from: value as NSNumber) ?? "0")"
-
-      if index < components.count {
-        result += ", "
-      }
-    }
-
-    return "\(result))"
-  }
 
   private static func toAndroidArgb(_ color: HSBColor) -> String {
     String(
@@ -279,14 +175,122 @@ class ColorFormatter {
   private static func toCgColorCmyk(_ color: HSBColor) -> String {
     let cmyk = getCMYK(color)
 
-    return toSwiftColor([
-      ("c", cmyk.cyan),
-      ("magenta", cmyk.magenta),
-      ("yellow", cmyk.yellow),
-      ("black", cmyk.black),
-      ("alpha", cmyk.alpha),
-    ],
-                        prefix: SwiftColorPrefix.CoreGraphics)
+    return toSwiftColor(
+      [
+        ("genericCMYKCyan", cmyk.cyan),
+        ("magenta", cmyk.magenta),
+        ("yellow", cmyk.yellow),
+        ("black", cmyk.black),
+        ("alpha", cmyk.alpha),
+      ],
+      prefix: SwiftColorPrefix.CoreGraphics
+    )
+  }
+}
+
+private enum ColorComponent {
+  case Red
+  case Green
+  case Blue
+  case Alpha
+}
+
+private enum SwiftColorPrefix: String {
+  case AppKit = "NSColor"
+  case UiKit = "UIColor"
+  case SwiftUi = "Color"
+  case CoreGraphics = "CGColor"
+}
+
+class ColorFormatter {
+  static func getDescription(format: ColorFormat) -> String {
+    guard let description = definitions[format]?.description else { return "" }
+
+    return description
+  }
+
+  static func format(_ color: HSBColor, _ format: ColorFormat) -> String {
+    guard let formatter = definitions[format]?.formatter else { return "" }
+
+    return formatter(color)
+  }
+
+  private static func get8BitsComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
+    let value: CGFloat
+
+    switch component {
+    case .Red: value = color.red
+    case .Green: value = color.green
+    case .Blue: value = color.blue
+    case .Alpha: value = color.alpha
+    }
+
+    return UInt(value * 255)
+  }
+
+  private static func getHSLA(_ color: HSBColor) -> (hue: UInt, saturation: UInt, lightness: UInt, alpha: UInt) {
+    var hue: CGFloat = 0
+    var saturation: CGFloat = 0
+    var lightness: CGFloat = 0
+    var alpha: CGFloat = 0
+
+    color.getHue(&hue, saturation: &saturation, lightness: &lightness, alpha: &alpha)
+
+    return (
+      hue: UInt(hue * 360),
+      saturation: UInt(saturation * 100),
+      lightness: UInt(lightness * 100),
+      alpha: UInt(alpha * 100)
+    )
+  }
+
+  private static func getCMYK(_ color: HSBColor) ->
+    (cyan: CGFloat, magenta: CGFloat, yellow: CGFloat, black: CGFloat, alpha: CGFloat) {
+    let black = 1 - max(max(color.red, color.green), color.blue)
+
+    if black == 1 {
+      return (cyan: 0, magenta: 0, yellow: 0, black: 1, alpha: color.alpha)
+    }
+
+    let cyan = (1 - color.red - black) / (1 - black)
+    let magenta = (1 - color.green - black) / (1 - black)
+    let yellow = (1 - color.blue - black) / (1 - black)
+
+    return (cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: color.alpha)
+  }
+
+  private static func getHexComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
+    let operand: UInt
+
+    switch component {
+    case .Red: operand = 16
+    case .Green: operand = 8
+    case .Blue: operand = 0
+    case .Alpha: operand = 24
+    }
+
+    return get8BitsComponent(color, component) << operand
+  }
+
+  private static func toSwiftColor(_ components: [(String, CGFloat)], prefix: SwiftColorPrefix) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 0
+    formatter.maximumFractionDigits = 4
+    formatter.usesGroupingSeparator = false
+    formatter.decimalSeparator = "."
+
+    var result = "\(prefix.rawValue)("
+
+    for (index, (key, value)) in components.enumerated() {
+      result += "\(key): \(formatter.string(from: value as NSNumber) ?? "0")"
+
+      if index < components.count {
+        result += ", "
+      }
+    }
+
+    return "\(result))"
   }
 }
 
