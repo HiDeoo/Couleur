@@ -25,6 +25,7 @@ enum ColorFormat: Int, CaseIterable {
   case SwiftUiHsb
   case SwiftUiRgb
   case CgColorRgb
+  case CgColorCmyk
 }
 
 private enum ColorComponent {
@@ -59,6 +60,7 @@ class ColorFormatter {
     .SwiftUiHsb: ColorFormatDefinition(description: "SwiftUI HSB", formatter: toSwiftUiHsb),
     .SwiftUiRgb: ColorFormatDefinition(description: "SwiftUI RGB", formatter: toSwiftUiRgb),
     .CgColorRgb: ColorFormatDefinition(description: "CGColor RGB", formatter: toCgColorRgb),
+    .CgColorCmyk: ColorFormatDefinition(description: "CGColor CMYK", formatter: toCgColorCmyk),
   ]
 
   static func getDescription(format: ColorFormat) -> String {
@@ -102,6 +104,21 @@ class ColorFormatter {
     )
   }
 
+  private static func getCMYK(_ color: HSBColor) ->
+    (cyan: CGFloat, magenta: CGFloat, yellow: CGFloat, black: CGFloat, alpha: CGFloat) {
+    let black = 1 - max(max(color.red, color.green), color.blue)
+
+    if black == 1 {
+      return (cyan: 0, magenta: 0, yellow: 0, black: 1, alpha: color.alpha)
+    }
+
+    let cyan = (1 - color.red - black) / (1 - black)
+    let magenta = (1 - color.green - black) / (1 - black)
+    let yellow = (1 - color.blue - black) / (1 - black)
+
+    return (cyan: cyan, magenta: magenta, yellow: yellow, black: black, alpha: color.alpha)
+  }
+
   private static func getHexComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
     let operand: UInt
 
@@ -120,6 +137,8 @@ class ColorFormatter {
     formatter.numberStyle = .decimal
     formatter.minimumFractionDigits = 0
     formatter.maximumFractionDigits = 4
+    formatter.usesGroupingSeparator = false
+    formatter.decimalSeparator = "."
 
     var result = "\(prefix.rawValue)("
 
@@ -255,6 +274,19 @@ class ColorFormatter {
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.CoreGraphics
     )
+  }
+
+  private static func toCgColorCmyk(_ color: HSBColor) -> String {
+    let cmyk = getCMYK(color)
+
+    return toSwiftColor([
+      ("c", cmyk.cyan),
+      ("magenta", cmyk.magenta),
+      ("yellow", cmyk.yellow),
+      ("black", cmyk.black),
+      ("alpha", cmyk.alpha),
+    ],
+                        prefix: SwiftColorPrefix.CoreGraphics)
   }
 }
 
