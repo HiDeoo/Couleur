@@ -30,10 +30,10 @@ enum ColorFormat: Int, CaseIterable {
 
 extension ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
-    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
     .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
-    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
+    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
     .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
+    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
     .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCssHex),
     .CssHsl: ColorFormatDefinition(description: "CSS HSL", formatter: toCssHsl),
     .CssHsla: ColorFormatDefinition(description: "CSS HSLA", formatter: toCssHsla),
@@ -70,7 +70,7 @@ extension ColorFormatter {
 
   private static func toAndroidXmlArgb(_ color: HSBColor) -> String {
     String(
-      format: "<color name=\"color_name\">%08x</color>",
+      format: "<color name=\"color_name\">#%08x</color>",
       getHexComponent(color, .Alpha) |
         getHexComponent(color, .Red) |
         getHexComponent(color, .Green) |
@@ -80,7 +80,7 @@ extension ColorFormatter {
 
   private static func toAndroidXmlRgb(_ color: HSBColor) -> String {
     String(
-      format: "<color name=\"color_name\">%06x</color>",
+      format: "<color name=\"color_name\">#%06x</color>",
       getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
     )
   }
@@ -95,13 +95,13 @@ extension ColorFormatter {
   private static func toCssHsl(_ color: HSBColor) -> String {
     let hsla = getHSLA(color)
 
-    return String(format: "hsl(%d, %d%%, %d%%);", hsla.hue, hsla.saturation, hsla.lightness)
+    return String(format: "hsl(%d, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness)
   }
 
   private static func toCssHsla(_ color: HSBColor) -> String {
     let hsla = getHSLA(color)
 
-    return String(format: "hsla(%d, %d%%, %d%%, %d%%);", hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
+    return String(format: "hsla(%d, %d%%, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
   }
 
   private static func toCssRgb(_ color: HSBColor) -> String {
@@ -276,7 +276,7 @@ class ColorFormatter {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.minimumFractionDigits = 0
-    formatter.maximumFractionDigits = 4
+    formatter.maximumFractionDigits = 2
     formatter.usesGroupingSeparator = false
     formatter.decimalSeparator = "."
 
@@ -285,7 +285,7 @@ class ColorFormatter {
     for (index, (key, value)) in components.enumerated() {
       result += "\(key): \(formatter.string(from: value as NSNumber) ?? "0")"
 
-      if index < components.count {
+      if index < components.count - 1 {
         result += ", "
       }
     }

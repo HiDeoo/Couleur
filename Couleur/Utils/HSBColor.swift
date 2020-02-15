@@ -185,7 +185,7 @@ struct HSBColor: Codable {
               saturation: UnsafeMutablePointer<CGFloat>,
               lightness: UnsafeMutablePointer<CGFloat>,
               alpha: UnsafeMutablePointer<CGFloat>?) {
-    hue.pointee = self.hue
+    hue.pointee = self.hue != 1 ? self.hue : 0
     saturation.pointee = hslSaturation
     lightness.pointee = hslLightness
     alpha?.pointee = self.alpha

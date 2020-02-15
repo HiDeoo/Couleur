@@ -22,6 +22,7 @@
 		E855865B23D4A3C60002637F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865A23D4A3C60002637F /* Alerts.swift */; };
 		E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855865C23D4A50C0002637F /* ColorEditor.swift */; };
 		E860815223D0CC9A003C36CA /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860815123D0CC9A003C36CA /* Permissions.swift */; };
+		E863C27523F8026700858A41 /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863C27423F8026700858A41 /* ColorFormatter.swift */; };
 		E869D12723EDB09E00E5891B /* ColorPickerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E869D12623EDB09E00E5891B /* ColorPickerPreview.swift */; };
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
@@ -41,6 +42,16 @@
 		E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E863C26F23F7FE9D00858A41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8D902FA23C7211500476DC5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8D9030123C7211500476DC5;
+			remoteInfo = Couleur;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E817698923DEE51300DB7ED9 /* LinearSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearSlider.swift; sourceTree = "<group>"; };
 		E817698B23DEED6700DB7ED9 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -57,6 +68,9 @@
 		E855865A23D4A3C60002637F /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E855865C23D4A50C0002637F /* ColorEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEditor.swift; sourceTree = "<group>"; };
 		E860815123D0CC9A003C36CA /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		E863C26A23F7FE9D00858A41 /* CouleurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouleurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E863C26E23F7FE9D00858A41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E863C27423F8026700858A41 /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
 		E869D12623EDB09E00E5891B /* ColorPickerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPreview.swift; sourceTree = "<group>"; };
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -80,6 +94,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E863C26723F7FE9D00858A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8D902FF23C7211500476DC5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +170,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E863C26B23F7FE9D00858A41 /* CouleurTests */ = {
+			isa = PBXGroup;
+			children = (
+				E863C27423F8026700858A41 /* ColorFormatter.swift */,
+				E863C26E23F7FE9D00858A41 /* Info.plist */,
+			);
+			path = CouleurTests;
+			sourceTree = "<group>";
+		};
 		E86CD53123CF2FE700342A45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D9030423C7211500476DC5 /* Couleur */,
+				E863C26B23F7FE9D00858A41 /* CouleurTests */,
 				E8D9030323C7211500476DC5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D9030223C7211500476DC5 /* Couleur.app */,
+				E863C26A23F7FE9D00858A41 /* CouleurTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,6 +246,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E863C26923F7FE9D00858A41 /* CouleurTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E863C27323F7FE9D00858A41 /* Build configuration list for PBXNativeTarget "CouleurTests" */;
+			buildPhases = (
+				E863C26623F7FE9D00858A41 /* Sources */,
+				E863C26723F7FE9D00858A41 /* Frameworks */,
+				E863C26823F7FE9D00858A41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E863C27023F7FE9D00858A41 /* PBXTargetDependency */,
+			);
+			name = CouleurTests;
+			productName = CouleurTests;
+			productReference = E863C26A23F7FE9D00858A41 /* CouleurTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E8D9030123C7211500476DC5 /* Couleur */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D9031523C7211700476DC5 /* Build configuration list for PBXNativeTarget "Couleur" */;
@@ -242,6 +292,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = HiDeoo;
 				TargetAttributes = {
+					E863C26923F7FE9D00858A41 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = E8D9030123C7211500476DC5;
+					};
 					E8D9030123C7211500476DC5 = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -261,11 +315,19 @@
 			projectRoot = "";
 			targets = (
 				E8D9030123C7211500476DC5 /* Couleur */,
+				E863C26923F7FE9D00858A41 /* CouleurTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E863C26823F7FE9D00858A41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8D9030023C7211500476DC5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +363,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E863C26623F7FE9D00858A41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E863C27523F8026700858A41 /* ColorFormatter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8D902FE23C7211500476DC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +408,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E863C27023F7FE9D00858A41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8D9030123C7211500476DC5 /* Couleur */;
+			targetProxy = E863C26F23F7FE9D00858A41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E8D9030E23C7211700476DC5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -350,6 +428,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E863C27123F7FE9D00858A41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CouleurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hideoo.CouleurTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couleur.app/Contents/MacOS/Couleur";
+			};
+			name = Debug;
+		};
+		E863C27223F7FE9D00858A41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CouleurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hideoo.CouleurTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Couleur.app/Contents/MacOS/Couleur";
+			};
+			name = Release;
+		};
 		E8D9031323C7211700476DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -512,6 +628,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E863C27323F7FE9D00858A41 /* Build configuration list for PBXNativeTarget "CouleurTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E863C27123F7FE9D00858A41 /* Debug */,
+				E863C27223F7FE9D00858A41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E8D902FD23C7211500476DC5 /* Build configuration list for PBXProject "Couleur" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
