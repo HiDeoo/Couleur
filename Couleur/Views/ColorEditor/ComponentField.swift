@@ -55,6 +55,7 @@ struct ComponentField: View {
     )
 
     return TextField(value: valueBinding)
+      .focusable()
       .onAppear {
         valueBinding.wrappedValue = self.value.description
       }
