@@ -9,10 +9,6 @@
 import SwiftUI
 
 enum ColorFormat: Int, CaseIterable {
-  case AndroidArgb
-  case AndroidRgb
-  case AndroidXmlArgb
-  case AndroidXmlRgb
   case CssHex
   case CssHsl
   case CssHsla
@@ -26,14 +22,14 @@ enum ColorFormat: Int, CaseIterable {
   case SwiftUiRgb
   case CgColorRgb
   case CgColorCmyk
+  case AndroidRgb
+  case AndroidArgb
+  case AndroidXmlRgb
+  case AndroidXmlArgb
 }
 
 extension ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
-    .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
-    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
-    .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
-    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
     .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCssHex),
     .CssHsl: ColorFormatDefinition(description: "CSS HSL", formatter: toCssHsl),
     .CssHsla: ColorFormatDefinition(description: "CSS HSLA", formatter: toCssHsla),
@@ -47,6 +43,10 @@ extension ColorFormatter {
     .SwiftUiRgb: ColorFormatDefinition(description: "SwiftUI RGB", formatter: toSwiftUiRgb),
     .CgColorRgb: ColorFormatDefinition(description: "CGColor RGB", formatter: toCgColorRgb),
     .CgColorCmyk: ColorFormatDefinition(description: "CGColor CMYK", formatter: toCgColorCmyk),
+    .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
+    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
+    .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
+    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
   ]
 
   private static func toAndroidArgb(_ color: HSBColor) -> String {

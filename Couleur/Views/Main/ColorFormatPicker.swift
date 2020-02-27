@@ -56,7 +56,7 @@ struct ColorFormatPicker: View {
           HStack {
             Spacer()
             Text(ColorFormatter.getDescription(format: format))
-              .font(.system(size: 14))
+              .font(.system(size: 13))
               .bold()
               .lineLimit(1)
             Text(selected ? "􀆅" : "")
