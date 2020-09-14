@@ -60,6 +60,8 @@ struct ColorFormatPicker: View {
               .bold()
               .lineLimit(1)
             Text(selected ? "􀆅" : "")
+              .scaleEffect(selected ? 1 : 0.01)
+              .animation(.linear(duration: 0.1))
               .frame(width: 20)
           }
           .padding([.leading, .top, .bottom], Constants.ViewPadding)
