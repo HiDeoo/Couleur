@@ -245,7 +245,8 @@ class ColorFormatter {
   }
 
   private static func getCMYK(_ color: HSBColor) ->
-    (cyan: CGFloat, magenta: CGFloat, yellow: CGFloat, black: CGFloat, alpha: CGFloat) {
+    (cyan: CGFloat, magenta: CGFloat, yellow: CGFloat, black: CGFloat, alpha: CGFloat)
+  {
     let black = 1 - max(max(color.red, color.green), color.blue)
 
     if black == 1 {

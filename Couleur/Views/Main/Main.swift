@@ -44,7 +44,7 @@ struct Main: View {
     .alert(isPresented: $showPermissionAlert) {
       getPermissionsAlert(action: {
         self.showPicker()
-        })
+      })
     }
   }
 

@@ -16,7 +16,8 @@ class Permissions {
       let processIdentifier = runningApplication.processIdentifier
 
       guard let windows = CGWindowListCopyWindowInfo([.optionOnScreenOnly], kCGNullWindowID)
-        as? [[String: AnyObject]] else {
+        as? [[String: AnyObject]]
+      else {
         assertionFailure("Invalid window info")
         return false
       }

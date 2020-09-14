@@ -41,7 +41,7 @@ struct SegmentedControl<OptionType>: View where OptionType: Equatable {
 
       return Button(action: {
         self.value = self.option
-        }) {
+      }) {
         Text(valueRenderer(self.option))
           .padding(EdgeInsets(top: 4, leading: 14, bottom: 4, trailing: 14))
           .foregroundColor(.white)
