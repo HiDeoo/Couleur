@@ -13,6 +13,16 @@ struct ColorExporter: View {
   let format: ColorFormat
   @Binding var showColorFormatPicker: Bool
 
+  init(color: HSBColor, format: ColorFormat, showColorFormatPicker: Binding<Bool>) {
+    self.color = color
+    self.format = format
+    _showColorFormatPicker = showColorFormatPicker
+
+    formattedColor = ColorFormatter.format(color, format)
+  }
+
+  private let formattedColor: String
+
   var body: some View {
     VStack(spacing: 0) {
       Rectangle()
@@ -24,7 +34,7 @@ struct ColorExporter: View {
         }
       }) {
         HStack {
-          Text(ColorFormatter.format(color, format))
+          Text(formattedColor)
             .font(.system(.headline))
             .foregroundColor(Color("label"))
           Spacer()
@@ -34,6 +44,7 @@ struct ColorExporter: View {
         }
         .padding(Constants.ViewPadding)
         .background(Color("windowBackground"))
+        .overlay(Tooltip(tooltip: formattedColor))
       }
       .buttonStyle(PlainButtonStyle())
       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)

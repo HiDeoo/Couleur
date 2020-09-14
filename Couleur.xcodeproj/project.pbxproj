@@ -27,6 +27,7 @@
 		E86CD53723CF335500342A45 /* PickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53623CF335500342A45 /* PickerModel.swift */; };
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
 		E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* HSBColor.swift */; };
+		E890DA5A250F9AC600ABC169 /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E890DA59250F9AC600ABC169 /* Tooltip.swift */; };
 		E8B1F9C623E97CD8001936BD /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C523E97CD8001936BD /* Types.swift */; };
 		E8B1F9C823E99CC1001936BD /* ColorFormatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */; };
 		E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C923E9C684001936BD /* ColorFormatter.swift */; };
@@ -75,6 +76,7 @@
 		E86CD53623CF335500342A45 /* PickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerModel.swift; sourceTree = "<group>"; };
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E86F8AEC23D8BF810028340C /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
+		E890DA59250F9AC600ABC169 /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
 		E8B1F9C523E97CD8001936BD /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatPicker.swift; sourceTree = "<group>"; };
 		E8B1F9C923E9C684001936BD /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */,
 				E831EB6123E312660034CB81 /* RoundedCorners.swift */,
 				E8D5B5BB23EC11FF001A1452 /* StackedView.swift */,
+				E890DA59250F9AC600ABC169 /* Tooltip.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				E817699023DF3D0B00DB7ED9 /* ComponentField.swift in Sources */,
 				E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
+				E890DA5A250F9AC600ABC169 /* Tooltip.swift in Sources */,
 				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
 				E817698A23DEE51300DB7ED9 /* LinearSlider.swift in Sources */,
 				E8D5B5BC23EC11FF001A1452 /* StackedView.swift in Sources */,
