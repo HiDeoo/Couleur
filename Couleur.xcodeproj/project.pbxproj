@@ -14,6 +14,7 @@
 		E817B7DD23E1D2A200A8C6A2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E817B7DC23E1D2A200A8C6A2 /* Colors.xcassets */; };
 		E8257F8423D604C90018180E /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8257F8323D604C90018180E /* Pointer.swift */; };
 		E82CE85E2510B719006C887A /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE85D2510B719006C887A /* DebugView.swift */; };
+		E82CE8612510C570006C887A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE8602510C570006C887A /* Preferences.swift */; };
 		E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E831EB6123E312660034CB81 /* RoundedCorners.swift */; };
 		E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */; };
 		E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* TextField.swift */; };
@@ -62,6 +63,7 @@
 		E817B7DC23E1D2A200A8C6A2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E8257F8323D604C90018180E /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		E82CE85D2510B719006C887A /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
+		E82CE8602510C570006C887A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		E831EB6123E312660034CB81 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightness.swift; sourceTree = "<group>"; };
 		E84D202223E2FB4B000D9A63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -148,6 +150,14 @@
 				E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */,
 			);
 			path = ColorEditor;
+			sourceTree = "<group>";
+		};
+		E82CE85F2510C554006C887A /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				E82CE8602510C570006C887A /* Preferences.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		E84D202123E2FB26000D9A63 /* Shared */ = {
@@ -244,6 +254,7 @@
 				E8257F8023D604950018180E /* Main */,
 				E8257F8123D604A10018180E /* ColorPicker */,
 				E8257F8223D604B10018180E /* ColorEditor */,
+				E82CE85F2510C554006C887A /* Preferences */,
 				E84D202123E2FB26000D9A63 /* Shared */,
 			);
 			path = Views;
@@ -384,6 +395,7 @@
 				E8B1F9C823E99CC1001936BD /* ColorFormatPicker.swift in Sources */,
 				E860815223D0CC9A003C36CA /* Permissions.swift in Sources */,
 				E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */,
+				E82CE8612510C570006C887A /* Preferences.swift in Sources */,
 				E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */,
 				E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */,
 				E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */,
