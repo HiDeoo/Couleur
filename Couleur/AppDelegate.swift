@@ -11,7 +11,7 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-  var window: NSWindow!
+  var mainWindow: NSWindow!
   var preferencesWindow: NSWindow!
   let appModel = AppModel()
 
@@ -23,20 +23,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_: Notification) {
     let main = Main()
 
-    window = NSWindow(
+    mainWindow = NSWindow(
       contentRect: NSRect(x: 0, y: 0, width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight),
       styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
-    window.center()
-    window.setFrameAutosaveName("Main")
-    window.contentView = NSHostingView(rootView: main.environmentObject(appModel))
+    mainWindow.center()
+    mainWindow.isReleasedWhenClosed = false
+    mainWindow.setFrameAutosaveName("Main")
+    mainWindow.contentView = NSHostingView(rootView: main.environmentObject(appModel))
 
-    window.makeKeyAndOrderFront(nil)
+    mainWindow.makeKeyAndOrderFront(nil)
   }
 
   func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-    true
+    false
+  }
+
+  func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+    if !flag {
+      mainWindow.makeKeyAndOrderFront(nil)
+    }
+
+    return true
   }
 
   @IBAction func openPreferencesWindow(sender _: AnyObject) {
@@ -47,8 +56,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         backing: .buffered, defer: false
       )
       preferencesWindow.center()
-      preferencesWindow.setFrameAutosaveName("Preferences")
       preferencesWindow.isReleasedWhenClosed = false
+      preferencesWindow.setFrameAutosaveName("Preferences")
       preferencesWindow.contentView = NSHostingView(rootView: Preferences().environmentObject(appModel))
     }
 
