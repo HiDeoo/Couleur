@@ -43,6 +43,7 @@
 		E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */; };
 		E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9A23CDD14900D1D461 /* Constants.swift */; };
 		E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */; };
+		E8FBB6A6251208ED00CCCB13 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBB6A5251208ED00CCCB13 /* Checkbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E8DDDCB523E82D1F00AFC709 /* TransparencyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparencyLayer.swift; sourceTree = "<group>"; };
 		E8F1CF9A23CDD14900D1D461 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E8F1CF9C23CDD7E000D1D461 /* ColorPickerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerGrid.swift; sourceTree = "<group>"; };
+		E8FBB6A5251208ED00CCCB13 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				E8D5B5BB23EC11FF001A1452 /* StackedView.swift */,
 				E890DA59250F9AC600ABC169 /* Tooltip.swift */,
 				E82CE85D2510B719006C887A /* DebugView.swift */,
+				E8FBB6A5251208ED00CCCB13 /* Checkbox.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
 				E890DA5A250F9AC600ABC169 /* Tooltip.swift in Sources */,
+				E8FBB6A6251208ED00CCCB13 /* Checkbox.swift in Sources */,
 				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
 				E817698A23DEE51300DB7ED9 /* LinearSlider.swift in Sources */,
 				E8D5B5BC23EC11FF001A1452 /* StackedView.swift in Sources */,

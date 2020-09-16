@@ -27,6 +27,11 @@ class AppModel: ObservableObject {
    */
   @Published(forUserDefaultsKey: "componentsEditorType") var componentsEditorType = Constants.ComponentsEditorDefaultType
 
+  /**
+   * Defines if upper case letters should be used for hexadecimal color formats.
+   */
+  @Published(forUserDefaultsKey: "useUpperCaseHex") var useUpperCaseHex = false
+
   var cancellable: AnyCancellable?
 
   init() {

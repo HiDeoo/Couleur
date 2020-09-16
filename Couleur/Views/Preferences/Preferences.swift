@@ -12,16 +12,9 @@ struct Preferences: View {
   @EnvironmentObject var appModel: AppModel
 
   var body: some View {
-    VStack {
-      Text(String(appModel.format.rawValue))
-        .padding(20)
-      Button(action: {
-        self.appModel.format = ColorFormat.AndroidXmlArgb
-      }) {
-        Text("Test")
-          .debugView()
-      }
-    }
+    VStack(spacing: 0) {
+      Checkbox(checked: $appModel.useUpperCaseHex, label: "Use upper case letters for hexadecimal color formats")
+    }.padding(Constants.WindowPadding)
   }
 }
 

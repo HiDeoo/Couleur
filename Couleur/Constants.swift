@@ -25,6 +25,11 @@ struct Constants {
   static let ColorPreviewHeight: CGFloat = 120
 
   /**
+   * The default padding of classic windows.
+   */
+  static let WindowPadding: CGFloat = 15
+
+  /**
    * The default padding of most views in point.
    */
   static let ViewPadding: CGFloat = 10
@@ -94,6 +99,16 @@ struct Constants {
    * The diameter in points of a pointer.
    */
   static let PointerDiameter: CGFloat = 15
+
+  /**
+   * The font size used in preferences.
+   */
+  static let PreferencesFontSize: CGFloat = 13
+
+  /**
+   * The checkboxes size in preferences.
+   */
+  static let PreferencesCheckboxSize: CGFloat = 16
 
   /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
