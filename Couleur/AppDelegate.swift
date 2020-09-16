@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     mainWindow = NSWindow(
       contentRect: NSRect(x: 0, y: 0, width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight),
-      styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
+      styleMask: [.titled, .closable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
     mainWindow.center()
@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if preferencesWindow == nil {
       preferencesWindow = NSWindow(
         contentRect: NSRect(x: 0, y: 0, width: 500, height: 300),
-        styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
+        styleMask: [.titled, .closable, .fullSizeContentView],
         backing: .buffered, defer: false
       )
       preferencesWindow.center()
