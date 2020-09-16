@@ -37,7 +37,10 @@ struct ColorPicker: View {
       .overlay(Circle().stroke(Color.black, lineWidth: 1))
       .frame(width: Constants.PickerDimension, height: Constants.PickerDimension + Constants.PickerPreviewHeight * 2)
       if appModel.picker.color != nil {
-        ColorPickerPreview(color: appModel.picker.color!, format: appModel.format, flipped: previewFlipped)
+        ColorPickerPreview(color: appModel.picker.color!,
+                           format: appModel.format,
+                           useUpperCaseHex: appModel.useUpperCaseHex,
+                           flipped: previewFlipped)
       }
     }
     .onAppear {

@@ -11,11 +11,13 @@ import SwiftUI
 struct ColorPickerPreview: View {
   let color: HSBColor
   let format: ColorFormat
+  let useUpperCaseHex: Bool
   let flipped: Bool
 
-  init(color: HSBColor, format: ColorFormat, flipped: Bool) {
+  init(color: HSBColor, format: ColorFormat, useUpperCaseHex: Bool, flipped: Bool) {
     self.color = color
     self.format = format
+    self.useUpperCaseHex = useUpperCaseHex
     self.flipped = flipped
 
     textContrastColor = color.getTextContrastColor()
@@ -24,7 +26,7 @@ struct ColorPickerPreview: View {
   private let textContrastColor: NSColor
 
   var body: some View {
-    Text(ColorFormatter.format(color, format))
+    Text(ColorFormatter.format(color, format, ColorFormatterOptions(useUpperCaseHex: useUpperCaseHex)))
       .lineLimit(1)
       .font(.system(.caption))
       .foregroundColor(Color(textContrastColor))
@@ -52,6 +54,6 @@ struct ColorPickerPreview: View {
 
 struct ColorPickerPreview_Previews: PreviewProvider {
   static var previews: some View {
-    ColorPickerPreview(color: HSBColor(.blue), format: .CssHex, flipped: false)
+    ColorPickerPreview(color: HSBColor(.blue), format: .CssHex, useUpperCaseHex: false, flipped: false)
   }
 }
