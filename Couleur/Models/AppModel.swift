@@ -30,7 +30,7 @@ class AppModel: ObservableObject {
   /**
    * Defines if upper case letters should be used for hexadecimal color formats.
    */
-  @Published(forUserDefaultsKey: "useUpperCaseHex") var useUpperCaseHex = false
+  @Published(forUserDefaultsKey: "useUpperCaseHex") var useUpperCaseHex = Constants.UseUpperCaseHexDefault
 
   var cancellable: AnyCancellable?
 

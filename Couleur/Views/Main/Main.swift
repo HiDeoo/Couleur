@@ -26,6 +26,7 @@ struct Main: View {
         ColorExporter(
           color: appModel.color,
           format: appModel.format,
+          useUpperCaseHex: appModel.useUpperCaseHex,
           showColorFormatPicker: $showColorFormatPicker
         )
         ColorEditor(color: $appModel.color, componentsEditorType: $appModel.componentsEditorType)

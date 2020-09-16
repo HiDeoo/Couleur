@@ -28,6 +28,10 @@ enum ColorFormat: Int, CaseIterable {
   case AndroidXmlArgb
 }
 
+struct ColorFormatterOptions {
+  let useUpperCaseHex: Bool
+}
+
 extension ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
     .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCssHex),
@@ -49,7 +53,7 @@ extension ColorFormatter {
     .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
   ]
 
-  private static func toAndroidArgb(_ color: HSBColor) -> String {
+  private static func toAndroidArgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     String(
       format: "Color.argb(%d, %d, %d, %d)",
       get8BitsComponent(color, .Alpha),
@@ -59,7 +63,7 @@ extension ColorFormatter {
     )
   }
 
-  private static func toAndroidRgb(_ color: HSBColor) -> String {
+  private static func toAndroidRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     String(
       format: "Color.rgb(%d, %d, %d)",
       get8BitsComponent(color, .Red),
@@ -68,43 +72,44 @@ extension ColorFormatter {
     )
   }
 
-  private static func toAndroidXmlArgb(_ color: HSBColor) -> String {
-    String(
-      format: "<color name=\"color_name\">#%08x</color>",
-      getHexComponent(color, .Alpha) |
-        getHexComponent(color, .Red) |
-        getHexComponent(color, .Green) |
-        getHexComponent(color, .Blue)
-    )
+  private static func toAndroidXmlArgb(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
+    let hexString = getHexString(strFormat: "#%08x",
+                                 value: getHexComponent(color, .Alpha) |
+                                   getHexComponent(color, .Red) |
+                                   getHexComponent(color, .Green) |
+                                   getHexComponent(color, .Blue),
+                                 useUpperCase: options.useUpperCaseHex)
+
+    return "<color name=\"color_name\">\(hexString)</color>"
   }
 
-  private static func toAndroidXmlRgb(_ color: HSBColor) -> String {
-    String(
-      format: "<color name=\"color_name\">#%06x</color>",
-      getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
-    )
+  private static func toAndroidXmlRgb(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
+    let hexString = getHexString(strFormat: "#%06x",
+                                 value: getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue),
+                                 useUpperCase: options.useUpperCaseHex)
+
+    return "<color name=\"color_name\">\(hexString)</color>"
   }
 
-  private static func toCssHex(_ color: HSBColor) -> String {
-    String(
-      format: "#%06x",
-      getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue)
-    )
+  private static func toCssHex(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
+    getHexString(strFormat: "#%06x",
+                 value: getHexComponent(color, .Red) | getHexComponent(color, .Green) | getHexComponent(color, .Blue),
+                 useUpperCase: options.useUpperCaseHex)
   }
 
-  private static func toCssHsl(_ color: HSBColor) -> String {
+  private static func toCssHsl(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     let hsla = getHSLA(color)
 
     return String(format: "hsl(%d, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness)
   }
 
-  private static func toCssHsla(_ color: HSBColor) -> String {
+  private static func toCssHsla(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     let hsla = getHSLA(color)
 
     return String(format: "hsla(%d, %d%%, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
   }
 
-  private static func toCssRgb(_ color: HSBColor) -> String {
+  private static func toCssRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     String(
       format: "rgb(%d, %d, %d)",
       get8BitsComponent(color, .Red),
@@ -113,7 +118,7 @@ extension ColorFormatter {
     )
   }
 
-  private static func toCssRgba(_ color: HSBColor) -> String {
+  private static func toCssRgba(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     String(
       format: "rgba(%d, %d, %d, %d%%)",
       get8BitsComponent(color, .Red),
@@ -123,56 +128,56 @@ extension ColorFormatter {
     )
   }
 
-  private static func toSwiftAppKitHsb(_ color: HSBColor) -> String {
+  private static func toSwiftAppKitHsb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.AppKit
     )
   }
 
-  private static func toSwiftAppKitRgb(_ color: HSBColor) -> String {
+  private static func toSwiftAppKitRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.AppKit
     )
   }
 
-  private static func toSwiftUiKitHsb(_ color: HSBColor) -> String {
+  private static func toSwiftUiKitHsb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.UiKit
     )
   }
 
-  private static func toSwiftUiKitRgb(_ color: HSBColor) -> String {
+  private static func toSwiftUiKitRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.UiKit
     )
   }
 
-  private static func toSwiftUiHsb(_ color: HSBColor) -> String {
+  private static func toSwiftUiHsb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("hue", color.hue), ("saturation", color.saturation), ("brightness", color.brightness), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.SwiftUi
     )
   }
 
-  private static func toSwiftUiRgb(_ color: HSBColor) -> String {
+  private static func toSwiftUiRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.SwiftUi
     )
   }
 
-  private static func toCgColorRgb(_ color: HSBColor) -> String {
+  private static func toCgColorRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     toSwiftColor(
       [("red", color.red), ("green", color.green), ("blue", color.blue), ("alpha", color.alpha)],
       prefix: SwiftColorPrefix.CoreGraphics
     )
   }
 
-  private static func toCgColorCmyk(_ color: HSBColor) -> String {
+  private static func toCgColorCmyk(_ color: HSBColor, _: ColorFormatterOptions) -> String {
     let cmyk = getCMYK(color)
 
     return toSwiftColor(
@@ -209,10 +214,14 @@ class ColorFormatter {
     return description
   }
 
-  static func format(_ color: HSBColor, _ format: ColorFormat) -> String {
+  static func format(_ color: HSBColor,
+                     _ format: ColorFormat,
+                     _ options: ColorFormatterOptions = ColorFormatterOptions(useUpperCaseHex:
+                       Constants.UseUpperCaseHexDefault)) -> String
+  {
     guard let formatter = definitions[format]?.formatter else { return "" }
 
-    return formatter(color)
+    return formatter(color, options)
   }
 
   private static func get8BitsComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
@@ -273,6 +282,12 @@ class ColorFormatter {
     return get8BitsComponent(color, component) << operand
   }
 
+  private static func getHexString(strFormat: String, value: UInt, useUpperCase: Bool) -> String {
+    let hexString = String(format: strFormat, value)
+
+    return useUpperCase ? hexString.uppercased() : hexString
+  }
+
   private static func toSwiftColor(_ components: [(String, CGFloat)], prefix: SwiftColorPrefix) -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
@@ -297,7 +312,7 @@ class ColorFormatter {
 
 private struct ColorFormatDefinition {
   let description: String
-  let formatter: (_ color: HSBColor) -> String
+  let formatter: (_ color: HSBColor, _ options: ColorFormatterOptions) -> String
 }
 
 extension ColorFormat: Codable {

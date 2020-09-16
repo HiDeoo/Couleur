@@ -11,14 +11,16 @@ import SwiftUI
 struct ColorExporter: View {
   let color: HSBColor
   let format: ColorFormat
+  let useUpperCaseHex: Bool
   @Binding var showColorFormatPicker: Bool
 
-  init(color: HSBColor, format: ColorFormat, showColorFormatPicker: Binding<Bool>) {
+  init(color: HSBColor, format: ColorFormat, useUpperCaseHex: Bool, showColorFormatPicker: Binding<Bool>) {
     self.color = color
     self.format = format
+    self.useUpperCaseHex = useUpperCaseHex
     _showColorFormatPicker = showColorFormatPicker
 
-    formattedColor = ColorFormatter.format(color, format)
+    formattedColor = ColorFormatter.format(color, format, ColorFormatterOptions(useUpperCaseHex: useUpperCaseHex))
   }
 
   private let formattedColor: String
@@ -66,6 +68,6 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: HSBColor(.blue), format: .CssHex, showColorFormatPicker: .constant(true))
+    ColorExporter(color: HSBColor(.blue), format: .CssHex, useUpperCaseHex: false, showColorFormatPicker: .constant(true))
   }
 }

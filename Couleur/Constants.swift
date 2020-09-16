@@ -50,6 +50,11 @@ struct Constants {
   static let ComponentsEditorDefaultType = ComponentsType.RGBA
 
   /**
+   * Default value of the "use upper case letters for hexadecimal formats" setting.
+   */
+  static let UseUpperCaseHexDefault = false
+
+  /**
    * The default color format.
    */
   static let ColorDefaultFormat = ColorFormat.CssHex
