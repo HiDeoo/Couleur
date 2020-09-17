@@ -26,7 +26,7 @@ struct Checkbox: View {
           }
           Text(checked ? "􀃳" : "􀂒")
             .font(.system(size: Constants.PreferencesCheckboxSize))
-            .foregroundColor(checked ? .accentColor : .white)
+            .foregroundColor(checked ? Color("windowTint") : .white)
         }
         Text(label)
           .font(.system(size: Constants.PreferencesFontSize))
