@@ -14,7 +14,9 @@ struct Preferences: View {
   var body: some View {
     VStack(spacing: 0) {
       Checkbox(checked: $appModel.useUpperCaseHex, label: "Use upper case letters for hexadecimal color formats")
-    }.padding(Constants.WindowPadding)
+    }
+    .padding(Constants.WindowPadding)
+    .background(Color("windowBackground"))
   }
 }
 
