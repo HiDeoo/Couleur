@@ -63,4 +63,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     preferencesWindow.makeKeyAndOrderFront(nil)
   }
+
+  @IBAction func copy(sender _: AnyObject) {
+    let pasteboard = NSPasteboard.general
+
+    pasteboard.declareTypes([.string], owner: nil)
+    pasteboard.setString(
+      ColorFormatter.format(
+        appModel.color,
+        appModel.format,
+        ColorFormatterOptions(useUpperCaseHex: appModel.useUpperCaseHex)
+      ),
+      forType: .string
+    )
+  }
 }
