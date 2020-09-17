@@ -33,6 +33,7 @@
 		E8B1F9C623E97CD8001936BD /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C523E97CD8001936BD /* Types.swift */; };
 		E8B1F9C823E99CC1001936BD /* ColorFormatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */; };
 		E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C923E9C684001936BD /* ColorFormatter.swift */; };
+		E8B25E3325136337005D7798 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B25E3225136337005D7798 /* Notification.swift */; };
 		E8D5B5BC23EC11FF001A1452 /* StackedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5B5BB23EC11FF001A1452 /* StackedView.swift */; };
 		E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030523C7211500476DC5 /* AppDelegate.swift */; };
 		E8D9030823C7211500476DC5 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9030723C7211500476DC5 /* Main.swift */; };
@@ -85,6 +86,7 @@
 		E8B1F9C523E97CD8001936BD /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatPicker.swift; sourceTree = "<group>"; };
 		E8B1F9C923E9C684001936BD /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
+		E8B25E3225136337005D7798 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E8D5B5BB23EC11FF001A1452 /* StackedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedView.swift; sourceTree = "<group>"; };
 		E8D9030223C7211500476DC5 /* Couleur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Couleur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D9030523C7211500476DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				E890DA59250F9AC600ABC169 /* Tooltip.swift */,
 				E82CE85D2510B719006C887A /* DebugView.swift */,
 				E8FBB6A5251208ED00CCCB13 /* Checkbox.swift */,
+				E8B25E3225136337005D7798 /* Notification.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */,
 				E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */,
 				E82CE85E2510B719006C887A /* DebugView.swift in Sources */,
+				E8B25E3325136337005D7798 /* Notification.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* ColorPicker.swift in Sources */,
 				E84F062A23EC7E8500D9393E /* PublishedUserDefaults.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,

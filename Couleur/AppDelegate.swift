@@ -76,5 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       ),
       forType: .string
     )
+
+    NotificationCenter.default.post(name: Notification.ColorCopied, object: nil)
   }
 }
