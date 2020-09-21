@@ -32,6 +32,11 @@ class AppModel: ObservableObject {
    */
   @Published(forUserDefaultsKey: "useUpperCaseHex") var useUpperCaseHex = Constants.UseUpperCaseHexDefault
 
+  /**
+   * Defines if upper case letters should be used for hexadecimal color formats.
+   */
+  @Published(forUserDefaultsKey: "copyPickedColor") var copyPickedColor = Constants.CopyPickedColorDefault
+
   var cancellable: AnyCancellable?
 
   init() {

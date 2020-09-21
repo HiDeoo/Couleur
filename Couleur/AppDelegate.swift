@@ -34,6 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     mainWindow.contentView = NSHostingView(rootView: main.environmentObject(appModel))
 
     mainWindow.makeKeyAndOrderFront(nil)
+
+    NotificationCenter.default
+      .addObserver(self, selector: #selector(onColorPicked), name: Notification.ColorPicked, object: nil)
   }
 
   func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
@@ -46,6 +49,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     return true
+  }
+
+  func copyColorToClipboard(withNofication: Bool = true) {
+    let pasteboard = NSPasteboard.general
+
+    pasteboard.declareTypes([.string], owner: nil)
+    pasteboard.setString(
+      ColorFormatter.format(
+        appModel.color,
+        appModel.format,
+        ColorFormatterOptions(useUpperCaseHex: appModel.useUpperCaseHex)
+      ),
+      forType: .string
+    )
+
+    if withNofication {
+      NotificationCenter.default.post(name: Notification.ColorCopied, object: nil)
+    }
+  }
+
+  @objc func onColorPicked() {
+    if appModel.copyPickedColor {
+      copyColorToClipboard(withNofication: false)
+    }
   }
 
   @IBAction func openPreferencesWindow(sender _: AnyObject) {
@@ -65,18 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @IBAction func copy(sender _: AnyObject) {
-    let pasteboard = NSPasteboard.general
-
-    pasteboard.declareTypes([.string], owner: nil)
-    pasteboard.setString(
-      ColorFormatter.format(
-        appModel.color,
-        appModel.format,
-        ColorFormatterOptions(useUpperCaseHex: appModel.useUpperCaseHex)
-      ),
-      forType: .string
-    )
-
-    NotificationCenter.default.post(name: Notification.ColorCopied, object: nil)
+    copyColorToClipboard()
   }
 }

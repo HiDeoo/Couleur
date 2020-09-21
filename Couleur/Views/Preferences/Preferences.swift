@@ -12,8 +12,9 @@ struct Preferences: View {
   @EnvironmentObject var appModel: AppModel
 
   var body: some View {
-    VStack(spacing: 0) {
+    VStack(alignment: .leading, spacing: 0) {
       Checkbox(checked: $appModel.useUpperCaseHex, label: "Use upper case letters for hexadecimal color formats")
+      Checkbox(checked: $appModel.copyPickedColor, label: "Automatically copy picked colors to the clipboard")
     }
     .padding(Constants.WindowPadding)
     .background(Color("windowBackground"))

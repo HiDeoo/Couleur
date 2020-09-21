@@ -74,6 +74,8 @@ struct ColorPicker: View {
       appModel.color = color
     }
 
+    NotificationCenter.default.post(name: Notification.ColorPicked, object: nil)
+
     window.close()
 
     CGDisplayShowCursor(getWindowId())

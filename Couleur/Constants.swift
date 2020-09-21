@@ -55,6 +55,11 @@ struct Constants {
   static let UseUpperCaseHexDefault = false
 
   /**
+   * Default value of the "automatically copy picked colors to the clipboard" setting.
+   */
+  static let CopyPickedColorDefault = false
+
+  /**
    * The default color format.
    */
   static let ColorDefaultFormat = ColorFormat.CssHex
