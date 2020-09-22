@@ -29,8 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       styleMask: [.titled, .closable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
-    mainWindow.center()
-    mainWindow.isReleasedWhenClosed = false
+    styleWindow(mainWindow)
+    mainWindow.title = "Couleur"
     mainWindow.setFrameAutosaveName("Main")
     mainWindow.contentView = NSHostingView(rootView: main.environmentObject(appModel))
 
@@ -50,6 +50,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     return true
+  }
+
+  func styleWindow(_ window: NSWindow) {
+    window.center()
+    window.isReleasedWhenClosed = false
+    window.titlebarAppearsTransparent = true
+    window.backgroundColor = NSColor(named: "windowBackground")
+    window.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
+    window.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
   }
 
   func copyColorToClipboard(withNofication: Bool = true) {
@@ -84,8 +93,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         styleMask: [.titled, .closable, .fullSizeContentView],
         backing: .buffered, defer: false
       )
-      preferencesWindow.center()
-      preferencesWindow.isReleasedWhenClosed = false
+      styleWindow(preferencesWindow)
+      preferencesWindow.title = "Couleur Preferences"
       preferencesWindow.setFrameAutosaveName("Preferences")
       preferencesWindow.contentView = NSHostingView(rootView: Preferences().environmentObject(appModel))
     }

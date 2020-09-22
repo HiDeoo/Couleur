@@ -41,6 +41,10 @@ struct Main: View {
       )
     }
     .background(Color("windowAltBackground"))
+    .overlay(
+      Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Color("windowBorder")),
+      alignment: .top
+    )
     .frame(height: Constants.MainWindowSize.height, alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
       getPermissionsAlert(action: {

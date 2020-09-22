@@ -29,6 +29,8 @@ struct StackedView<Content>: View where Content: View {
         .frame(width: 3, height: Constants.MainWindowSize.height)
       }
     }
+    // Required with NSWindow.titlebarAppearsTransparent to avoid the content being pushed to the top of the window.
+    .padding(.top, 0.5)
     .frame(width: Constants.MainWindowSize.width, height: Constants.MainWindowSize.height)
   }
 }
