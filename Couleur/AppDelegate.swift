@@ -24,7 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let main = Main()
 
     mainWindow = NSWindow(
-      contentRect: NSRect(x: 0, y: 0, width: Constants.MainWindowSize.width, height: Constants.ColorPreviewHeight),
+      contentRect:
+      NSRect(x: 0, y: 0, width: Constants.MainWindowSize.width, height: Constants.MainWindowSize.height + 22),
       styleMask: [.titled, .closable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
@@ -78,7 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @IBAction func openPreferencesWindow(sender _: AnyObject) {
     if preferencesWindow == nil {
       preferencesWindow = NSWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 500, height: 300),
+        contentRect:
+        NSRect(x: 0, y: 0, width: Constants.PreferencesWindowSize.width, height: Constants.PreferencesWindowSize.height),
         styleMask: [.titled, .closable, .fullSizeContentView],
         backing: .buffered, defer: false
       )

@@ -15,6 +15,11 @@ struct Constants {
   static let MainWindowSize = CGSize(width: 250, height: 528)
 
   /**
+   * The size of the preferences window in point.
+   */
+  static let PreferencesWindowSize = CGSize(width: 500, height: 96)
+
+  /**
    * The offset of a stacked view in point.
    */
   static let StackedViewOffset: CGFloat = 50
