@@ -21,6 +21,10 @@ struct Fifo<T: Codable>: Codable {
     count == 0
   }
 
+  var first: T? {
+    elements.first
+  }
+
   private var maxSize: Int
   private var elements: [T] = []
 

@@ -91,7 +91,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       forType: .string
     )
 
-    appModel.history.append(appModel.color)
+    if let firstHistoryColor = appModel.history.first, firstHistoryColor != appModel.color {
+      appModel.history.append(appModel.color)
+    }
 
     if withNofication {
       NotificationCenter.default.post(name: Notification.ColorCopied, object: nil)
