@@ -33,7 +33,7 @@ struct TitleBar: View {
           arrowEdge: .bottom
         ) {
           History(colors: appModel.history.values) { color in
-            appModel.color = color
+            self.appModel.color = color
             self.showHistory.toggle()
           }
         }

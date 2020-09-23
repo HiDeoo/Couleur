@@ -16,7 +16,7 @@ struct History: View {
     VStack {
       List(colors, id: \.self) { color in
         Button(action: {
-          action(color)
+          self.action(color)
         }) {
           HStack {
             Text(ColorFormatter.format(color, ColorFormat.CssHex))
