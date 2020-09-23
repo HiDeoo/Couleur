@@ -30,10 +30,10 @@ struct Fifo<T: Codable>: Codable {
 
   mutating func append(_ element: T) {
     if elements.count >= maxSize {
-      elements.removeFirst()
+      elements.removeLast()
     }
 
-    elements.append(element)
+    elements.insert(element, at: 0)
   }
 
   mutating func removeAll() {
