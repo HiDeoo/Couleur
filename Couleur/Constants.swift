@@ -136,6 +136,16 @@ struct Constants {
   static let HistorySize = 5
 
   /**
+   * The size of a color entry in the history.
+   */
+  static let HistoryEntrySize = CGSize(width: 150, height: 185)
+
+  /**
+   * The size of a color preview in the history.
+   */
+  static let HistoryColorSize = CGSize(width: 23, height: 23)
+
+  /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
    */
   static let HueGradientRgbs: [(CGFloat, CGFloat, CGFloat)] = [

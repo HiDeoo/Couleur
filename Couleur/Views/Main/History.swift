@@ -12,13 +12,32 @@ struct History: View {
   let colors: [HSBColor]
 
   var body: some View {
-    List(colors, id: \.self) { color in
-      Button(action: {
-        print("hello")
-      }) {
-        Text(ColorFormatter.format(color, ColorFormat.CssHex))
+    VStack {
+      List(colors, id: \.self) { color in
+        Button(action: {
+          print("hello")
+        }) {
+          HStack {
+            Text(ColorFormatter.format(color, ColorFormat.CssHex))
+              .font(.system(size: 15))
+              .fontWeight(.medium)
+              .foregroundColor(.white)
+            Spacer()
+            RoundedRectangle(cornerRadius: Constants.ControlCornerRadius)
+              .fill(Color(color))
+              .frame(width: Constants.HistoryColorSize.width, height: Constants.HistoryColorSize.height)
+              .overlay(
+                RoundedRectangle(cornerRadius: Constants.ControlCornerRadius)
+                  .strokeBorder(Color.white.opacity(0.7), lineWidth: 1)
+              )
+          }
+          .padding(2)
+          .frame(width: Constants.HistoryEntrySize.width - 16)
+        }
+        .buttonStyle(BorderlessButtonStyle())
       }
     }
+    .frame(width: Constants.HistoryEntrySize.width, height: Constants.HistoryEntrySize.height)
   }
 }
 
