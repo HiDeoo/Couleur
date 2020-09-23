@@ -37,7 +37,7 @@ struct TitleBar: View {
             self.showHistory.toggle()
           }
         }
-        .overlay(Tooltip(tooltip: appModel.history.isEmpty ? "No history yet" : "History"))
+        .overlay(Tooltip(tooltip: self.appModel.history.isEmpty ? "No history yet" : "History"))
       }
     }
     .frame(height: Constants.MainWindowTitleBarHeight)
