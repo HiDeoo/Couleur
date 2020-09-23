@@ -131,6 +131,11 @@ struct Constants {
   static let PreferencesCheckboxSize: CGFloat = 16
 
   /**
+   * Maximum size of the history.
+   */
+  static let HistorySize = 5
+
+  /**
    * The ordered red, green & blue components of the various colors used in the hue gradient.
    */
   static let HueGradientRgbs: [(CGFloat, CGFloat, CGFloat)] = [

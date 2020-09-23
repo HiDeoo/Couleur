@@ -32,6 +32,7 @@
 		E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CD53A23CF35A600342A45 /* AppModel.swift */; };
 		E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86F8AEC23D8BF810028340C /* HSBColor.swift */; };
 		E890DA5A250F9AC600ABC169 /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E890DA59250F9AC600ABC169 /* Tooltip.swift */; };
+		E897EB1A251B2F6700543EDD /* Fifo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E897EB19251B2F6700543EDD /* Fifo.swift */; };
 		E8B1F9C623E97CD8001936BD /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C523E97CD8001936BD /* Types.swift */; };
 		E8B1F9C823E99CC1001936BD /* ColorFormatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */; };
 		E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1F9C923E9C684001936BD /* ColorFormatter.swift */; };
@@ -87,6 +88,7 @@
 		E86CD53A23CF35A600342A45 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E86F8AEC23D8BF810028340C /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
 		E890DA59250F9AC600ABC169 /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
+		E897EB19251B2F6700543EDD /* Fifo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fifo.swift; sourceTree = "<group>"; };
 		E8B1F9C523E97CD8001936BD /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatPicker.swift; sourceTree = "<group>"; };
 		E8B1F9C923E9C684001936BD /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				E82CE85D2510B719006C887A /* DebugView.swift */,
 				E8FBB6A5251208ED00CCCB13 /* Checkbox.swift */,
 				E8B25E3225136337005D7798 /* Notification.swift */,
+				E897EB19251B2F6700543EDD /* Fifo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				E855865D23D4A50C0002637F /* ColorEditor.swift in Sources */,
 				E82CE8612510C570006C887A /* Preferences.swift in Sources */,
 				E86CD53B23CF35A600342A45 /* AppModel.swift in Sources */,
+				E897EB1A251B2F6700543EDD /* Fifo.swift in Sources */,
 				E8DDDCB623E82D1F00AFC709 /* TransparencyLayer.swift in Sources */,
 				E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */,
 				E82CE85E2510B719006C887A /* DebugView.swift in Sources */,

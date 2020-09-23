@@ -40,7 +40,7 @@ class AppModel: ObservableObject {
   /**
    * Copied colors history.
    */
-  @Published(forUserDefaultsKey: "history") var history = [HSBColor]()
+  @Published(forUserDefaultsKey: "history") var history = Fifo<HSBColor>(maxSize: Constants.HistorySize)
 
   var cancellable: AnyCancellable?
 

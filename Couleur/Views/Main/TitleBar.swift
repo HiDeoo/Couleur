@@ -30,7 +30,7 @@ struct TitleBar: View {
           isPresented: self.$showHistory,
           arrowEdge: .bottom
         ) {
-          History(colors: appModel.history)
+          History(colors: appModel.history.values)
         }
       }
     }
