@@ -14,7 +14,7 @@ import SwiftUI
  * As HSB is just a particular way to represent a RGB color but not how the colors are stored, if we create a `NSColor`with a saturation of zero, the resulting color
  * will have no hue at all, which means we would lose the hue component entirely without any way to retrieve it back.
  */
-struct HSBColor: Codable {
+struct HSBColor: Codable, Hashable {
   public private(set) var raw: NSColor
   public private(set) var hue: CGFloat = 0
   public private(set) var saturation: CGFloat = 0

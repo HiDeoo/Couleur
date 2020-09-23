@@ -15,6 +15,11 @@ struct Constants {
   static let MainWindowSize = CGSize(width: 250, height: 528)
 
   /**
+   * The height of the main window title bar.
+   */
+  static let MainWindowTitleBarHeight: CGFloat = 40
+
+  /**
    * The size of the preferences window in point.
    */
   static let PreferencesWindowSize = CGSize(width: 500, height: 96)

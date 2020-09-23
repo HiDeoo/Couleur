@@ -37,6 +37,11 @@ class AppModel: ObservableObject {
    */
   @Published(forUserDefaultsKey: "copyPickedColor") var copyPickedColor = Constants.CopyPickedColorDefault
 
+  /**
+   * Copied colors history.
+   */
+  @Published(forUserDefaultsKey: "history") var history = [HSBColor]()
+
   var cancellable: AnyCancellable?
 
   init() {

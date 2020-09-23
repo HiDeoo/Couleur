@@ -25,14 +25,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     mainWindow = NSWindow(
       contentRect:
-      NSRect(x: 0, y: 0, width: Constants.MainWindowSize.width, height: Constants.MainWindowSize.height + 22),
+      NSRect(
+        x: 0,
+        y: 0,
+        width: Constants.MainWindowSize.width,
+        height: Constants.MainWindowSize.height + Constants.MainWindowTitleBarHeight
+      ),
       styleMask: [.titled, .closable, .fullSizeContentView],
       backing: .buffered, defer: false
     )
     styleWindow(mainWindow)
-    mainWindow.title = "Couleur"
     mainWindow.setFrameAutosaveName("Main")
     mainWindow.contentView = NSHostingView(rootView: main.environmentObject(appModel))
+
+    let titleBar = TitleBar()
+
+    let titleBarHostingView = NSHostingView(rootView: titleBar.environmentObject(appModel))
+    titleBarHostingView.frame.size = titleBarHostingView.fittingSize
+
+    let titlebarAccessory = NSTitlebarAccessoryViewController()
+    titlebarAccessory.view = titleBarHostingView
+    titlebarAccessory.layoutAttribute = .trailing
+
+    mainWindow.toolbar = .init()
+    mainWindow.titleVisibility = .hidden
+    mainWindow.addTitlebarAccessoryViewController(titlebarAccessory)
 
     mainWindow.makeKeyAndOrderFront(nil)
 
@@ -73,6 +90,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       ),
       forType: .string
     )
+
+    appModel.history.append(appModel.color)
 
     if withNofication {
       NotificationCenter.default.post(name: Notification.ColorCopied, object: nil)

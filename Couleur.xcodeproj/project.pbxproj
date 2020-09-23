@@ -15,6 +15,8 @@
 		E8257F8423D604C90018180E /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8257F8323D604C90018180E /* Pointer.swift */; };
 		E82CE85E2510B719006C887A /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE85D2510B719006C887A /* DebugView.swift */; };
 		E82CE8612510C570006C887A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82CE8602510C570006C887A /* Preferences.swift */; };
+		E830D1AF251A260B009205AB /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830D1AE251A260B009205AB /* TitleBar.swift */; };
+		E830D1B3251A33B9009205AB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830D1B2251A33B9009205AB /* History.swift */; };
 		E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = E831EB6123E312660034CB81 /* RoundedCorners.swift */; };
 		E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */; };
 		E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D202223E2FB4B000D9A63 /* TextField.swift */; };
@@ -66,6 +68,8 @@
 		E8257F8323D604C90018180E /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		E82CE85D2510B719006C887A /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		E82CE8602510C570006C887A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		E830D1AE251A260B009205AB /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		E830D1B2251A33B9009205AB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		E831EB6123E312660034CB81 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		E840417E23DDBBAF0069AA42 /* SaturationBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightness.swift; sourceTree = "<group>"; };
 		E84D202223E2FB4B000D9A63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				E855865623D49AD50002637F /* PickerButton.swift */,
 				E855865423D499830002637F /* ColorExporter.swift */,
 				E8B1F9C723E99CC1001936BD /* ColorFormatPicker.swift */,
+				E830D1AE251A260B009205AB /* TitleBar.swift */,
+				E830D1B2251A33B9009205AB /* History.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				E8B1F9CA23E9C684001936BD /* ColorFormatter.swift in Sources */,
 				E82CE85E2510B719006C887A /* DebugView.swift in Sources */,
 				E8B25E3325136337005D7798 /* Notification.swift in Sources */,
+				E830D1B3251A33B9009205AB /* History.swift in Sources */,
 				E8D9031D23C72EE300476DC5 /* ColorPicker.swift in Sources */,
 				E84F062A23EC7E8500D9393E /* PublishedUserDefaults.swift in Sources */,
 				E86CD53723CF335500342A45 /* PickerModel.swift in Sources */,
@@ -414,6 +421,7 @@
 				E817699023DF3D0B00DB7ED9 /* ComponentField.swift in Sources */,
 				E86F8AED23D8BF810028340C /* HSBColor.swift in Sources */,
 				E8D9030623C7211500476DC5 /* AppDelegate.swift in Sources */,
+				E830D1AF251A260B009205AB /* TitleBar.swift in Sources */,
 				E890DA5A250F9AC600ABC169 /* Tooltip.swift in Sources */,
 				E8FBB6A6251208ED00CCCB13 /* Checkbox.swift in Sources */,
 				E8F1CF9B23CDD14900D1D461 /* Constants.swift in Sources */,
