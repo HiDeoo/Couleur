@@ -32,12 +32,12 @@ struct TitleBar: View {
           isPresented: self.$showHistory,
           arrowEdge: .bottom
         ) {
-          History(colors: appModel.history.values) { color in
+          History(colors: self.appModel.history.values) { color in
             self.appModel.color = color
             self.showHistory.toggle()
           }
         }
-        .overlay(Tooltip(tooltip: self.appModel.history.isEmpty ? "No history yet" : "History"))
+        .overlay(Tooltip(tooltip: appModel.history.isEmpty ? "No history yet" : "History"))
       }
     }
     .frame(height: Constants.MainWindowTitleBarHeight)
