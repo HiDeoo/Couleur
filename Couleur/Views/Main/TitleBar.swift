@@ -32,7 +32,10 @@ struct TitleBar: View {
           isPresented: self.$showHistory,
           arrowEdge: .bottom
         ) {
-          History(colors: appModel.history.values)
+          History(colors: appModel.history.values) { color in
+            appModel.color = color
+            self.showHistory.toggle()
+          }
         }
         .overlay(Tooltip(tooltip: appModel.history.isEmpty ? "No history yet" : "History"))
       }

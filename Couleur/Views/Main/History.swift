@@ -10,12 +10,13 @@ import SwiftUI
 
 struct History: View {
   let colors: [HSBColor]
+  let action: (_ color: HSBColor) -> Void
 
   var body: some View {
     VStack {
       List(colors, id: \.self) { color in
         Button(action: {
-          print("hello")
+          action(color)
         }) {
           HStack {
             Text(ColorFormatter.format(color, ColorFormat.CssHex))
@@ -43,6 +44,6 @@ struct History: View {
 
 struct History_Previews: PreviewProvider {
   static var previews: some View {
-    History(colors: [])
+    History(colors: [], action: { _ in })
   }
 }
