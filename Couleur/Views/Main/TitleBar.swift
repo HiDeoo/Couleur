@@ -34,6 +34,7 @@ struct TitleBar: View {
         ) {
           History(colors: appModel.history.values)
         }
+        .overlay(Tooltip(tooltip: appModel.history.isEmpty ? "No history yet" : "History"))
       }
     }
     .frame(height: Constants.MainWindowTitleBarHeight)
