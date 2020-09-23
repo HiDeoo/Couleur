@@ -13,6 +13,14 @@ struct Fifo<T: Codable>: Codable {
     elements
   }
 
+  var count: Int {
+    elements.count
+  }
+
+  var isEmpty: Bool {
+    count == 0
+  }
+
   private var maxSize: Int
   private var elements: [T] = []
 
@@ -26,5 +34,9 @@ struct Fifo<T: Codable>: Codable {
     }
 
     elements.append(element)
+  }
+
+  mutating func removeAll() {
+    elements.removeAll()
   }
 }

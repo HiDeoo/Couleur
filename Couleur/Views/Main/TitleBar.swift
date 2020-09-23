@@ -24,8 +24,10 @@ struct TitleBar: View {
             .padding(Constants.WindowPadding)
             .font(.system(.headline))
         }
+        .disabled(appModel.history.isEmpty)
         .buttonStyle(BorderlessButtonStyle())
         .foregroundColor(self.showHistory ? Color("windowTint") : .white)
+        .opacity(appModel.history.isEmpty ? 0.4 : 1)
         .popover(
           isPresented: self.$showHistory,
           arrowEdge: .bottom
