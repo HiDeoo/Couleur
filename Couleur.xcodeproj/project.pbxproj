@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80D260C251DDB570002E968 /* PreferencesSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80D260B251DDB570002E968 /* PreferencesSeparator.swift */; };
+		E80D2610251DDCC80002E968 /* PreferencesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80D260F251DDCC80002E968 /* PreferencesButton.swift */; };
 		E817698A23DEE51300DB7ED9 /* LinearSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E817698923DEE51300DB7ED9 /* LinearSlider.swift */; };
 		E817698C23DEED6700DB7ED9 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E817698B23DEED6700DB7ED9 /* Components.swift */; };
 		E817698E23DEF8F200DB7ED9 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E80D260B251DDB570002E968 /* PreferencesSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesSeparator.swift; sourceTree = "<group>"; };
+		E80D260F251DDCC80002E968 /* PreferencesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesButton.swift; sourceTree = "<group>"; };
 		E817698923DEE51300DB7ED9 /* LinearSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearSlider.swift; sourceTree = "<group>"; };
 		E817698B23DEED6700DB7ED9 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		E817698D23DEF8F200DB7ED9 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				E82CE8602510C570006C887A /* Preferences.swift */,
+				E80D260B251DDB570002E968 /* PreferencesSeparator.swift */,
+				E80D260F251DDCC80002E968 /* PreferencesButton.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				E855865523D499830002637F /* ColorExporter.swift in Sources */,
 				E831EB6223E312660034CB81 /* RoundedCorners.swift in Sources */,
 				E8F1CF9D23CDD7E000D1D461 /* ColorPickerGrid.swift in Sources */,
+				E80D260C251DDB570002E968 /* PreferencesSeparator.swift in Sources */,
 				E840417F23DDBBAF0069AA42 /* SaturationBrightness.swift in Sources */,
 				E84D202323E2FB4B000D9A63 /* TextField.swift in Sources */,
 				E869D12723EDB09E00E5891B /* ColorPickerPreview.swift in Sources */,
@@ -442,6 +449,7 @@
 				E8B1F9C623E97CD8001936BD /* Types.swift in Sources */,
 				E855865723D49AD50002637F /* PickerButton.swift in Sources */,
 				E8257F8423D604C90018180E /* Pointer.swift in Sources */,
+				E80D2610251DDCC80002E968 /* PreferencesButton.swift in Sources */,
 				E817698C23DEED6700DB7ED9 /* Components.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

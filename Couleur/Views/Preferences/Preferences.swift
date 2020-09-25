@@ -15,6 +15,10 @@ struct Preferences: View {
     VStack(alignment: .leading, spacing: 0) {
       Checkbox(checked: $appModel.useUpperCaseHex, label: "Use upper case letters for hexadecimal color formats")
       Checkbox(checked: $appModel.copyPickedColor, label: "Automatically copy picked colors to the clipboard")
+      PreferencesSeparator()
+      PreferencesButton(label: "Clear history") {
+        appModel.history.removeAll()
+      }
     }
     .padding(Constants.WindowPadding)
     .background(Color("windowBackground"))
