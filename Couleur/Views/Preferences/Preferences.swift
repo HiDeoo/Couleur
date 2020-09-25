@@ -17,7 +17,7 @@ struct Preferences: View {
       Checkbox(checked: $appModel.copyPickedColor, label: "Automatically copy picked colors to the clipboard")
       PreferencesSeparator()
       PreferencesButton(label: "Clear history") {
-        appModel.history.removeAll()
+        self.appModel.history.removeAll()
       }
     }
     .padding(Constants.WindowPadding)
