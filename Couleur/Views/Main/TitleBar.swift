@@ -8,15 +8,22 @@
 
 import SwiftUI
 
+/**
+ * Colors composing the title bar gradients (starting from the top).
+ */
+var ActiveGradient = [Color("windowAltBackground"), Color("windowBackground")]
+var InactiveGradient = [Color("windowInactiveAltBackground"), Color("windowInactiveBackground")]
+
 struct TitleBar: View {
   @EnvironmentObject var appModel: AppModel
 
   @State private var showHistory: Bool = false
+  @State private var isAppActive = NSApp.isActive
 
   var body: some View {
     ZStack {
       LinearGradient(
-        gradient: Gradient(colors: [Color("windowAltBackground"), Color("windowBackground")]),
+        gradient: Gradient(colors: self.isAppActive ? ActiveGradient : InactiveGradient),
         startPoint: .top,
         endPoint: .bottom
       )
@@ -28,6 +35,7 @@ struct TitleBar: View {
           Text("􀐫")
             .padding(Constants.WindowPadding)
             .font(.system(.headline))
+            .opacity(self.isAppActive ? 1 : 0.6)
         }
         .disabled(appModel.history.isEmpty)
         .buttonStyle(BorderlessButtonStyle())
@@ -47,6 +55,12 @@ struct TitleBar: View {
     }
     .frame(width: Constants.MainWindowSize.width, height: Constants.MainWindowTitleBarHeight)
     .edgesIgnoringSafeArea(.vertical)
+    .onReceive(NotificationCenter.default.publisher(for: NSApplication.didResignActiveNotification)) { _ in
+      self.isAppActive = false
+    }
+    .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+      self.isAppActive = true
+    }
   }
 }
 
