@@ -91,7 +91,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       forType: .string
     )
 
-    if let firstHistoryColor = appModel.history.first, firstHistoryColor != appModel.color {
+    let firstHistoryColor = appModel.history.first
+
+    if appModel.history.isEmpty || firstHistoryColor != appModel.color {
       appModel.history.append(appModel.color)
     }
 
