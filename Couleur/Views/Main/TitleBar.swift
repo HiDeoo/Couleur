@@ -15,8 +15,13 @@ struct TitleBar: View {
 
   var body: some View {
     ZStack {
-      Color.clear
+      LinearGradient(
+        gradient: Gradient(colors: [Color("windowAltBackground"), Color("windowBackground")]),
+        startPoint: .top,
+        endPoint: .bottom
+      )
       HStack {
+        Spacer()
         Button(action: {
           self.showHistory.toggle()
         }) {
@@ -40,7 +45,7 @@ struct TitleBar: View {
         .overlay(Tooltip(tooltip: appModel.history.isEmpty ? "No history yet" : "History"))
       }
     }
-    .frame(height: Constants.MainWindowTitleBarHeight)
+    .frame(width: Constants.MainWindowSize.width, height: Constants.MainWindowTitleBarHeight)
     .edgesIgnoringSafeArea(.vertical)
   }
 }
