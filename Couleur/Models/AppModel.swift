@@ -33,6 +33,11 @@ class AppModel: ObservableObject {
   @Published(forUserDefaultsKey: "useUpperCaseHex") var useUpperCaseHex = Constants.UseUpperCaseHexDefault
 
   /**
+   * Defines if CSS formats should use a space separated notation when possible.
+   */
+  @Published(forUserDefaultsKey: "useSpaceSeparatedCss") var useSpaceSeparatedCss = Constants.UseSpaceSeparatedCssDefault
+
+  /**
    * Defines if upper case letters should be used for hexadecimal color formats.
    */
   @Published(forUserDefaultsKey: "copyPickedColor") var copyPickedColor = Constants.CopyPickedColorDefault

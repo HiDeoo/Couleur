@@ -40,6 +40,7 @@ struct ColorPicker: View {
         ColorPickerPreview(color: appModel.picker.color!,
                            format: appModel.format,
                            useUpperCaseHex: appModel.useUpperCaseHex,
+                           useSpaceSeparatedCss: appModel.useSpaceSeparatedCss,
                            flipped: previewFlipped)
       }
     }

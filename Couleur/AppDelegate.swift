@@ -86,7 +86,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       ColorFormatter.format(
         appModel.color,
         appModel.format,
-        ColorFormatterOptions(useUpperCaseHex: appModel.useUpperCaseHex)
+        ColorFormatterOptions(
+          useUpperCaseHex: appModel.useUpperCaseHex,
+          useSpaceSeparatedCss: appModel.useSpaceSeparatedCss
+        )
       ),
       forType: .string
     )

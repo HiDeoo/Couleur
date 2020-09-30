@@ -30,6 +30,7 @@ enum ColorFormat: Int, CaseIterable {
 
 struct ColorFormatterOptions {
   let useUpperCaseHex: Bool
+  let useSpaceSeparatedCss: Bool
 }
 
 extension ColorFormatter {
@@ -97,30 +98,36 @@ extension ColorFormatter {
                  useUpperCase: options.useUpperCaseHex)
   }
 
-  private static func toCssHsl(_ color: HSBColor, _: ColorFormatterOptions) -> String {
+  private static func toCssHsl(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
     let hsla = getHSLA(color)
+    let format = options.useSpaceSeparatedCss ? "hsl(%d %d%% %d%%)" : "hsl(%d, %d%%, %d%%)"
 
-    return String(format: "hsl(%d, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness)
+    return String(format: format, hsla.hue, hsla.saturation, hsla.lightness)
   }
 
-  private static func toCssHsla(_ color: HSBColor, _: ColorFormatterOptions) -> String {
+  private static func toCssHsla(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
     let hsla = getHSLA(color)
+    let format = options.useSpaceSeparatedCss ? "hsla(%d %d%% %d%% %d%%)" : "hsla(%d, %d%%, %d%%, %d%%)"
 
-    return String(format: "hsla(%d, %d%%, %d%%, %d%%)", hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
+    return String(format: format, hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
   }
 
-  private static func toCssRgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
-    String(
-      format: "rgb(%d, %d, %d)",
+  private static func toCssRgb(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
+    let format = options.useSpaceSeparatedCss ? "rgb(%d %d %d)" : "rgb(%d, %d, %d)"
+
+    return String(
+      format: format,
       get8BitsComponent(color, .Red),
       get8BitsComponent(color, .Green),
       get8BitsComponent(color, .Blue)
     )
   }
 
-  private static func toCssRgba(_ color: HSBColor, _: ColorFormatterOptions) -> String {
-    String(
-      format: "rgba(%d, %d, %d, %d%%)",
+  private static func toCssRgba(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
+    let format = options.useSpaceSeparatedCss ? "rgba(%d %d %d %d%%)" : "rgba(%d, %d, %d, %d%%)"
+
+    return String(
+      format: format,
       get8BitsComponent(color, .Red),
       get8BitsComponent(color, .Green),
       get8BitsComponent(color, .Blue),
@@ -216,8 +223,11 @@ class ColorFormatter {
 
   static func format(_ color: HSBColor,
                      _ format: ColorFormat,
-                     _ options: ColorFormatterOptions = ColorFormatterOptions(useUpperCaseHex:
-                       Constants.UseUpperCaseHexDefault)) -> String
+                     _ options: ColorFormatterOptions =
+                       ColorFormatterOptions(
+                         useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+                         useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+                       )) -> String
   {
     guard let formatter = definitions[format]?.formatter else { return "" }
 

@@ -12,15 +12,21 @@ struct ColorExporter: View {
   let color: HSBColor
   let format: ColorFormat
   let useUpperCaseHex: Bool
+  let useSpaceSeparatedCss: Bool
   @Binding var showColorFormatPicker: Bool
 
-  init(color: HSBColor, format: ColorFormat, useUpperCaseHex: Bool, showColorFormatPicker: Binding<Bool>) {
+  init(color: HSBColor, format: ColorFormat, useUpperCaseHex: Bool, useSpaceSeparatedCss: Bool, showColorFormatPicker: Binding<Bool>) {
     self.color = color
     self.format = format
     self.useUpperCaseHex = useUpperCaseHex
+    self.useSpaceSeparatedCss = useSpaceSeparatedCss
     _showColorFormatPicker = showColorFormatPicker
 
-    formattedColor = ColorFormatter.format(color, format, ColorFormatterOptions(useUpperCaseHex: useUpperCaseHex))
+    formattedColor = ColorFormatter.format(
+      color,
+      format,
+      ColorFormatterOptions(useUpperCaseHex: useUpperCaseHex, useSpaceSeparatedCss: useSpaceSeparatedCss)
+    )
   }
 
   private let formattedColor: String
@@ -68,6 +74,12 @@ struct ColorExporter: View {
 
 struct ColorExporter_Previews: PreviewProvider {
   static var previews: some View {
-    ColorExporter(color: HSBColor(.blue), format: .CssHex, useUpperCaseHex: false, showColorFormatPicker: .constant(true))
+    ColorExporter(
+      color: HSBColor(.blue),
+      format: .CssHex,
+      useUpperCaseHex: false,
+      useSpaceSeparatedCss: true,
+      showColorFormatPicker: .constant(true)
+    )
   }
 }

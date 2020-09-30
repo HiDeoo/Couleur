@@ -65,6 +65,11 @@ struct Constants {
   static let UseUpperCaseHexDefault = false
 
   /**
+   * Default value of the "use space separated notation for CSS formats" setting.
+   */
+  static let UseSpaceSeparatedCssDefault = true
+
+  /**
    * Default value of the "automatically copy picked colors to the clipboard" setting.
    */
   static let CopyPickedColorDefault = false
