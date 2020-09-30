@@ -39,7 +39,15 @@ class ColorFormatterTests: XCTestCase {
     return ColorFormatter.format(HSBColors[color]!, format, options)
   }
 
-  private func testColors(_ format: ColorFormat, _ results: [Color: String], _ options: ColorFormatterOptions = ColorFormatterOptions(useUpperCaseHex: Constants.UseUpperCaseHexDefault)) {
+  private func testColors(
+    _ format: ColorFormat,
+    _ results: [Color: String],
+    _ options: ColorFormatterOptions =
+      ColorFormatterOptions(
+        useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+        useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+      )
+  ) {
     for color in HSBColors {
       XCTAssertEqual(getFormattedColor(color.key, format, options), results[color.key])
     }
@@ -86,7 +94,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "<color name=\"color_name\">#ff0000ff</color>",
       .Median: "<color name=\"color_name\">#ff7f7f7f</color>",
       .MedianAlpha: "<color name=\"color_name\">#7f7f7f7f</color>",
-    ], ColorFormatterOptions(useUpperCaseHex: Constants.UseUpperCaseHexDefault))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testAndroidXmlArgbUpperCase() {
@@ -98,7 +110,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "<color name=\"color_name\">#FF0000FF</color>",
       .Median: "<color name=\"color_name\">#FF7F7F7F</color>",
       .MedianAlpha: "<color name=\"color_name\">#7F7F7F7F</color>",
-    ], ColorFormatterOptions(useUpperCaseHex: true))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: true,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testAndroidXmlRgb() {
@@ -110,7 +126,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "<color name=\"color_name\">#0000ff</color>",
       .Median: "<color name=\"color_name\">#7f7f7f</color>",
       .MedianAlpha: "<color name=\"color_name\">#7f7f7f</color>",
-    ], ColorFormatterOptions(useUpperCaseHex: Constants.UseUpperCaseHexDefault))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testAndroidXmlRgbUpperCase() {
@@ -122,7 +142,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "<color name=\"color_name\">#0000FF</color>",
       .Median: "<color name=\"color_name\">#7F7F7F</color>",
       .MedianAlpha: "<color name=\"color_name\">#7F7F7F</color>",
-    ], ColorFormatterOptions(useUpperCaseHex: true))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: true,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testCssHex() {
@@ -134,7 +158,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "#0000ff",
       .Median: "#7f7f7f",
       .MedianAlpha: "#7f7f7f",
-    ], ColorFormatterOptions(useUpperCaseHex: Constants.UseUpperCaseHexDefault))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testCssHexUpperCase() {
@@ -146,10 +174,30 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "#0000FF",
       .Median: "#7F7F7F",
       .MedianAlpha: "#7F7F7F",
-    ], ColorFormatterOptions(useUpperCaseHex: true))
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: true,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
   }
 
   func testCssHsl() {
+    testColors(.CssHsl, [
+      .Black: "hsl(0 0% 0%)",
+      .White: "hsl(0 0% 100%)",
+      .Red: "hsl(0 100% 50%)",
+      .Green: "hsl(120 100% 50%)",
+      .Blue: "hsl(240 100% 50%)",
+      .Median: "hsl(0 0% 50%)",
+      .MedianAlpha: "hsl(0 0% 50%)",
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
+  }
+
+  func testCssHslCommaSeparated() {
     testColors(.CssHsl, [
       .Black: "hsl(0, 0%, 0%)",
       .White: "hsl(0, 0%, 100%)",
@@ -158,10 +206,30 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "hsl(240, 100%, 50%)",
       .Median: "hsl(0, 0%, 50%)",
       .MedianAlpha: "hsl(0, 0%, 50%)",
-    ])
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: false
+    ))
   }
 
   func testCssHsla() {
+    testColors(.CssHsla, [
+      .Black: "hsla(0 0% 0% 100%)",
+      .White: "hsla(0 0% 100% 100%)",
+      .Red: "hsla(0 100% 50% 100%)",
+      .Green: "hsla(120 100% 50% 100%)",
+      .Blue: "hsla(240 100% 50% 100%)",
+      .Median: "hsla(0 0% 50% 100%)",
+      .MedianAlpha: "hsla(0 0% 50% 50%)",
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
+  }
+
+  func testCssHslaCommaSeparated() {
     testColors(.CssHsla, [
       .Black: "hsla(0, 0%, 0%, 100%)",
       .White: "hsla(0, 0%, 100%, 100%)",
@@ -170,10 +238,30 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "hsla(240, 100%, 50%, 100%)",
       .Median: "hsla(0, 0%, 50%, 100%)",
       .MedianAlpha: "hsla(0, 0%, 50%, 50%)",
-    ])
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: false
+    ))
   }
 
   func testCssRgb() {
+    testColors(.CssRgb, [
+      .Black: "rgb(0 0 0)",
+      .White: "rgb(255 255 255)",
+      .Red: "rgb(255 0 0)",
+      .Green: "rgb(0 255 0)",
+      .Blue: "rgb(0 0 255)",
+      .Median: "rgb(127 127 127)",
+      .MedianAlpha: "rgb(127 127 127)",
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
+  }
+
+  func testCssRgbCommaSeparated() {
     testColors(.CssRgb, [
       .Black: "rgb(0, 0, 0)",
       .White: "rgb(255, 255, 255)",
@@ -182,10 +270,30 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "rgb(0, 0, 255)",
       .Median: "rgb(127, 127, 127)",
       .MedianAlpha: "rgb(127, 127, 127)",
-    ])
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: false
+    ))
   }
 
   func testCssRgba() {
+    testColors(.CssRgba, [
+      .Black: "rgba(0 0 0 100%)",
+      .White: "rgba(255 255 255 100%)",
+      .Red: "rgba(255 0 0 100%)",
+      .Green: "rgba(0 255 0 100%)",
+      .Blue: "rgba(0 0 255 100%)",
+      .Median: "rgba(127 127 127 100%)",
+      .MedianAlpha: "rgba(127 127 127 50%)",
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: Constants.UseSpaceSeparatedCssDefault
+    ))
+  }
+
+  func testCssRgbaCommaSeparated() {
     testColors(.CssRgba, [
       .Black: "rgba(0, 0, 0, 100%)",
       .White: "rgba(255, 255, 255, 100%)",
@@ -194,7 +302,11 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "rgba(0, 0, 255, 100%)",
       .Median: "rgba(127, 127, 127, 100%)",
       .MedianAlpha: "rgba(127, 127, 127, 50%)",
-    ])
+    ],
+    ColorFormatterOptions(
+      useUpperCaseHex: Constants.UseUpperCaseHexDefault,
+      useSpaceSeparatedCss: false
+    ))
   }
 
   func testSwiftAppKitHsb() {
