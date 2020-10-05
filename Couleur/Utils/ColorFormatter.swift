@@ -35,23 +35,91 @@ struct ColorFormatterOptions {
 
 extension ColorFormatter {
   private static let definitions: [ColorFormat: ColorFormatDefinition] = [
-    .CssHex: ColorFormatDefinition(description: "CSS Hex", formatter: toCssHex),
-    .CssHsl: ColorFormatDefinition(description: "CSS HSL", formatter: toCssHsl),
-    .CssHsla: ColorFormatDefinition(description: "CSS HSLA", formatter: toCssHsla),
-    .CssRgb: ColorFormatDefinition(description: "CSS RGB", formatter: toCssRgb),
-    .CssRgba: ColorFormatDefinition(description: "CSS RGBA", formatter: toCssRgba),
-    .SwiftAppKitHsb: ColorFormatDefinition(description: "Swift NSColor HSB", formatter: toSwiftAppKitHsb),
-    .SwiftAppKitRgb: ColorFormatDefinition(description: "Swift NSColor RGB", formatter: toSwiftAppKitRgb),
-    .SwiftUiKitHsb: ColorFormatDefinition(description: "Swift UIColor HSB", formatter: toSwiftUiKitHsb),
-    .SwiftUiKitRgb: ColorFormatDefinition(description: "Swift UIColor RGB", formatter: toSwiftUiKitRgb),
-    .SwiftUiHsb: ColorFormatDefinition(description: "SwiftUI HSB", formatter: toSwiftUiHsb),
-    .SwiftUiRgb: ColorFormatDefinition(description: "SwiftUI RGB", formatter: toSwiftUiRgb),
-    .CgColorRgb: ColorFormatDefinition(description: "CGColor RGB", formatter: toCgColorRgb),
-    .CgColorCmyk: ColorFormatDefinition(description: "CGColor CMYK", formatter: toCgColorCmyk),
-    .AndroidRgb: ColorFormatDefinition(description: "Android RGB", formatter: toAndroidRgb),
-    .AndroidArgb: ColorFormatDefinition(description: "Android ARGB", formatter: toAndroidArgb),
-    .AndroidXmlRgb: ColorFormatDefinition(description: "Android XML RGB", formatter: toAndroidXmlRgb),
-    .AndroidXmlArgb: ColorFormatDefinition(description: "Android XML ARGB", formatter: toAndroidXmlArgb),
+    .CssHex: ColorFormatDefinition(
+      description: "CSS Hex",
+      formatter: toCssHex,
+      pattern: "^#?([0-9a-fA-F]{2}){3}$"
+    ),
+    .CssHsl: ColorFormatDefinition(
+      description: "CSS HSL",
+      formatter: toCssHsl,
+      pattern: ""
+    ),
+    .CssHsla: ColorFormatDefinition(
+      description: "CSS HSLA",
+      formatter: toCssHsla,
+      pattern: ""
+    ),
+    .CssRgb: ColorFormatDefinition(
+      description: "CSS RGB",
+      formatter: toCssRgb,
+      pattern: ""
+    ),
+    .CssRgba: ColorFormatDefinition(
+      description: "CSS RGBA",
+      formatter: toCssRgba,
+      pattern: ""
+    ),
+    .SwiftAppKitHsb: ColorFormatDefinition(
+      description: "Swift NSColor HSB",
+      formatter: toSwiftAppKitHsb,
+      pattern: ""
+    ),
+    .SwiftAppKitRgb: ColorFormatDefinition(
+      description: "Swift NSColor RGB",
+      formatter: toSwiftAppKitRgb,
+      pattern: ""
+    ),
+    .SwiftUiKitHsb: ColorFormatDefinition(
+      description: "Swift UIColor HSB",
+      formatter: toSwiftUiKitHsb,
+      pattern: ""
+    ),
+    .SwiftUiKitRgb: ColorFormatDefinition(
+      description: "Swift UIColor RGB",
+      formatter: toSwiftUiKitRgb,
+      pattern: ""
+    ),
+    .SwiftUiHsb: ColorFormatDefinition(
+      description: "SwiftUI HSB",
+      formatter: toSwiftUiHsb,
+      pattern: ""
+    ),
+    .SwiftUiRgb: ColorFormatDefinition(
+      description: "SwiftUI RGB",
+      formatter: toSwiftUiRgb,
+      pattern: ""
+    ),
+    .CgColorRgb: ColorFormatDefinition(
+      description: "CGColor RGB",
+      formatter: toCgColorRgb,
+      pattern: ""
+    ),
+    .CgColorCmyk: ColorFormatDefinition(
+      description: "CGColor CMYK",
+      formatter: toCgColorCmyk,
+      pattern: ""
+    ),
+    .AndroidRgb: ColorFormatDefinition(
+      description: "Android RGB",
+      formatter: toAndroidRgb,
+      pattern: ""
+    ),
+    .AndroidArgb: ColorFormatDefinition(
+      description: "Android ARGB",
+      formatter: toAndroidArgb,
+      pattern: ""
+    ),
+    .AndroidXmlRgb: ColorFormatDefinition(
+      description: "Android XML RGB",
+      formatter: toAndroidXmlRgb,
+      pattern: ""
+    ),
+    .AndroidXmlArgb: ColorFormatDefinition(
+      description: "Android XML ARGB",
+      formatter: toAndroidXmlArgb,
+      pattern: ""
+    ),
   ]
 
   private static func toAndroidArgb(_ color: HSBColor, _: ColorFormatterOptions) -> String {
@@ -234,6 +302,32 @@ class ColorFormatter {
     return formatter(color, options)
   }
 
+  static func match(_ input: String) -> HSBColor? {
+    var color: HSBColor?
+
+    for (format, definition) in definitions {
+      if format == .CssHex {
+        let regex = try! NSRegularExpression(pattern: definition.pattern)
+
+        if let match = regex.firstMatch(
+          in: input,
+          options: [],
+          range: NSRange(location: 0, length: input.utf16.count)
+        ) {
+          switch format {
+          case .CssHex:
+            color = HSBColor(hex: input)
+          default: break
+          }
+
+          break
+        }
+      }
+    }
+
+    return color
+  }
+
   private static func get8BitsComponent(_ color: HSBColor, _ component: ColorComponent) -> UInt {
     let value: CGFloat
 
@@ -323,6 +417,7 @@ class ColorFormatter {
 private struct ColorFormatDefinition {
   let description: String
   let formatter: (_ color: HSBColor, _ options: ColorFormatterOptions) -> String
+  let pattern: String
 }
 
 extension ColorFormat: Codable {

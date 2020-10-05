@@ -31,12 +31,16 @@ class ColorFormatterTests: XCTestCase {
     .MedianAlpha: HSBColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5),
   ]
 
-  private var testFormattedColorCount = 0
+  private var testedColorCount = 0
 
   private func getFormattedColor(_ color: Color, _ format: ColorFormat, _ options: ColorFormatterOptions) -> String {
-    testFormattedColorCount += 1
+    testedColorCount += 1
 
     return ColorFormatter.format(HSBColors[color]!, format, options)
+  }
+
+  private func getMatchedColor(_ input: String) -> HSBColor? {
+    ColorFormatter.match(input)
   }
 
   private func testColors(
@@ -53,12 +57,20 @@ class ColorFormatterTests: XCTestCase {
     }
   }
 
+  private func testInputs(_ results: [Color: String]) {
+    for result in results {
+      XCTAssertEqual(getMatchedColor(result.value), HSBColors[result.key])
+    }
+  }
+
   override func setUp() {
-    testFormattedColorCount = 0
+    testedColorCount = 0
   }
 
   override func tearDown() {
-    XCTAssertEqual(testFormattedColorCount, HSBColors.count)
+    if testedColorCount > 0 {
+      XCTAssertEqual(testedColorCount, HSBColors.count)
+    }
   }
 
   func testAndroidArgb() {
@@ -402,6 +414,26 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "CGColor(genericCMYKCyan: 1, magenta: 1, yellow: 0, black: 0, alpha: 1)",
       .Median: "CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 0.5, alpha: 1)",
       .MedianAlpha: "CGColor(genericCMYKCyan: 0, magenta: 0, yellow: 0, black: 0.5, alpha: 0.5)",
+    ])
+  }
+
+  func testCssHexInput() {
+    testInputs([
+      .Black: "#000000",
+      .White: "#ffffff",
+      .Red: "#ff0000",
+      .Green: "#00ff00",
+      .Blue: "#0000ff",
+    ])
+  }
+
+  func testCssHexInputWihoutHash() {
+    testInputs([
+      .Black: "000000",
+      .White: "ffffff",
+      .Red: "ff0000",
+      .Green: "00ff00",
+      .Blue: "0000ff",
     ])
   }
 }

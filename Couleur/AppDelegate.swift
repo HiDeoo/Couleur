@@ -131,4 +131,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @IBAction func copy(sender _: AnyObject) {
     copyColorToClipboard()
   }
+
+  @IBAction func paste(sender _: AnyObject) {
+    let pasteboardStringItem = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string)
+
+    if let pasteboardString = pasteboardStringItem {
+      if let color = ColorFormatter.match(pasteboardString) {
+        appModel.color = color
+      } else {
+        NSSound.beep()
+      }
+    }
+  }
 }

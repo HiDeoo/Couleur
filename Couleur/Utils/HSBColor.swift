@@ -64,6 +64,25 @@ struct HSBColor: Codable, Hashable, Equatable {
     updateHsb()
   }
 
+  init(hex: String) {
+    var sanitizedHex = hex
+
+    if hex.hasPrefix("#") {
+      sanitizedHex = String(hex[hex.index(hex.startIndex, offsetBy: 1)...])
+    }
+
+    var intRepresentation: UInt64 = 0
+
+    let scanner = Scanner(string: sanitizedHex)
+    scanner.scanHexInt64(&intRepresentation)
+
+    let red = CGFloat((intRepresentation & 0xFF0000) >> 16) / 255.0
+    let green = CGFloat((intRepresentation & 0xFF00) >> 8) / 255.0
+    let blue = CGFloat(intRepresentation & 0xFF) / 255.0
+
+    self.init(red: red, green: green, blue: blue, alpha: 1.0)
+  }
+
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let hue = try container.decode(CGFloat.self, forKey: .hue)
