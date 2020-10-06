@@ -436,4 +436,24 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "0000ff",
     ])
   }
+
+  func testCssHslInput() {
+    testInputs([
+      .Black: "hsl(0 0% 0%)",
+      .White: "hsl(0 0% 100%)",
+      .Red: "hsl(0 100% 50%)",
+      .Green: "hsl(120 100% 50%)",
+      .Blue: "hsl(240 100% 50%)",
+    ])
+  }
+
+  func testCssHslInputWithComma() {
+    testInputs([
+      .Black: "hsl(0, 0%, 0%)",
+      .White: "hsl(0, 0%, 100%)",
+      .Red: "hsl(0, 100%, 50%)",
+      .Green: "hsl(120, 100%, 50%)",
+      .Blue: "hsl(240, 100%, 50%)",
+    ])
+  }
 }

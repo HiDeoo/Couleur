@@ -53,6 +53,16 @@ struct HSBColor: Codable, Hashable, Equatable {
     updateRgb()
   }
 
+  init(hue: CGFloat, saturation: CGFloat, lightness: CGFloat, alpha: CGFloat) {
+    let sanitizedLightness = lightness * 2
+    var sanitizedSaturation = saturation * (sanitizedLightness <= 1 ? sanitizedLightness : 2 - sanitizedLightness)
+    let lightnessAndSaturation = sanitizedLightness + sanitizedSaturation
+    let brightness = lightnessAndSaturation / 2
+    sanitizedSaturation = lightnessAndSaturation > 0 ? (2 * sanitizedSaturation) / lightnessAndSaturation : 0
+
+    self.init(hue: hue, saturation: sanitizedSaturation, brightness: brightness, alpha: alpha)
+  }
+
   init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
     self.red = red
     self.green = green

@@ -43,7 +43,7 @@ extension ColorFormatter {
     .CssHsl: ColorFormatDefinition(
       description: "CSS HSL",
       formatter: toCssHsl,
-      pattern: ""
+      pattern: "^hsl\\((\\d+),? (\\d+(?:\\.\\d+)?)%,? (\\d+(?:\\.\\d+)?)%\\)$"
     ),
     .CssHsla: ColorFormatDefinition(
       description: "CSS HSLA",
@@ -306,7 +306,8 @@ class ColorFormatter {
     var color: HSBColor?
 
     for (format, definition) in definitions {
-      if format == .CssHex {
+      // TODO: Remove
+      if definition.pattern.count > 0 {
         let regex = try! NSRegularExpression(pattern: definition.pattern)
 
         if let match = regex.firstMatch(
@@ -314,9 +315,28 @@ class ColorFormatter {
           options: [],
           range: NSRange(location: 0, length: input.utf16.count)
         ) {
+          // TODO: Remove
+          print(format)
+
           switch format {
           case .CssHex:
             color = HSBColor(hex: input)
+          case .CssHsl:
+            if let hueRange = Range(match.range(at: 1), in: input),
+              let saturationRange = Range(match.range(at: 2), in: input),
+              let lightnessRange = Range(match.range(at: 3), in: input)
+            {
+              guard let hue = NumberFormatter().number(from: String(input[hueRange])) else { break }
+              guard let saturation = NumberFormatter().number(from: String(input[saturationRange])) else { break }
+              guard let lightness = NumberFormatter().number(from: String(input[lightnessRange])) else { break }
+
+              color = HSBColor(
+                hue: CGFloat(truncating: hue) / 360,
+                saturation: CGFloat(truncating: saturation) / 100,
+                lightness: CGFloat(truncating: lightness) / 100,
+                alpha: 1.0
+              )
+            }
           default: break
           }
 
