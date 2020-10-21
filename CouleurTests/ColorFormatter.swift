@@ -456,4 +456,26 @@ class ColorFormatterTests: XCTestCase {
       .Blue: "hsl(240, 100%, 50%)",
     ])
   }
+
+  func testCssHslaInput() {
+    testInputs([
+      .Black: "hsla(0 0% 0% 1)",
+      .White: "hsla(0 0% 100% 1)",
+      .Red: "hsla(0 100% 50% 1)",
+      .Green: "hsla(120 100% 50% 1)",
+      .Blue: "hsla(240 100% 50% 1)",
+      .MedianAlpha: "hsla(0 0% 50% 0.5)",
+    ])
+  }
+
+  func testCssHslaInputWithComma() {
+    testInputs([
+      .Black: "hsla(0, 0%, 0%, 1)",
+      .White: "hsla(0, 0%, 100%, 1)",
+      .Red: "hsla(0, 100%, 50%, 1)",
+      .Green: "hsla(120, 100%, 50%, 1)",
+      .Blue: "hsla(240, 100%, 50%, 1)",
+      .MedianAlpha: "hsla(0, 0%, 50%, 0.5)",
+    ])
+  }
 }

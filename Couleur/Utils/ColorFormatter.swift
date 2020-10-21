@@ -48,7 +48,7 @@ extension ColorFormatter {
     .CssHsla: ColorFormatDefinition(
       description: "CSS HSLA",
       formatter: toCssHsla,
-      pattern: ""
+      pattern: "^hsla\\((\\d+),? (\\d+(?:\\.\\d+)?)%,? (\\d+(?:\\.\\d+)?)%,? (\\d+(?:\\.\\d+)?)\\)$"
     ),
     .CssRgb: ColorFormatDefinition(
       description: "CSS RGB",
@@ -321,20 +321,29 @@ class ColorFormatter {
           switch format {
           case .CssHex:
             color = HSBColor(hex: input)
-          case .CssHsl:
+          case .CssHsl, .CssHsla:
             if let hueRange = Range(match.range(at: 1), in: input),
               let saturationRange = Range(match.range(at: 2), in: input),
               let lightnessRange = Range(match.range(at: 3), in: input)
             {
-              guard let hue = NumberFormatter().number(from: String(input[hueRange])) else { break }
-              guard let saturation = NumberFormatter().number(from: String(input[saturationRange])) else { break }
-              guard let lightness = NumberFormatter().number(from: String(input[lightnessRange])) else { break }
+              let formatter = NumberFormatter()
+              formatter.decimalSeparator = "."
+
+              guard let hue = formatter.number(from: String(input[hueRange])) else { break }
+              guard let saturation = formatter.number(from: String(input[saturationRange])) else { break }
+              guard let lightness = formatter.number(from: String(input[lightnessRange])) else { break }
+
+              var alpha: CGFloat = 1.0
+
+              if format == .CssHsla, let alphaRange = Range(match.range(at: 4), in: input) {
+                alpha = CGFloat(truncating: formatter.number(from: String(input[alphaRange])) ?? 1)
+              }
 
               color = HSBColor(
                 hue: CGFloat(truncating: hue) / 360,
                 saturation: CGFloat(truncating: saturation) / 100,
                 lightness: CGFloat(truncating: lightness) / 100,
-                alpha: 1.0
+                alpha: alpha
               )
             }
           default: break
