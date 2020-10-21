@@ -175,9 +175,9 @@ extension ColorFormatter {
 
   private static func toCssHsla(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
     let hsla = getHSLA(color)
-    let format = options.useSpaceSeparatedCss ? "hsla(%d %d%% %d%% %d%%)" : "hsla(%d, %d%%, %d%%, %d%%)"
+    let format = options.useSpaceSeparatedCss ? "hsla(%d %d%% %d%% %@)" : "hsla(%d, %d%%, %d%%, %@)"
 
-    return String(format: format, hsla.hue, hsla.saturation, hsla.lightness, hsla.alpha)
+    return String(format: format, hsla.hue, hsla.saturation, hsla.lightness, getFractionalAlpha(color.alpha))
   }
 
   private static func toCssRgb(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
@@ -192,14 +192,14 @@ extension ColorFormatter {
   }
 
   private static func toCssRgba(_ color: HSBColor, _ options: ColorFormatterOptions) -> String {
-    let format = options.useSpaceSeparatedCss ? "rgba(%d %d %d %d%%)" : "rgba(%d, %d, %d, %d%%)"
+    let format = options.useSpaceSeparatedCss ? "rgba(%d %d %d %@)" : "rgba(%d, %d, %d, %@)"
 
     return String(
       format: format,
       get8BitsComponent(color, .Red),
       get8BitsComponent(color, .Green),
       get8BitsComponent(color, .Blue),
-      UInt(color.alpha * 100)
+      getFractionalAlpha(color.alpha)
     )
   }
 
@@ -431,6 +431,17 @@ class ColorFormatter {
     }
 
     return "\(result))"
+  }
+
+  private static func getFractionalAlpha(_ value: CGFloat) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 0
+    formatter.maximumFractionDigits = 2
+    formatter.usesGroupingSeparator = false
+    formatter.decimalSeparator = "."
+
+    return formatter.string(from: value as NSNumber) ?? "0"
   }
 }
 

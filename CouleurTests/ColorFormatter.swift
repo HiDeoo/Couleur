@@ -227,13 +227,13 @@ class ColorFormatterTests: XCTestCase {
 
   func testCssHsla() {
     testColors(.CssHsla, [
-      .Black: "hsla(0 0% 0% 100%)",
-      .White: "hsla(0 0% 100% 100%)",
-      .Red: "hsla(0 100% 50% 100%)",
-      .Green: "hsla(120 100% 50% 100%)",
-      .Blue: "hsla(240 100% 50% 100%)",
-      .Median: "hsla(0 0% 50% 100%)",
-      .MedianAlpha: "hsla(0 0% 50% 50%)",
+      .Black: "hsla(0 0% 0% 1)",
+      .White: "hsla(0 0% 100% 1)",
+      .Red: "hsla(0 100% 50% 1)",
+      .Green: "hsla(120 100% 50% 1)",
+      .Blue: "hsla(240 100% 50% 1)",
+      .Median: "hsla(0 0% 50% 1)",
+      .MedianAlpha: "hsla(0 0% 50% 0.5)",
     ],
     ColorFormatterOptions(
       useUpperCaseHex: Constants.UseUpperCaseHexDefault,
@@ -243,13 +243,13 @@ class ColorFormatterTests: XCTestCase {
 
   func testCssHslaCommaSeparated() {
     testColors(.CssHsla, [
-      .Black: "hsla(0, 0%, 0%, 100%)",
-      .White: "hsla(0, 0%, 100%, 100%)",
-      .Red: "hsla(0, 100%, 50%, 100%)",
-      .Green: "hsla(120, 100%, 50%, 100%)",
-      .Blue: "hsla(240, 100%, 50%, 100%)",
-      .Median: "hsla(0, 0%, 50%, 100%)",
-      .MedianAlpha: "hsla(0, 0%, 50%, 50%)",
+      .Black: "hsla(0, 0%, 0%, 1)",
+      .White: "hsla(0, 0%, 100%, 1)",
+      .Red: "hsla(0, 100%, 50%, 1)",
+      .Green: "hsla(120, 100%, 50%, 1)",
+      .Blue: "hsla(240, 100%, 50%, 1)",
+      .Median: "hsla(0, 0%, 50%, 1)",
+      .MedianAlpha: "hsla(0, 0%, 50%, 0.5)",
     ],
     ColorFormatterOptions(
       useUpperCaseHex: Constants.UseUpperCaseHexDefault,
@@ -291,13 +291,13 @@ class ColorFormatterTests: XCTestCase {
 
   func testCssRgba() {
     testColors(.CssRgba, [
-      .Black: "rgba(0 0 0 100%)",
-      .White: "rgba(255 255 255 100%)",
-      .Red: "rgba(255 0 0 100%)",
-      .Green: "rgba(0 255 0 100%)",
-      .Blue: "rgba(0 0 255 100%)",
-      .Median: "rgba(127 127 127 100%)",
-      .MedianAlpha: "rgba(127 127 127 50%)",
+      .Black: "rgba(0 0 0 1)",
+      .White: "rgba(255 255 255 1)",
+      .Red: "rgba(255 0 0 1)",
+      .Green: "rgba(0 255 0 1)",
+      .Blue: "rgba(0 0 255 1)",
+      .Median: "rgba(127 127 127 1)",
+      .MedianAlpha: "rgba(127 127 127 0.5)",
     ],
     ColorFormatterOptions(
       useUpperCaseHex: Constants.UseUpperCaseHexDefault,
@@ -307,13 +307,13 @@ class ColorFormatterTests: XCTestCase {
 
   func testCssRgbaCommaSeparated() {
     testColors(.CssRgba, [
-      .Black: "rgba(0, 0, 0, 100%)",
-      .White: "rgba(255, 255, 255, 100%)",
-      .Red: "rgba(255, 0, 0, 100%)",
-      .Green: "rgba(0, 255, 0, 100%)",
-      .Blue: "rgba(0, 0, 255, 100%)",
-      .Median: "rgba(127, 127, 127, 100%)",
-      .MedianAlpha: "rgba(127, 127, 127, 50%)",
+      .Black: "rgba(0, 0, 0, 1)",
+      .White: "rgba(255, 255, 255, 1)",
+      .Red: "rgba(255, 0, 0, 1)",
+      .Green: "rgba(0, 255, 0, 1)",
+      .Blue: "rgba(0, 0, 255, 1)",
+      .Median: "rgba(127, 127, 127, 1)",
+      .MedianAlpha: "rgba(127, 127, 127, 0.5)",
     ],
     ColorFormatterOptions(
       useUpperCaseHex: Constants.UseUpperCaseHexDefault,
