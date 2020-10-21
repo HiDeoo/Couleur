@@ -12,7 +12,7 @@ struct Constants {
   /**
    * The size of the main window in point.
    */
-  static let MainWindowSize = CGSize(width: 250, height: 528)
+  static let MainWindowSize = CGSize(width: 250, height: 552)
 
   /**
    * The height of the main window title bar.

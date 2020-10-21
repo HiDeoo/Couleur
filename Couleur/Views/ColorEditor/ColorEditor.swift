@@ -28,6 +28,13 @@ struct ColorEditor: View {
       .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
       .padding(.bottom, sliderPadding)
       LinearSlider(
+        gradientColors: self.getBrightnessGradientColors(),
+        getPointerPosition: self.getBrightnessPointerPosition,
+        updateValue: self.updateBrightness
+      )
+      .frame(width: editorWidth, height: Constants.ColorEditorLinearSliderHeight)
+      .padding(.bottom, sliderPadding)
+      LinearSlider(
         gradientColors: self.getAlphaGradientColors(),
         getPointerPosition: self.getAlphaPointerPosition,
         updateValue: self.updateAlpha,
@@ -53,6 +60,10 @@ struct ColorEditor: View {
     CGPoint(x: containerSize.width * color.hue, y: containerSize.height / 2)
   }
 
+  func getBrightnessPointerPosition(containerSize: CGSize) -> CGPoint {
+    CGPoint(x: containerSize.width - containerSize.width * color.brightness, y: containerSize.height / 2)
+  }
+
   func updateHue(position: CGPoint, size: CGSize) {
     let relativeHue = max(0, min(1, position.x / size.width))
 
@@ -61,10 +72,23 @@ struct ColorEditor: View {
     color.setHue(relativeHue == 1 ? 1 - pow(10, -6) : relativeHue)
   }
 
+  func updateBrightness(position: CGPoint, size: CGSize) {
+    let relativeBrightness = max(0, min(1, 1 - (position.x / size.width)))
+
+    color.setSaturationAndBrightness(color.saturation, relativeBrightness)
+  }
+
   func getAlphaGradientColors() -> [Color] {
     [
       Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: color.brightness, alpha: 0)),
       Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: color.brightness, alpha: 1)),
+    ]
+  }
+
+  func getBrightnessGradientColors() -> [Color] {
+    [
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 1, alpha: color.alpha)),
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 0, alpha: color.alpha)),
     ]
   }
 
