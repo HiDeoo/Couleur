@@ -478,4 +478,46 @@ class ColorFormatterTests: XCTestCase {
       .MedianAlpha: "hsla(0, 0%, 50%, 0.5)",
     ])
   }
+
+  func testCssRgbInput() {
+    testInputs([
+      .Black: "rgb(0 0 0)",
+      .White: "rgb(255 255 255)",
+      .Red: "rgb(255 0 0)",
+      .Green: "rgb(0 255 0)",
+      .Blue: "rgb(0 0 255)",
+    ])
+  }
+
+  func testCssRgbInputWithComma() {
+    testInputs([
+      .Black: "rgb(0, 0, 0)",
+      .White: "rgb(255, 255, 255)",
+      .Red: "rgb(255, 0, 0)",
+      .Green: "rgb(0, 255, 0)",
+      .Blue: "rgb(0, 0, 255)",
+    ])
+  }
+
+  func testCssRgbaInput() {
+    testInputs([
+      .Black: "rgba(0 0 0 1)",
+      .White: "rgba(255 255 255 1)",
+      .Red: "rgba(255 0 0 1)",
+      .Green: "rgba(0 255 0 1)",
+      .Blue: "rgba(0 0 255 1)",
+      .MedianAlpha: "rgba(127.5 127.5 127.5 0.5)",
+    ])
+  }
+
+  func testCssRgbaInputWithComma() {
+    testInputs([
+      .Black: "rgba(0, 0, 0 1)",
+      .White: "rgba(255, 255, 255, 1)",
+      .Red: "rgba(255, 0, 0, 1)",
+      .Green: "rgba(0, 255, 0, 1)",
+      .Blue: "rgba(0, 0, 255, 1)",
+      .MedianAlpha: "rgba(127.5, 127.5, 127.5, 0.5)",
+    ])
+  }
 }

@@ -53,12 +53,12 @@ extension ColorFormatter {
     .CssRgb: ColorFormatDefinition(
       description: "CSS RGB",
       formatter: toCssRgb,
-      pattern: ""
+      pattern: "^rgb\\((\\d+(?:\\.\\d+)?),? (\\d+(?:\\.\\d+)?),? (\\d+(?:\\.\\d+)?)\\)$"
     ),
     .CssRgba: ColorFormatDefinition(
       description: "CSS RGBA",
       formatter: toCssRgba,
-      pattern: ""
+      pattern: "^rgba\\((\\d+(?:\\.\\d+)?),? (\\d+(?:\\.\\d+)?),? (\\d+(?:\\.\\d+)?),? (\\d+(?:\\.\\d+)?)\\)$"
     ),
     .SwiftAppKitHsb: ColorFormatDefinition(
       description: "Swift NSColor HSB",
@@ -343,6 +343,31 @@ class ColorFormatter {
                 hue: CGFloat(truncating: hue) / 360,
                 saturation: CGFloat(truncating: saturation) / 100,
                 lightness: CGFloat(truncating: lightness) / 100,
+                alpha: alpha
+              )
+            }
+          case .CssRgb, .CssRgba:
+            if let redRange = Range(match.range(at: 1), in: input),
+              let greenRange = Range(match.range(at: 2), in: input),
+              let blueRange = Range(match.range(at: 3), in: input)
+            {
+              let formatter = NumberFormatter()
+              formatter.decimalSeparator = "."
+
+              guard let red = formatter.number(from: String(input[redRange])) else { break }
+              guard let green = formatter.number(from: String(input[greenRange])) else { break }
+              guard let blue = formatter.number(from: String(input[blueRange])) else { break }
+
+              var alpha: CGFloat = 1.0
+
+              if format == .CssRgba, let alphaRange = Range(match.range(at: 4), in: input) {
+                alpha = CGFloat(truncating: formatter.number(from: String(input[alphaRange])) ?? 1)
+              }
+
+              color = HSBColor(
+                red: CGFloat(truncating: red) / 255,
+                green: CGFloat(truncating: green) / 255,
+                blue: CGFloat(truncating: blue) / 255,
                 alpha: alpha
               )
             }
