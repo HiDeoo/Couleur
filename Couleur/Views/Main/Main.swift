@@ -48,9 +48,7 @@ struct Main: View {
     )
     .frame(height: Constants.MainWindowSize.height, alignment: .topLeading)
     .alert(isPresented: $showPermissionAlert) {
-      getPermissionsAlert(action: {
-        self.showPicker()
-      })
+      getPermissionsAlert(action: {})
     }
   }
 
