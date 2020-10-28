@@ -52,7 +52,7 @@ struct Constants {
   /**
    * The color preview default color.
    */
-  static let ColorPreviewDefaultColor = HSBColor(.blue)
+  static let ColorPreviewDefaultColor = HSBColor(red: 250 / 255, green: 225 / 255, blue: 75 / 255, alpha: 1)
 
   /**
    * The components editor default type.
