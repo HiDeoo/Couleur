@@ -73,6 +73,11 @@
                                                 <action selector="pasteWithSender:" target="Voe-Tx-rLC" id="ycG-dU-stU"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="74Y-pu-V4S" userLabel="Select All">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="heP-Dd-X4F"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
