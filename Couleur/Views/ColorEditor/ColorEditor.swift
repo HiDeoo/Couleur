@@ -87,8 +87,8 @@ struct ColorEditor: View {
 
   func getBrightnessGradientColors() -> [Color] {
     [
-      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 1, alpha: color.alpha)),
-      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 0, alpha: color.alpha)),
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 1, alpha: 1)),
+      Color(HSBColor(hue: color.hue, saturation: color.saturation, brightness: 0, alpha: 1)),
     ]
   }
 
