@@ -45,6 +45,9 @@ struct ColorExporter: View {
           Text(formattedColor)
             .font(.system(.headline))
             .foregroundColor(Color("label"))
+            .onDrag {
+              NSItemProvider(object: formattedColor as NSString)
+            }
           Spacer()
           formatPickerIcon
             .rotationEffect(.degrees(self.showColorFormatPicker ? -180 : 0))
