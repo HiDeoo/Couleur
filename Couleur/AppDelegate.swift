@@ -143,4 +143,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       }
     }
   }
+
+  @IBAction func visitRepository(sender _: AnyObject) {
+    NSWorkspace.shared.open(URL(string: "https://github.com/HiDeoo/Couleur")!)
+  }
+
+  @IBAction func reportIssue(sender _: AnyObject) {
+    NSWorkspace.shared.open(URL(string: "https://github.com/HiDeoo/Couleur/issues/new")!)
+  }
 }

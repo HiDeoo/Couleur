@@ -102,9 +102,15 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Couleur Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Couleur Repository" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <action selector="visitRepositoryWithSender:" target="Voe-Tx-rLC" id="YGJ-TA-fXT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Report issue" id="qVa-m8-xP8">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="reportIssueWithSender:" target="Voe-Tx-rLC" id="bzd-cm-I4V"/>
                                             </connections>
                                         </menuItem>
                                     </items>
