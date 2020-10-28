@@ -20,8 +20,6 @@ struct ComponentField: View {
   let type: ComponentFieldType
   let onChange: (_ newValue: CGFloat) -> Void
 
-  @State private var displayValue: String?
-
   var body: some View {
     let valueBinding = Binding<String>(
       get: {
