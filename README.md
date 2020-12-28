@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Couleur" src="https://i.imgur.com/UJ9hAMG.png" width="128">
+  <img alt="Couleur" src="https://i.imgur.com/IVw3Rdn.png" width="128">
   <h1 align="center">Couleur</h1>
 </p>
 
