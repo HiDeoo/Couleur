@@ -32,7 +32,13 @@ struct Constants {
   /**
    * The height of the color preview component in point.
    */
-  static let ColorPreviewHeight: CGFloat = 120
+  static var ColorPreviewHeight: CGFloat {
+    if #available(macOS 11.0, *) {
+      return 125
+    }
+
+    return 120
+  }
 
   /**
    * The default padding of classic windows.

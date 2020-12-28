@@ -270,7 +270,7 @@ private enum SwiftColorPrefix: String {
   case CoreGraphics = "CGColor"
 }
 
-class ColorFormatter {
+enum ColorFormatter {
   static func getDescription(format: ColorFormat) -> String {
     guard let description = definitions[format]?.description else { return "" }
 
@@ -307,8 +307,8 @@ class ColorFormatter {
             color = HSBColor(hex: input)
           case .CssHsl, .CssHsla:
             if let hueRange = Range(match.range(at: 1), in: input),
-              let saturationRange = Range(match.range(at: 2), in: input),
-              let lightnessRange = Range(match.range(at: 3), in: input)
+               let saturationRange = Range(match.range(at: 2), in: input),
+               let lightnessRange = Range(match.range(at: 3), in: input)
             {
               let formatter = NumberFormatter()
               formatter.decimalSeparator = "."
@@ -332,8 +332,8 @@ class ColorFormatter {
             }
           case .CssRgb, .CssRgba:
             if let redRange = Range(match.range(at: 1), in: input),
-              let greenRange = Range(match.range(at: 2), in: input),
-              let blueRange = Range(match.range(at: 3), in: input)
+               let greenRange = Range(match.range(at: 2), in: input),
+               let blueRange = Range(match.range(at: 3), in: input)
             {
               let formatter = NumberFormatter()
               formatter.decimalSeparator = "."
